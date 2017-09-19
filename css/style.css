@@ -1,0 +1,54 @@
+@charset "UTF-8";
+body {
+  font: 14px/1.5 "Helvetica, 微软雅黑, arial";
+  background: #fff; }
+
+body, h1, h2, h3, h4, h5, h6, ul, li, dl, dd {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+a {
+  color: #cf4646;
+  text-decoration: none; }
+
+.wrap {
+  width: 500px;
+  font-size: 22px;
+  margin: 20px auto 0;
+  padding: 40px 20px; }
+
+.shadow {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  box-shadow: 0px 2px 3px #ececec;
+  background: #ffffff; }
+
+.list {
+  padding: 0 60px;
+  color: #cf4646; }
+  .list li {
+    list-style: decimal;
+    line-height: 50px;
+    border-bottom: 1px solid #f2f2f2; }
+    .list li h1 {
+      font-size: 22px;
+      font-style: normal;
+      font-family: "Hiragino Sans GB","Hiragino Sans GB W3",'微软雅黑'; }
+    .list li a {
+      display: block;
+      padding: 5px 8px;
+      transition: all .6s; }
+    .list li a:hover {
+      text-indent: 25px;
+      border-radius: 5px;
+      color: #fff;
+      text-shadow: 0 2px 1px #360;
+      background-color: #DD3A0A;
+      background-image: linear-gradient(to bottom, #DD3A0A, #DD560A);
+      border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); }
+
+.sub-dl {
+  display: none; }
+
+/*# sourceMappingURL=style.css.map */
