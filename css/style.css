@@ -49,6 +49,17 @@ a {
       border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); }
 
 .sub-dl {
-  display: none; }
+  display: none;
+  line-height: 45px; }
+
+#pages_0101 {
+  width: 500px;
+  margin: 0 auto;
+  padding-top: 100px; }
+
+#pages_0102 {
+  width: 600px;
+  margin: 0 auto;
+  padding-top: 50px; }
 
 /*# sourceMappingURL=style.css.map */
