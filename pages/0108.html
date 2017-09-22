@@ -44,13 +44,27 @@
     }
     p.qianyan{
         font-size:14px;
-        line-height:28px;
+        line-height:30px;
+    }
+    p.qianyan span{
+        color:rgba(244,82,56,1);
+        font-weight:bold;
+    }
+    p.qianyan span i{
+        color:#000000;
     }
 </style>
 <body>
 <div id="pages_0108">
     <p class="qianyan">
         之前项目中有一个需求，需要用到进度条的拖拽事件，写了好几个都不尽人意，因为项目对时间和用户体验有所要求，故而从网上找了一个方法，可以快速的实现该方法。
+        <br>
+        <b>git 相关命令</b><br>
+        <span><i>切换分支：</i>git checkout gh-pages<br>
+            <i>推送代码：</i>git push origin master(将本地代码推送到远程master分支)<br>
+            <i>拉取代码：</i>git pull origin master(将远程最新的代码更新到本地，防止冲突)<br>
+            <i>查看当前项目有哪些远程仓库：</i>git remote -v
+        </span>
     </p>
     <div class="progress" id="progress">
         <div class="pro_act" id="pro_act"></div>
