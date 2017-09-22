@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>拖拽进度条</title>
+</head>
+<style>
+    body{
+        font-family:"Helvetica, 微软雅黑, arial";
+    }
+    #pages_0108{
+        width:600px;
+        height:auto;
+        margin:0 auto;
+    }
+    .progress{
+        width:600px;
+        height:20px;
+        border-radius:15px;
+        background:#dddddd;
+        margin: 50px auto;
+        position:relative;
+    }
+    .pro_act{
+        width:0;
+        height:100%;
+        border-radius:15px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        background:rgba(244,82,56,.8);
+    }
+    .btn{
+        width:30px;
+        height:30px;
+        border-radius:50%;
+        background:rgba(0,0,0,1);
+        position:absolute;
+        top:-5px;
+        left:0;
+        cursor:pointer;
+    }
+    p.qianyan{
+        font-size:14px;
+        line-height:28px;
+    }
+</style>
+<body>
+<div id="pages_0108">
+    <p class="qianyan">
+        之前项目中有一个需求，需要用到进度条的拖拽事件，写了好几个都不尽人意，因为项目对时间和用户体验有所要求，故而从网上找了一个方法，可以快速的实现该方法。
+    </p>
+    <div class="progress" id="progress">
+        <div class="pro_act" id="pro_act"></div>
+        <div class="btn" id="btn"></div>
+    </div>
+</div>
+</body>
+<script>
+    var scale = function (btn,bar,title){
+        this.btn=document.getElementById(btn);
+        this.bar=document.getElementById(bar);
+        this.title=document.getElementById(title);
+        this.step=this.bar.getElementsByTagName("div")[0];
+        this.init();
+    };
+    scale.prototype={
+        init:function (){
+            var f=this,g=document,b=window,m=Math;
+            f.btn.onmousedown=function (e){
+                var x=(e||b.event).clientX;
+                var l=this.offsetLeft;
+                var max=f.bar.offsetWidth-this.offsetWidth;
+                g.onmousemove=function (e){
+                    var thisX=(e||b.event).clientX;
+                    var to=m.min(max,m.max(0,l+(thisX-x)));
+                    f.btn.style.left=to+'px';
+                    f.ondrag(m.round(m.max(0,to/max)*100),to);
+                    b.getSelection ? b.getSelection().removeAllRanges() : g.selection.empty();
+                };
+                g.onmouseup=new Function('this.onmousemove=null');
+            };
+        },
+        ondrag:function (pos,x){
+            this.step.style.width=(Math.max(0,x)+15)+'px';
+//            this.title.innerHTML=pos+'%';
+        }
+    }
+    new scale('btn','progress');
+</script>
+</html>
