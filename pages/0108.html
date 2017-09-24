@@ -8,15 +8,18 @@
     <title>拖拽进度条</title>
 </head>
 <style>
-    body{
+    html{
+        font-size:62.5%;
+    }
+    body,h4{
         font-family:"Helvetica, 微软雅黑, arial";
     }
     #pages_0108{
-        width:600px;
+        width:60rem;
         height:auto;
         margin:0 auto;
     }
-    .progress{
+    .progress,.progress1{
         width:600px;
         height:20px;
         border-radius:15px;
@@ -24,7 +27,7 @@
         margin: 50px auto;
         position:relative;
     }
-    .pro_act{
+    .pro_act,.pro_act1{
         width:0;
         height:100%;
         border-radius:15px;
@@ -32,7 +35,7 @@
         border-bottom-right-radius: 0;
         background:rgba(244,82,56,.8);
     }
-    .btn{
+    .btn,.btn1{
         width:30px;
         height:30px;
         border-radius:50%;
@@ -53,6 +56,9 @@
     p.qianyan span i{
         color:#000000;
     }
+    .progress1{
+        width:24rem;
+    }
 </style>
 <body>
 <div id="pages_0108">
@@ -70,8 +76,14 @@
         <div class="pro_act" id="pro_act"></div>
         <div class="btn" id="btn"></div>
     </div>
+    <h4>移动端拖拽进度条</h4>
 </div>
+    <div class="progress1" id="progress1">
+        <div class="pro_act1" id="pro_act1"></div>
+        <div class="btn1" id="btn1"></div>
+    </div>
 </body>
+<script src="../js/jquery.min.js"></script>
 <script>
     var scale = function (btn,bar,title){
         this.btn=document.getElementById(btn);
@@ -103,5 +115,10 @@
         }
     }
     new scale('btn','progress');
+    
+    $('.btn1').on('touchstart',function (e) {
+
+    })
+
 </script>
 </html>
