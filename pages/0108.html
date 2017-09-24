@@ -13,6 +13,7 @@
     }
     body,h4{
         font-family:"Helvetica, 微软雅黑, arial";
+        overflow-x: hidden;
     }
     #pages_0108{
         width:60rem;
@@ -116,9 +117,27 @@
     }
     new scale('btn','progress');
     
-    $('.btn1').on('touchstart',function (e) {
-
+    var start,end,s,btn1_width;
+    btn1_width = $('.btn1').width()/2;
+    $('.btn1').on('touchstart', function (e) {
+        var start = parseInt(e.originalEvent.changedTouches[0].pageX);
+        s = parseInt($(this).css("left"));
+        $(document).on("touchmove", function (e) {
+            end = parseInt(e.originalEvent.changedTouches[0].pageX);
+            var width = $('.progress1').width();
+            var move = end - start;
+            localStorage.progress = s + move;
+            if ((s + move) > 0 && (s + move) < width) {
+                $('.btn1').css({left: s + move  + "px"});
+                $(".pro_act1").css({width: s + move + btn1_width + 'px'});
+            }
+        })
     })
+
+    $(".btn1").on("touchend", function (e) {
+        $(this).off("touchmove");
+    });
+
 
 </script>
 </html>
