@@ -43,5 +43,25 @@
             $.cookie("class", ""+className+"",{expires:cookietime});
         })
     });
+
+   /*A B测试思路  第一次进入页面时，A B两个版本随机取一个，并将其通过cookie记录下来，下一次进入页面时通过判断cookie的属性值来决定切换A版本还是B版本，项目中cookie设定时长为3天*/
+   /*
+   * 代码实现：
+   * if($.cookie('class')){
+   *
+   * }else{
+   *    if(Math.random()<0.5){
+   *        $.cookie('class','A');
+   *    }else{
+   *        $.cookie('class','B');
+   *    }
+   * }
+   *
+   * if($.cookie('class') == 'A'){
+   *    展示A版本信息
+   * }else{
+   *    展示B版本信息
+   * }
+   * */
 </script>
 </html>
