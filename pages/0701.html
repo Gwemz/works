@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>test</title>
+</head>
+<style>
+    html{
+        font-size: 62.5%;
+        overflow-x: hidden;
+    }
+    body{
+        margin:0;
+        padding:0;
+    }
+    *{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    .button,button{
+        width:65%;
+        height: 6rem;
+        background: #ff6600;
+        border-radius: 5px;
+        border: 0;
+        font-size: 1.64rem;
+        color: #ffffff;
+        margin:20rem auto;
+        text-align:center;
+        line-height:6rem;
+    }
+    #page{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,.8);
+        z-index:2;
+        -webkit-transition:all linear .2s;
+        -moz-transition:all linear .2s;
+        -ms-transition:all linear .2s;
+        -o-transition:all linear .2s;
+        transition:all linear .2s;
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+    #page.active{
+        transform: translateX(0);
+    }
+    #page button{
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+        margin:auto;
+        background: #22ac38;
+    }
+    #page .back{
+        width: 32px;
+        color: #ffffff;
+        height: 32px;
+        font-size: 20px;
+        line-height: 32px;
+        display: block;
+        margin: 5px 0;
+        padding-left: 10px;
+    }
+</style>
+<body>
+    <div class="button">
+        提交
+    </div>
+    <section id="page">
+        <div class="back"> < </div>
+        <button>刷新页面</button>
+    </section>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $('.button').on('click',function () {
+        $('#page').addClass('active');
+    })
+    $('.back').on('click',function(){
+        $('#page').removeClass('active');
+    })
+    // 解决微信浏览器不支持window.location.reload()方法
+    $('button').on('click',function () {
+        window.location.href = location.href;
+    })
+</script>
+</html>
