@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>全国城市三级联动</title>
+    <style>
+        body{
+            font-family:"微软雅黑";
+        }
+        .box{
+            width:900px;
+            height:500px;
+            margin:50px auto;
+        }
+        h2{
+            text-align:center;
+        }
+        .box select{
+            display:inline-block;
+            width:150px;
+            margin-left:100px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <div class="box">
+            <h2>全国城市三级联动</h2>
+            <select id="select1">
+
+            </select>
+            <select id="select2">
+
+            </select>
+            <select id="select3">
+
+            </select>
+        </div>
+    </form>
+</body>
+<script src="../js/citydata.js"></script>
+<script>
+    window.onload=function(){
+        var PCA={
+            select1:document.getElementById('select1'),
+            select2:document.getElementById('select2'),
+            select3:document.getElementById('select3'),
+            init:function(){
+                // 创建省份
+                var str="<option>省份</option>";
+                var str1="<option>地级市</option>";
+                var str2="<option>市、县级市</option>";
+                for(var i=0;i<provinceList.length;i++){
+                    str+="<option>"+provinceList[i].name+"</option>";
+                }
+                // console.log(str);
+                select1.innerHTML=str;
+                select2.innerHTML=str1;
+                select3.innerHTML=str2;
+                var aa=select1.getElementsByTagName('option');
+                // 创建对应地级市
+                PCA.select1.onchange=function(){
+                    var ii=select1.selectedIndex;
+                    // 再一次改变内容时将str1清空
+                    str1="<option>地级市</option>";
+                    for(var i=0;i<provinceList[ii-1].cityList.length;i++){
+                        str1+="<option>"+provinceList[ii-1].cityList[i].name+"</option>";
+                    }
+                    select2.innerHTML=str1;
+                    // 创建市、县级市
+                    PCA.select2.onchange=function(){
+                        var kk=select2.selectedIndex;
+                        // 再一次改变内容时将str2清空
+                        str2="<option>市、县级市</option>";
+                        var areas=provinceList[ii-1].cityList[kk-1].areaList;
+                        for(var i=0;i<areas.length;i++){
+                            str2+="<option>"+areas[i]+"</option>";
+                        }
+                        select3.innerHTML=str2;
+                    }
+                }
+            }
+        }
+        PCA.init();
+    }
+</script>
+</html>
