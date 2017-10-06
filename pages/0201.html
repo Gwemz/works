@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>楼层跳转效果</title>
+</head>
+<style>
+    body{
+        margin:0;
+        font-family:"微软雅黑";
+    }
+    .floor{
+        width:600px;
+        height:600px;
+        border:1px solid #555;
+        margin:20px auto;
+        font-size:200px;
+        line-height:600px;
+        text-align:center;
+    }
+    .floor-bar{
+        width:60px;
+        height:600px;
+        background-color:#555;
+        position:fixed;
+        left:50%;
+        top:40px;
+        margin-left:-400px;
+    }
+    .floor-bar span{
+        width:60px;
+        height:60px;
+        display:block;
+        text-align:center;
+        line-height:60px;
+        color:#fff;
+        font-size:30px;
+        cursor:pointer;
+    }
+</style>
+<body>
+    <div class="floor">1</div>
+    <div class="floor">2</div>
+    <div class="floor">3</div>
+    <div class="floor">4</div>
+    <div class="floor">5</div>
+    <div class="floor">6</div>
+    <div class="floor">7</div>
+    <div class="floor">8</div>
+    <div class="floor">9</div>
+    <div class="floor">10</div>
+
+    <div class="floor-bar">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>10</span>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/animate.js"></script>
+<script>
+    $(function(){
+        var floor=$('.floor');
+        var flobar=$('.floor-bar')[0];
+        var spans=$('span',flobar);
+        var arr=[];
+        for(var i=0;i<floor.length;i++){
+            arr.push(floor[i].offsetTop);
+        }
+        console.log(arr);
+        spans[0].style.backgroundColor="maroon";
+        window.onscroll=function(){
+            var tops=document.body.scrollTop||document.documentElement.scrollTop;
+            for(var i=0;i<floor.length;i++){
+                if((tops+200)>arr[i]){
+                    for(var j=0;j<floor.length;j++){
+                        spans[j].style.backgroundColor="";
+                    }
+                    spans[i].style.backgroundColor="maroon";
+                }
+            }
+        }
+        // 选项卡效果
+        for(var k=0;k<spans.length;k++){
+            spans[k].index=k;
+            spans[k].onclick=function(){
+                animate(document.body,{scrollTop:arr[this.index]},500);
+                animate(document.documentElement,{scrollTop:arr[this.index]},500);
+                /*document.body.scrollTop=arr[this.index];
+                document.documentElement.scrollTop=arr[this.index];*/
+            }
+        }
+    })
+</script>
+</html>
