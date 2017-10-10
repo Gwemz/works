@@ -100,7 +100,8 @@
     // 解决微信浏览器不支持window.location.reload()方法
     $('button').on('click',function () {
 //        window.location.href = location.href;
-        window.location.reload();
+//        window.location.reload();
+        reload();
     })
 
     // 微信分享测试
@@ -128,5 +129,9 @@
     wx.error(function (res) {
         //alert(res.errMsg);//错误提示
     });
+
+    function reload(){
+        window.location.href=window.location.href+"?id="+10000*Math.random();
+    }
 </script>
 </html>
