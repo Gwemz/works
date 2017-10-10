@@ -88,6 +88,7 @@
     </section>
 </body>
 <script src="../js/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     $('.button').on('click',function () {
         $('#page').addClass('active');
@@ -100,5 +101,31 @@
 //        window.location.href = location.href;
         window.location.reload();
     })
+
+    // 微信分享测试
+    wx.config({
+        debug: false,
+        appId: 'wxfb95e4025a5d4614',
+        timestamp: '1498633007',
+        nonceStr: 'tnZJBsdrUo88MFiB',
+        signature: 'cae67a0a883822e1087cba091321b14b73152210',
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage'
+        ]
+    });
+    wx.ready(function () {
+        var shareData = {
+            title: '德云社-郭德纲',	//	标题
+            desc: '谦大爷还是那个谦大爷，刚烈的汉子！！！',	//	描述
+            link: 'http://gwem.tk/works/pages/0701.html',	//	分享的URL，必须和当前打开的网页的URL是一样的
+            imgUrl: 'http://ovcf0m6s4.bkt.clouddn.com/IMG_20170902_124433.jpg'	//	缩略图地址
+        };
+        wx.onMenuShareAppMessage(shareData);
+        wx.onMenuShareTimeline(shareData);
+    });
+    wx.error(function (res) {
+        //alert(res.errMsg);//错误提示
+    });
 </script>
 </html>
