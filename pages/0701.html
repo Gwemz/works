@@ -80,6 +80,7 @@
 </style>
 <body>
     <img src="http://ovcf0m6s4.bkt.clouddn.com/IMG_20170902_124433.jpg" width="0" height="0" />
+    <h2>This is a test title!!!</h2>
     <div class="button">
         提交
     </div>
@@ -133,5 +134,29 @@
     function reload(){
         window.location.href = location.href+'?time='+((new Date()).getTime());
     }
+
+    var parse={
+        width:'1200px',
+        margin:'auto',
+        color:'#fff',
+        font_size:'20px',
+        background_color:'rgba(0,0,0,.8)',
+        text_align:'center',
+        line_height:'40px'
+    };
+    console.log(parse);
+    $('h2').css({'width':parse.width,'margin':parse.margin,'color':parse.color,'font-size':parse.font_size,'background-color':parse.background_color,'text-align':parse.text_align});
+
+
+    var person = {
+        name:'winter Guo',
+        sex:'strong man',
+        location:'hangzhou',
+        career:'front-end-developer'
+    };
+    function dream(){
+        future;
+    }
+    person.future=dream;
 </script>
 </html>
