@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按需加载图片</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/animate.js"></script>
+    <script>
+        $(function(){
+            var imgBox=$('.imgbox');
+            var ih=document.documentElement.clientHeight;
+            var arr=[];
+            var flag=[];
+            for(var i=0;i<imgBox.length;i++){
+                arr.push(imgBox[i].offsetTop);
+                flag.push(true);
+                window.onscroll=function(){
+                    var aa=document.body.scrollTop||document.documentElement.scrollTop;
+                    for(var j=0;j<imgBox.length;j++){
+                        // flag[j]=true时加载图片，加载完一次之后下次不再加载
+                        if(((aa+ih)>arr[j])&&(flag[j])){
+                            flag[j]=false;
+                            var bb=$('img',imgBox[j]);
+                            for(var k=0;k<bb.length;k++){
+                                bb[k].src=bb[k].getAttribute('asrc');
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</head>
+<style>
+    body{
+        margin:0;
+    }
+    img{
+        border:0;
+    }
+    .imgbox{
+        width:800px;
+        height:800px;
+        border:1px solid #555;
+        margin:50px auto 50px;
+    }
+    .imgbox img{
+        float:left;
+        width:400px;
+        height:400px;
+    }
+</style>
+<body>
+<div class="imgbox">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+</div>
+<div class="imgbox">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+</div>
+<div class="imgbox">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+</div>
+<div class="imgbox">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+    <img src="" alt="" asrc="../imgs/04_02.png">
+</div>
+
+</body>
+</html>
