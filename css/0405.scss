@@ -1,0 +1,146 @@
+@charset "UTF-8";
+@import "mixin.scss";
+@import "Yo-master/classes.scss";
+@import "Yo-master/elastic-in.scss";
+@import "Yo-master/fade-in";
+@import "Yo-master/fade-in-up";
+@import "Yo-master/fade-in-right";
+@import "Yo-master/fade-in-down";
+@import "Yo-master/fade-in-left";
+@import "Yo-master/fade-out";
+@import "Yo-master/fade-out-up";
+@import "Yo-master/fade-out-right";
+@import "Yo-master/fade-out-down";
+@import "Yo-master/fade-out-left";
+@import "Yo-master/elastic-x";
+@import "Yo-master/elastic-y";
+@import "Yo-master/elastic-in";
+@import "Yo-master/elastic-in-up";
+@import "Yo-master/elastic-in-right";
+@import "Yo-master/elastic-in-down";
+@import "Yo-master/elastic-in-left";
+@import "Yo-master/elastic-out";
+@import "Yo-master/elastic-out-up";
+@import "Yo-master/elastic-out-right";
+@import "Yo-master/elastic-out-down";
+@import "Yo-master/elastic-out-left";
+@import "Yo-master/flip";
+@import "Yo-master/flip-in-x";
+@import "Yo-master/flip-in-y";
+@import "Yo-master/flip-out-x";
+@import "Yo-master/flip-out-y";
+@import "Yo-master/roll-in-right";
+@import "Yo-master/roll-in-left";
+@import "Yo-master/roll-out-right";
+@import "Yo-master/roll-out-left";
+@import "Yo-master/speed-in-right";
+@import "Yo-master/speed-in-left";
+@import "Yo-master/speed-out-right";
+@import "Yo-master/speed-out-left";
+@import "Yo-master/rotate";
+@import "Yo-master/rotate-in";
+@import "Yo-master/rotate-in-up-right";
+@import "Yo-master/rotate-in-up-left";
+@import "Yo-master/rotate-in-down-right";
+@import "Yo-master/rotate-in-down-left";
+@import "Yo-master/rotate-out";
+@import "Yo-master/rotate-out-up-right";
+@import "Yo-master/rotate-out-up-left";
+@import "Yo-master/rotate-out-down-right";
+@import "Yo-master/rotate-out-down-left";
+@import "Yo-master/zoom-in";
+@import "Yo-master/zoom-in-up";
+@import "Yo-master/zoom-in-right";
+@import "Yo-master/zoom-in-down";
+@import "Yo-master/zoom-in-left";
+@import "Yo-master/zoom-out";
+@import "Yo-master/zoom-out-up";
+@import "Yo-master/zoom-out-right";
+@import "Yo-master/zoom-out-down";
+@import "Yo-master/zoom-out-left";
+@import "Yo-master/flash";
+@import "Yo-master/shake";
+@import "Yo-master/pulse";
+@import "Yo-master/extrusion";
+@import "Yo-master/stretch";
+@import "Yo-master/swing";
+@import "Yo-master/sling";
+@import "Yo-master/wobble";
+@import "Yo-master/hinge";
+
+$m-size: 768px;
+@mixin onm{
+  @media screen and (max-width: $m-size){
+    @content;
+  }
+}
+
+$s-size: 480px;
+@mixin ons{
+  @media screen and (max-width: $s-size){
+    @content;
+  }
+}
+@mixin cube($size){
+  width:$size;
+  height:$size;
+  border-radius:5px;
+  border:2px solid #000;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+}
+@mixin center{
+  margin:0 auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family:"微软雅黑";
+}
+.animate{
+  width:100%;
+  height:auto;
+  overflow:hidden;
+}
+.box {
+  @include cube(200px);
+  transition: /*width .8s ease,
+  height .8s ease .5s,*/
+          transform .8s ease;
+}
+.box:hover {
+  /*width:500px;
+  height:500px;*/
+  //transform:rotate3d(1,0,0,360deg);
+  transform: rotateY(360deg);
+}
+
+.animation {
+  @include cube(100px);
+  animation: elastic-in 1s ease .3s both;
+  background-color: #59ff12;
+}
+
+/*@keyframes zhuan{
+  0%{transform:translate3d(0,0,0);}
+  25%{transform:translate3d(500px,0,0);}
+  50%{transform:translate3d(500px,300px,0);}
+  75%{transform:translate3d(0,300px,0);}
+  100%{transform:translate3d(0,0,0);}
+}*/
+.container {
+  width:1220px;
+  height:auto;
+  @include center;
+}
+
+.one {
+  @include cube(100px);
+  float: left;
+  font-size:12px;
+  background-color: #2d8b32;
+  text-align:center;
+  line-height:100px;
+  color:#fff;
+}

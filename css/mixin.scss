@@ -1,0 +1,23 @@
+$m-size: 768px;
+@mixin onm{
+  @media screen and (max-width: $m-size){
+    @content;
+  }
+}
+
+$s-size: 480px;
+@mixin ons{
+  @media screen and (max-width: $s-size){
+    @content;
+  }
+}
+@mixin cube($size){
+  width:$size;
+  height:$size;
+  border-radius:5px;
+  border:2px solid #000;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+}
+@mixin center{
+  margin:0 auto;
+}
