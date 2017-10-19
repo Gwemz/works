@@ -26,6 +26,13 @@
     .swiper-container {
         width:1200px;
         height:600px;
+    }
+    swiper-container .box{
+        width:980px;
+        height:420px;
+        overflow:hidden;
+    }
+    .swiper-container img{
         cursor: pointer;
     }
     .swiper-slide {
@@ -156,13 +163,34 @@
         // 设为true开启图片延迟加载
         lazyLoading : true,
     })
-
-    $('#swiper1').on('click',function () {
+    // 使用开关思想解决创建多次mySwiper2的问题
+    var flag = true;
+    $('#swiper1').on('click','img',function () {
         $('.picWatch').show();
-    })
-    $('.picWatch').on('click','#swiper2',function (e) {
-        console.log(e.currentTarget);
+        if(flag){
+            var mySwiper2 = new Swiper ('#swiper2', {
+                direction: 'horizontal',
+                loop: true,
 
+                // 如果需要分页器
+                pagination: '.swiper-pagination',
+
+                // 如果需要前进后退按钮
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                // 设为true开启图片延迟加载
+                lazyLoading : true,
+            })
+            flag = false;
+        }
+
+    })
+    $('.picWatch').on('click',function (e) {
+        e.stopPropagation();
+        // 除了内容区之外的空白区域
+        if(e.target.className == 'picWatch'){
+            $(this).hide();
+        }
     })
 </script>
 </html>
