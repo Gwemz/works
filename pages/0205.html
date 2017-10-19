@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="never">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <link rel="stylesheet" href="http://www.swiper.com.cn/dist/css/swiper.min.css">
+    <title>照片查看器</title>
+</head>
+<style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+        background:url("http://www.swiper.com.cn/demo/pcbanner/images/top_main_bg01.jpg") center
+        center no-repeat;
+        background-size:cover;
+    }
+    .swiper-container {
+        width:1200px;
+        height:600px;
+        cursor: pointer;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        /*background: #fff;*/
+        width:800px;
+        height:auto;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .picWatch{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background: #000;
+        z-index:999;
+        display:none;
+    }
+    #swiper2 .swiper-pagination-bullet{
+        background:#ffffff;
+    }
+</style>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container" id="swiper1">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_conc_2017.jpg"
+                     alt="not found">
+            </div>
+            <div class="swiper-slide">
+                <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_cw_im17.jpg"
+                     alt="not found">
+            </div>
+            <div class="swiper-slide">
+                <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_karadacalpis_im02.jpg" alt="not found">
+            </div>
+            <div class="swiper-slide">
+                <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_hakko.jpg" alt="not found">
+            </div>
+            <div class="swiper-slide">
+                <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_cs_2017.jpg" alt="not found">
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- 如果需要滚动条 -->
+        <!--<div class="swiper-scrollbar"></div>-->
+    </div>
+    <div class="picWatch">
+        <div class="swiper-container" id="swiper2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_conc_2017.jpg"
+                         alt="not found">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_cw_im17.jpg"
+                         alt="not found">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_karadacalpis_im02.jpg" alt="not found">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_hakko.jpg" alt="not found">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://www.swiper.com.cn/demo/pcbanner/images/top_hero_cs_2017.jpg" alt="not found">
+                </div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- 如果需要滚动条 -->
+            <!--<div class="swiper-scrollbar"></div>-->
+        </div>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="http://www.swiper.com.cn/dist/js/swiper.min.js"></script>
+<script>
+    var mySwiper1 = new Swiper ('#swiper1', {
+        direction: 'horizontal',
+        loop: true,
+
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        // 设为true开启图片延迟加载
+        lazyLoading : true,
+    })
+    var mySwiper2 = new Swiper ('#swiper2', {
+        direction: 'horizontal',
+        loop: true,
+
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        // 设为true开启图片延迟加载
+        lazyLoading : true,
+    })
+
+    $('#swiper1').on('click',function () {
+        $('.picWatch').show();
+    })
+    $('.picWatch').on('click','#swiper2',function (e) {
+        console.log(e.currentTarget);
+
+    })
+</script>
+</html>
