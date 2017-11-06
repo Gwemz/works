@@ -8,14 +8,24 @@
     <link rel="stylesheet" href="../css/sweetalert/sweetalert2.min.css">
     <link rel="stylesheet" href="../css/bulma.min.css">
 </head>
-<!--https://github.com/limonte/sweetalert2-->
+<!-- bulma : https://github.com/limonte/sweetalert2 -->
+<!--sweetalert2 : https://github.com/limonte/sweetalert2-->
+<style>
+.container{
+  margin-top:50px;
+}
+</style>
 <body>
-  <a class="button is-primary">成功提示</a>
-  <a class="button is-link">2s后关闭弹窗</a>
-  <a class="button is-info">删除操作</a>
-  <a class="button is-success">验证提示</a>
-  <a class="button is-warning">checkbox验证</a>
-  <a class="button is-danger">弹框内表单验证</a>
+  <div class="container">
+    <div class="columns">
+      <div class="column"><a class="button is-primary">成功提示</a></div>
+      <div class="column"><a class="button is-link">2s后关闭弹窗</a></div>
+      <div class="column"><a class="button is-info">删除操作</a></div>
+      <div class="column"><a class="button is-success">验证提示</a></div>
+      <div class="column"><a class="button is-warning">checkbox验证</a></div>
+      <div class="column"><a class="button is-danger">弹框内表单验证</a></div>
+    </div>
+  </div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
@@ -23,13 +33,129 @@ $(function () {
     //成功提示
     $('.is-primary').on('click',function(){
       swal({
-        title: "Error!",
-        text: "Here's my error message!",
-        type: "error",
-        confirmButtonText: "Cool"
+        title: "成功!",
+        text: "Here's my success message!",
+        type: "success",
+        confirmButtonText: "确定"
       });
     })
+    // 2s后关闭弹窗
+    $('.is-link').on('click',function(){
+      swal({
+        title: '再给我俩秒钟',
+        text: '2秒后关闭弹框',
+        timer: 2000
+      })
+    })
+    //删除操作
+    $('.is-info').on('click',function(){
+      swal({
+        title: '删除',
+        text: "你确定删除么?",
+        type: 'warning',   //感叹号图标
+        showCancelButton: true,   //显示取消按钮
+        confirmButtonColor: '#3085d6', //俩个按钮的颜色
+        cancelButtonColor: '#d33',
+        confirmButtonText: '删!', //俩个按钮的文本
+        cancelButtonText: '不删!',
+        confirmButtonClass: 'btn btn-success',  //俩个按钮的类样式
+        cancelButtonClass: 'btn btn-danger',
 
+      }).then(function() {    //大部分，then是通用的回调函数
+        swal(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }, function(dismiss) {
+        // dismiss can be 'cancel', 'overlay',
+        // 'close', and 'timer'
+        if (dismiss === 'cancel') {
+          swal(
+            'Cancelled',
+            'Your imaginary file is safe :)',
+            'error'
+          )
+        }
+      })
+    })
+
+    //验证提示
+    $('.is-success').on('click',function(){
+      swal({
+        title: '输入一段不为空的值，且格式是email格式',  //标题
+        input: 'email',                             //封装的email类型  列如qq@qq.com
+        showCancelButton: true,
+        confirmButtonText: 'Submit',                //同上，重复的我就不注释了哈~
+        showLoaderOnConfirm: true,
+        preConfirm: function(email) {               //功能执行前确认操作，支持function
+          return new Promise(function(resolve, reject) {
+            setTimeout(function() {                 //添加一个时间函数，在俩秒后执行，这里可以用作异步操作数据
+              if (email === 'taken@example.com') {  //这里的意思是：如果输入的值等于'taken@example.com',数据已存在，提示信息
+                reject('用户已存在')                  //提示信息
+              } else {
+                resolve()                           //方法出口
+              }
+            }, 2000)
+          })
+        },
+        allowOutsideClick: false
+      }).then(function(email) {
+        swal({
+          type: 'success',
+          title: 'Ajax request finished!',
+          html: '提交的email是 ' + email
+        })
+      })
+    })
+    //checkbox验证
+    $('.is-warning').on('click',function(){
+      swal({
+        title: 'checkbox验证',
+        input: 'checkbox',
+        inputValue: 1,
+        inputPlaceholder:                    //设置复选框的值
+          '只有选中那个复选框，按钮才有效',
+        confirmButtonText:                   //支持html格式，<i class="fa fa-arrow-right></i>这一块使用了一个样式，就是那个箭头
+          'Continue <i class="fa fa-arrow-right></i>',
+        inputValidator: function(result) {
+          return new Promise(function(resolve, reject) {
+            if (result) {
+              resolve()                    //默认不选中复选框
+            } else {
+              reject('你需要选中checkbox')   //否则提示信息
+            }
+          })
+        }
+      }).then(function(result) {    //回调函数
+        swal({
+          type: 'success',
+          text: 'You agreed with T&C :)'
+        })
+      })
+    })
+    //弹框内表单验证
+    $('.is-danger').on('click',function(){
+      swal({
+        title: 'Multiple inputs',
+        html:                                                       //html标签，在弹出框中直接写相关代码，相当于可以再嵌套一个网页！
+
+          '<input id="swal-input1" class="swal2-input" autofocus>' + //支持css样和式其他jquery方法
+          '<input id="swal-input2" class="swal2-input">',
+        preConfirm: function() {
+          return new Promise(function(resolve) {       //默认信息不能为空
+
+              resolve([
+                $('#swal-input1').val(),  //获取文本值
+                $('#swal-input2').val()
+              ])
+
+          })
+        }
+      }).then(function(result) {
+        swal(JSON.stringify(result))   //转换成json输出
+      })
+  })
 })
 </script>
 </html>
