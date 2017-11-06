@@ -4,22 +4,32 @@
     <meta charset="UTF-8">
     <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
     <title>SweetAlert2  —  JavaScript alert的一个强大替代</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.min.css">
+    <script src="../js/sweetalert/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="../css/sweetalert/sweetalert2.min.css">
+    <link rel="stylesheet" href="../css/bulma.min.css">
 </head>
 <!--https://github.com/limonte/sweetalert2-->
 <body>
-    <button></button>
+  <a class="button is-primary">成功提示</a>
+  <a class="button is-link">2s后关闭弹窗</a>
+  <a class="button is-info">删除操作</a>
+  <a class="button is-success">验证提示</a>
+  <a class="button is-warning">checkbox验证</a>
+  <a class="button is-danger">弹框内表单验证</a>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
 $(function () {
-    swal({
+    //成功提示
+    $('.is-primary').on('click',function(){
+      swal({
         title: "Error!",
         text: "Here's my error message!",
         type: "error",
         confirmButtonText: "Cool"
-    });
+      });
+    })
+
 })
 </script>
 </html>
