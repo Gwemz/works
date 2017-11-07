@@ -23,6 +23,7 @@
     </ol>
 </div>
 </body>
+<script src="./js/jquery.min.js"></script>
 <script>
     var str = '',
         data = [
@@ -96,7 +97,6 @@
     ol.innerHTML = str;
     var h1 = document.getElementsByTagName('li');
     var dl = document.getElementsByTagName('dl');
-    console.log(dl);
     var sub = 1;
     for (var i = 0; i < h1.length; i++) {
         h1[i].index = i;
