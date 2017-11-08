@@ -14,9 +14,9 @@ a{
   text-decoration: none;
 }
 .wrap{
+  margin:100px auto 0;
   width:500px;
   font-size:22px;
-  margin:20px auto 0;
   padding:40px 20px;
 }
 .shadow{
@@ -54,8 +54,15 @@ a{
   }
 }
 .sub-dl{
-  display:none;
+  //display:none;
+  height: 0;
   line-height:45px;
+  transition:height 1s ease;
+  overflow: hidden;
+  &.active{
+    //display:block;
+    height:auto;
+  }
 }
 
 #pages_0101{

@@ -14,9 +14,9 @@ a {
   text-decoration: none; }
 
 .wrap {
+  margin: 100px auto 0;
   width: 500px;
   font-size: 22px;
-  margin: 20px auto 0;
   padding: 40px 20px; }
 
 .shadow {
@@ -50,8 +50,12 @@ a {
       border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); }
 
 .sub-dl {
-  display: none;
-  line-height: 45px; }
+  height: 0;
+  line-height: 45px;
+  transition: height 1s ease;
+  overflow: hidden; }
+  .sub-dl.active {
+    height: auto; }
 
 #pages_0101 {
   width: 500px;
