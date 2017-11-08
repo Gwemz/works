@@ -77,12 +77,28 @@
         margin: 5px 0;
         padding-left: 10px;
     }
+    .box{
+        width:600px;
+        height: 0px;
+        background:red;
+        margin:0 auto;
+        transition:height .5s ease;
+        overflow:hidden;
+        text-align:center;
+        line-height:300px;
+    }
+    .box.active{
+        height:300px;
+    }
 </style>
 <body>
     <img src="http://ovcf0m6s4.bkt.clouddn.com/IMG_20170902_124433.jpg" width="0" height="0" />
     <h2>This is a test title!!!</h2>
     <div class="button">
         提交
+    </div>
+    <div class="box">
+        I'm Chineses!!!
     </div>
     <section id="page">
         <div class="back"> < </div>
@@ -158,6 +174,11 @@
         future;
     }
     person.future=dream;
+    
+    $('h2').on('click',function () {
+        $('.box').toggleClass('active');
+    })
+    
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");

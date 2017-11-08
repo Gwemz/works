@@ -54,15 +54,9 @@ a{
   }
 }
 .sub-dl{
-  //display:none;
   height: 0;
   line-height:45px;
-  transition:height 1s ease;
   overflow: hidden;
-  &.active{
-    //display:block;
-    height:auto;
-  }
 }
 
 #pages_0101{

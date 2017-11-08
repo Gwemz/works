@@ -52,10 +52,7 @@ a {
 .sub-dl {
   height: 0;
   line-height: 45px;
-  transition: height 1s ease;
   overflow: hidden; }
-  .sub-dl.active {
-    height: auto; }
 
 #pages_0101 {
   width: 500px;

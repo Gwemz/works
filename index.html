@@ -118,9 +118,15 @@
         }*/
         // jquery
         $('.wrap li').on('click','h1',function () {
-//            var index = $(this).parent().index();
+            var hg = $(this).next().children().height();
+            var num = $(this).next().children().length;
             $(this).next().toggleClass('active');
-//            $(this.active).animate({height:'auto'},500);
+            if($(this).next().hasClass('active')){
+                $(this).siblings('.active').animate({height:''+ hg*num +'px'},500);
+            }else{
+                $(this).next().animate({height:0},500);
+            }
+
         })
     })
 
