@@ -83,6 +83,7 @@
         for (var i = 0; i < data.length; i++) {
             var item = data[i];
             var sub = '';
+            console.table(data[i]);
             for (var j = 0; j < item.length; j++) {
                 if (j == 0) {
                     sub += '<li><h1><a href="javascript:;" title="' + item[j].title + '">' + item[j].title + '</a></h1><dl class="sub-dl">';
@@ -129,7 +130,6 @@
 
         })
     })
-
 
     var _hmt = _hmt || [];
     (function() {
