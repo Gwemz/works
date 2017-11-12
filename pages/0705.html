@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,7 +155,7 @@
 <body>
     <div class="container">
       <div class="QRcode">
-          <div class="scanLogin ">
+          <div class="scanLogin active">
             <h3>扫码登陆</h3>
             <div class="QRimg">
               <img src="../imgs/0705_images/qrcode.png" alt="">
@@ -165,7 +166,7 @@
             </div>
             <div class="login-switch"></div>
           </div>
-          <div class="accountLogin active">
+          <div class="accountLogin">
             <h3>账号登陆</h3>
             <form action="">
               <div class="loginName">
@@ -188,5 +189,14 @@
 <script>
   var screenHeight = $(window).height();
   $('body').height(''+screenHeight+'px');
+  $('.login-switch').on('click',function(){
+    var index = $(this).parent().index();
+    $('.QRcode').children().removeClass('active');
+    if(index == '0'){
+      $('.QRcode').children('div:eq(1)').addClass('active');
+    }else{
+      $('.QRcode').children('div:eq(0)').addClass('active');
+    }
+  })
 </script>
 </html>
