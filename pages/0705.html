@@ -17,6 +17,11 @@
       list-style:none;
       font-family: "微软雅黑";
     }
+    input{
+      background:none;
+     outline:none;
+     border:0px;
+    }
     body{
       width: 100%;
       overflow: hidden;
@@ -46,6 +51,7 @@
       padding:35px 44px;
       box-sizing: border-box;
       display: none;
+      position: relative;
     }
     .QRcode > div.active{
       display:block;
@@ -93,24 +99,86 @@
     color:#3d8ef5;
     font-weight: bold;
   }
+  .QRcode > div .login-switch{
+    position:absolute;
+    width:58px;
+    height:58px;
+    top:10px;
+    right:10px;
+    background: url('../imgs/0705_images/icons1_03.png') center center no-repeat;
+    background-size:80%;
+    cursor: pointer;
+  }
+  .QRcode > div.accountLogin .login-switch{
+    background: url('../imgs/0705_images/icons_2_03.png') center center no-repeat;
+    background-size:90%;
+  }
+  .QRcode > div.accountLogin{
+    padding-left:50px;
+    padding-right:50px;
+  }
+  .QRcode > div.accountLogin form > div{
+    width:100%;
+    height:43px;
+    border-radius:5px;
+    border:1px solid #e6e6e6;
+    background: #ffffff;
+    margin-bottom:20px;
+    box-sizing: border-box;
+    line-height: 43px;
+  }
+  .QRcode > div.accountLogin form > div.loginName{
+    margin-top:43px;
+  }
+  .QRcode > div.accountLogin form > div.button{
+    background: #3d8ef5;
+    color:#ffffff;
+    font-size:16px;
+    border:0;
+    padding-left:0;
+    text-align: center;
+    margin-top:23px;
+  }
+  .QRcode > div.accountLogin form > div i{
+    width:47px;
+    height:100%;
+    display: inline-block;
+    vertical-align: middle;
+    background: url('../imgs/0705_images/icons_2_07.png') center center no-repeat;
+    background-size:33%;
+  }
+  .QRcode > div.accountLogin form > div.passWord i{
+    background: url('../imgs/0705_images/icons_2_10.png') center center no-repeat;
+  }
 </style>
 <body>
     <div class="container">
       <div class="QRcode">
-          <div class="scanLogin active">
+          <div class="scanLogin ">
             <h3>扫码登陆</h3>
             <div class="QRimg">
               <img src="../imgs/0705_images/qrcode.png" alt="">
             </div>
             <div class="infos">
-              <div class="scanIcon">
-
-              </div>
+              <div class="scanIcon"></div>
               <p>打开<span>手机微信</span>扫一扫立即登陆查看更多信息</p>
             </div>
+            <div class="login-switch"></div>
           </div>
-          <div class="accountLogin">
+          <div class="accountLogin active">
             <h3>账号登陆</h3>
+            <form action="">
+              <div class="loginName">
+                <i></i><input type="text" class="loginName" placeholder="请输入账号">
+              </div>
+              <div class="passWord">
+                <i></i><input type="password" class="password" placeholder="请输入密码">
+              </div>
+              <div class="button">
+                登&nbsp;&nbsp;&nbsp;&nbsp;陆
+              </div>
+            </form>
+            <div class="login-switch"></div>
           </div>
       </div>
     </div>
