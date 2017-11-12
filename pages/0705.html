@@ -62,10 +62,36 @@
       padding: 7px;
       box-sizing: border-box;
       background: #ffffff;
+      margin-bottom: 18px;
     }
   .QRcode > div .QRimg img{
       width: 100%;
       height: 100%;
+  }
+  .QRcode > div .infos{
+    width:100%;
+    height:44px;
+    padding:0px 15px;
+    box-sizing: border-box;
+  }
+  .QRcode > div .infos .scanIcon{
+    float:left;
+    width:46px;
+    height:100%;
+    background:url('../imgs/0705_images/icons_07.png') center center no-repeat;
+    background-size:100%;
+  }
+  .QRcode > div .infos p{
+    width:190px;
+    float:left;
+    margin-left: 14px;
+    font-size:16px;
+    color:#8e8e8f;
+    letter-spacing: 3px;
+  }
+  .QRcode > div .infos p span{
+    color:#3d8ef5;
+    font-weight: bold;
   }
 </style>
 <body>
@@ -75,6 +101,12 @@
             <h3>扫码登陆</h3>
             <div class="QRimg">
               <img src="../imgs/0705_images/qrcode.png" alt="">
+            </div>
+            <div class="infos">
+              <div class="scanIcon">
+
+              </div>
+              <p>打开<span>手机微信</span>扫一扫立即登陆查看更多信息</p>
             </div>
           </div>
           <div class="accountLogin">
