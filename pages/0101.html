@@ -9,13 +9,99 @@
     <link rel="stylesheet" href="../css/style.css">
     <title>去除字符串左右的空格</title>
 </head>
+<style>
+    .login_code{
+        width:250px;
+        padding:30px;
+        margin:50px auto 0;
+    }
+    .login_code_top{
+        height: 51px;
+        line-height: 48px;
+        font-size: 18px;
+        text-align: center;
+    }
+    .login_code_body{
+        position:relative;
+    }
+    .login_code_body img{
+        display:block;
+        width:151px;
+        height:151px;
+        margin:30px auto 70px;
+    }
+    .login_code_body .black{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: 1;
+        top: 0;
+        background: transparent;
+        text-align: center;
+        z-index: 1;
+        font-size: 14px;
+    }
+    .login_code_body .black .back{
+        background: #fff;
+        opacity: .9;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+    }
+    .login_code_body .black p{
+        margin:50px 0 10px;
+    }
+    .login_code_body .black #again{
+        width: 80px;
+        line-height: 40px;
+        height: 40px;
+        color: #fff;
+        background: #f60;
+        margin: 0 auto;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .login_code_bottom{
+        font-size: 14px;
+        line-height: 1;
+    }
+    .login_code_bottom img{
+        float: left;
+        margin-right: 10px;
+    }
+    .hide{
+        display: none;
+    }
+</style>
 <!--id名不能为数字-->
 <body>
     <div id="pages_0101">
         <input type="text" class="input" value="/  I'm winter!  /" id="input">
         <button id="btn" class="btn btn-primary">过滤</button>
     </div>
+
+    <div class="login_code">
+        <div class="login_code_top">手机扫描，安全登录</div>
+        <div class="login_code_body">
+            <img src="../imgs/0705_images/qrcode.png" id="codeImg"/>
+            <div class="black hide" id="again-box">
+                <div class="back"></div>
+                <p>二维码已失效</p>
+                <!--<div id="qidai">敬请期待</div>-->
+                <div id="again">再次获取</div>
+            </div>
+        </div>
+        <div class="login_code_bottom">
+            <img src="../imgs/0705_images/sao.png"/>
+            <div class="right">
+                <p>打开手机APP扫一扫登录</p>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="../js/jquery.min.js"></script>
 <script>
     (function () {
         var input = document.getElementById('input');
@@ -23,13 +109,7 @@
         btn.onclick = function(){
             input.value = input.value.replace(/(\s|\u00A0)+|(\s|\u00A0)+/g,'');
         }
+
     }());
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?7117e1fef39f18ac2431859dffdda945";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
 </script>
 </html>
