@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>图片轮播效果</title>
+</head>
+<style>
+    *{
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+    .container{
+        width:1200px;
+        margin:45px auto 0;
+        overflow:hidden;
+    }
+    ul{
+        overflow:hidden;
+    }
+    ul > li{
+        width:200px;
+        height:150px;
+        float:left;
+        background-color:orangered;
+        border-right:1px solid #ffffff;
+        box-sizing:border-box;
+    }
+    ul > li:last-of-type{
+        border-right:0;
+    }
+    ul > li img{
+        width:100%;
+        height:100%;
+    }
+</style>
+<body>
+    <div class="container">
+        <ul>
+            <li>
+                <img src="../imgs/car_400_300.jpg" alt="">
+            </li>
+            <li>
+                <img src="../imgs/car_400_300.jpg" alt="">
+            </li>
+            <li>
+                <img src="../imgs/car_400_300.jpg" alt="">
+            </li>
+            <li>
+                <img src="../imgs/car_400_300.jpg" alt="">
+            </li>
+            <li>
+                <img src="../imgs/car_400_300.jpg" alt="">
+            </li>
+            <li>
+                <img src="../imgs/car_400_300.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
