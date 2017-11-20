@@ -199,10 +199,12 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
     $(function () {
+        /*页面元素获取*/
         var box = $('#box');
         var bar = $('#bar');
         var dot = bar.find('a');
@@ -210,9 +212,11 @@
         var next = $('#next');
         var container = $('#container');
         var ul = container.find('ul');
-        container.innerHTML += container.innerHTML;
+        console.log(container);
+        container[0].innerHTML += container[0].innerHTML;
         var li = ul.eq(0).find('li');
 //        var li = ul[0].getElementsByTagName('li');
+        /*获取盒子宽度*/
         var ul_w = ul[0].offsetWidth;
         var len = li.length * 2;
         var page = 4;
@@ -250,20 +254,22 @@
             tab();
             act(container, 'left', -ul_w * now);
         }
-        // 鼠标移入
+        // 鼠标移入清除定时器
         box.onmouseover = function(){
             clearInterval(timer);
         }
-        // 鼠标移出
+        // 鼠标移出开启定时器
         box.onmouseout = function(){
             timer = setInterval(auto, 3000);
         }
+        /*顶部圆点显示效果*/
         function tab(){
             for(var i = 0; i < 2; i++){
                 dot[i].className = 'page';
             }
             dot[now % 2].className = 'page on';
         }
+        /*获取对象样式(兼容写法)*/
         function css(obj, attr){
             if(obj.currentStyle){
                 return obj.currentStyle[attr];
@@ -271,6 +277,9 @@
                 return getComputedStyle(obj, false)[attr];
             }
         }
+        var con1 = document.getElementById('container');
+//        css(con1,width);
+        console.log(con1);
         function act(obj, attr, target, fn){
             obj.timer && clearInterval(obj.timer);
             obj.timer = setInterval(function(){
