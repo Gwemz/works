@@ -298,6 +298,32 @@
                 }
             }, 30);
         }
+
+
+        // 地址栏参数获取
+        /*方法一：*/
+        /*function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        var xx = getUrlParam('loginName');
+        console.log(xx);*/
+        /*方法二：*/
+        /*function GetRequest(strName)
+        {
+            var strHref = window.location.href; //获取Url字串
+            var intPos = strHref.indexOf("?");  // 参数开始位置
+            var strRight = strHref.substr(intPos + 1);
+            var arrTmp = strRight.split("&"); //参数分割符
+            for(var i = 0; i < arrTmp.length; i++)
+            {
+                var arrTemp = arrTmp[i].split("=");
+                if(arrTemp[0].toUpperCase() == strName.toUpperCase()) return arrTemp[1];
+            }
+            return "";
+        }
+        console.log(GetRequest('loginName'));*/
     })
 </script>
 </html>
