@@ -1,84 +1,179 @@
-
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF8">
     <title>轮播图效果展示</title>
-    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <link datareacthelmet="true"
+          rel="shortcut icon"
+          type="image/png"
+          href="../imgs/favicon.ico">
 </head>
 <style>
-    *{ margin:0; padding:0;}
-    body{font:12px/1.125 Arial,Helvetica,sans-serif;background:#fff;}
-    table{border-collapse:collapse;border-spacing:0;}
-    li{list-style:none;}
+    /**{ margin:0; padding:0;}
+    body{font:12px/1.125 Arial,Helvetica,sansserif;background:#fff;}
+    table{bordercollapse:collapse;borderspacing:0;}
+    li{liststyle:none;}
     fieldset,img{border:0;}
     article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
     q:before,q:after{content:'';}
-    a:focus,input,textarea{outline-style:none;}
-    input[type="text"],input[type="password"],textarea{outline-style:none;-webkit-appearance:none;}
+    a:focus,input,textarea{outlinestyle:none;}
+    input[type="text"],input[type="password"],textarea{outlinestyle:none;webkitappearance:none;}
     textarea{resize:none}
-    address,caption,cite,code,dfn,em,i,th,var{font-style:normal;font-weight:normal;}
+    address,caption,cite,code,dfn,em,i,th,var{fontstyle:normal;fontweight:normal;}
     legend{color:#000;}
-    abbr,acronym{border:0;font-variant:normal;}
-    a{color:#0a8cd2;text-decoration:none;}
-    a:hover{text-decoration:underline;}
+    abbr,acronym{border:0;fontvariant:normal;}
+    a{color:#0a8cd2;textdecoration:none;}
+    a:hover{textdecoration:underline;}
     .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
     .clearfix{display:inline-block;}
     .clearfix{display:block;}
     .clear{clear:both;height:0;font:0/0 Arial;visibility:hidden;}
     .none{display:none}
-    /* main */
+    !* main *!
     .mod{ width:883px;margin: 30px auto; position:relative;}
-    .mod-release{padding-bottom:5px}
-    /*.mod-release .mui-slider .control-left,.mod-release .mui-slider .control-right{top:74px}*/
-    .mod-release .mui-slider .control-left em,.mod-release .mui-slider .control-right em{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);opacity:0.3}
-    .mod-release .release{margin-top:-10px}
-    .mod-release .release ul{padding-top:10px}
-    .mod-release .mui-slider-controller{display:inline;float:right;margin-top:4px}
-    .mod-release .mui-slider-scroll-wrap{padding-right:10px;margin-right:-10px;position:relative;overflow:hidden;zoom:1;width:100%}
-    .mod-release .mui-slider-scroll-container{position:relative;width:5000px;left: 0;}
-    .mod-release ul{display:inline;float:left;height:184px;width:900px;overflow:hidden}
-    .mod-release li{display:inline;float:left;margin-right:20px;padding-bottom:10px;width:130px}
-    .mod-release li .pic{position:relative;margin-bottom:5px;*zoom:1}
-    .mod-release li img{display:block;width:130px;height:130px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.2);-moz-box-shadow:0 1px 3px rgba(0,0,0,0.2);box-shadow:0 1px 3px rgba(0,0,0,0.2)}
-    .mod-release li .artist a{color:#999999}
-    .mod-release li .artist a:visited{color:#999999}
-    .mod-release li .artist a:focus{color:#999999}
-    .mod-release li .artist a:hover{color:#999999}
-    .mod-release li .artist a:active{color:#999999}
-    .mod-release li .music{font-size:14px}
-    .mod-release li .play{position:absolute;right:5px;bottom:5px}
-    .mui-slider .control-left,.mui-slider .control-right{position:absolute;z-index:1;top:50%;margin-top:-70px;width:30px;height:100px;cursor:pointer}
-    .mui-slider .control-left i,.mui-slider .control-right i{position:absolute;z-index:2;top:50%;left:50%;margin:-10px 0 0 -6px;width:13px;height:21px;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60);opacity:0.6;background:url("../imgs/jE3izRb2.png") no-repeat}
-    .mui-slider .control-left em,.mui-slider .control-right em{-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;position:absolute;width:100%;height:100px;top:0;left:0;background:black;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);opacity:0.3}
-    .mui-slider .control-left:hover i,.mui-slider .control-right:hover i{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);opacity:1}
-    .mui-slider .control-left{left:-15px}
-    .mui-slider .control-right{right:-15px}
-    .mui-slider .control-right i{background:url("../imgs/Jqm9O4XG.png") no-repeat}
+    .modrelease{paddingbottom:5px}
+    !*.modrelease .muislider .controlleft,.modrelease .muislider .controlright{top:74px}*!
+    .modrelease .muislider .controlleft em,.modrelease .muislider .controlright em{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);opacity:0.3}
+    .modrelease .release{margintop:10px}
+    .modrelease .release ul{paddingtop:10px}
+    .modrelease .muislidercontroller{display:inline;float:right;margintop:4px}
+    .modrelease .muisliderscrollwrap{paddingright:10px;marginright:10px;position:relative;overflow:hidden;zoom:1;width:100%}
+    .modrelease .muisliderscrollcontainer{position:relative;width:5000px;left: 0;}
+    .modrelease ul{display:inline;float:left;height:184px;width:900px;overflow:hidden}
+    .modrelease li{display:inline;float:left;marginright:20px;paddingbottom:10px;width:130px}
+    .modrelease li .pic{position:relative;marginbottom:5px;*zoom:1}
+    .modrelease li img{display:block;width:130px;height:130px;webkitboxshadow:0 1px 3px rgba(0,0,0,0.2);mozboxshadow:0 1px 3px rgba(0,0,0,0.2);boxshadow:0 1px 3px rgba(0,0,0,0.2)}
+    .modrelease li .artist a{color:#999999}
+    .modrelease li .artist a:visited{color:#999999}
+    .modrelease li .artist a:focus{color:#999999}
+    .modrelease li .artist a:hover{color:#999999}
+    .modrelease li .artist a:active{color:#999999}
+    .modrelease li .music{fontsize:14px}
+    .modrelease li .play{position:absolute;right:5px;bottom:5px}
+    .muislider .controlleft,.muislider .controlright{position:absolute;zindex:1;top:50%;margintop:70px;width:30px;height:100px;cursor:pointer}
+    .muislider .controlleft i,.muislider .controlright i{position:absolute;zindex:2;top:50%;left:50%;margin:10px 0 0 6px;width:13px;height:21px;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60);opacity:0.6;background:url("../imgs/jE3izRb2.png") norepeat}
+    .muislider .controlleft em,.muislider .controlright em{webkitborderradius:5px;mozborderradius:5px;msborderradius:5px;oborderradius:5px;borderradius:5px;position:absolute;width:100%;height:100px;top:0;left:0;background:black;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);opacity:0.3}
+    .muislider .controlleft:hover i,.muislider .controlright:hover i{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);opacity:1}
+    .muislider .controlleft{left:15px}
+    .muislider .controlright{right:15px}
+    .muislider .controlright i{background:url("../imgs/Jqm9O4XG.png") norepeat}
 
-    .mui-slider-controller{overflow:hidden;*zoom:1}
-    .mui-slider-controller:after{content:"";display:table;clear:both}
-    .mui-slider-controller .slider-page{position:relative;display:inline;float:left;line-height:6px;*zoom:1}
-    .mui-slider-controller .slider-page:after{content:"";display:table;clear:both}
-    .mui-slider-controller .slider-page-inner{display:inline;float:left;position:relative;overflow:hidden}
-    .mui-slider-controller .slider-page-inner .bg{-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;position:absolute;z-index:1;left:0;top:0;width:100%;height:16px;background:#333333;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);opacity:0.5}
-    .mui-slider-controller a{display:inline;float:left}
-    .mui-slider-controller .page{position:relative;z-index:2;padding:5px 3px}
-    .mui-slider-controller .page i{-webkit-transition:width 0.5s ease-out;-moz-transition:width 0.5s ease-out;-o-transition:width 0.5s ease-out;transition:width 0.5s ease-out;display:inline;float:left;width:6px;height:6px;margin:0 auto;overflow:hidden;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;background:#cccccc}
-    .mui-slider-controller .page.on i{width:15px;background:#327ccb}
-    .mui-slider-controller .slider-right{left:100%}
-    .mui-slider-controller .slider-right .slider-page-inner{right:100%}
-    .mui-slider-controller .slider-center{left:50%}
-    .mui-slider-controller .slider-center .slider-page-inner{right:50%}
-    .mui-slider-controller .slider-left{left:0}
-    .mui-slider-controller .slider-left .slider-page-inner{right:0}
+    .muislidercontroller{overflow:hidden;*zoom:1}
+    .muislidercontroller:after{content:"";display:table;clear:both}
+    .muislidercontroller .sliderpage{position:relative;display:inline;float:left;lineheight:6px;*zoom:1}
+    .muislidercontroller .sliderpage:after{content:"";display:table;clear:both}
+    .muislidercontroller .sliderpageinner{display:inline;float:left;position:relative;overflow:hidden}
+    .muislidercontroller .sliderpageinner .bg{webkitborderradius:4px;mozborderradius:4px;msborderradius:4px;oborderradius:4px;borderradius:4px;position:absolute;zindex:1;left:0;top:0;width:100%;height:16px;background:#333333;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);opacity:0.5}
+    .muislidercontroller a{display:inline;float:left}
+    .muislidercontroller .page{position:relative;zindex:2;padding:5px 3px}
+    .muislidercontroller .page i{webkittransition:width 0.5s easeout;moztransition:width 0.5s easeout;otransition:width 0.5s easeout;transition:width 0.5s easeout;display:inline;float:left;width:6px;height:6px;margin:0 auto;overflow:hidden;webkitborderradius:5px;mozborderradius:5px;msborderradius:5px;oborderradius:5px;borderradius:5px;background:#cccccc}
+    .muislidercontroller .page.on i{width:15px;background:#327ccb}
+    .muislidercontroller .sliderright{left:100%}
+    .muislidercontroller .sliderright .sliderpageinner{right:100%}
+    .muislidercontroller .slidercenter{left:50%}
+    .muislidercontroller .slidercenter .sliderpageinner{right:50%}
+    .muislidercontroller .sliderleft{left:0}
+    .muislidercontroller .sliderleft .sliderpageinner{right:0}*/
+
+    * {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 1200px;
+        margin: 45px auto 0;
+        height:150px;
+        position: relative;
+        overflow:hidden;
+    }
+
+    .container > div {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background: rgba(0, 0, 0, .4) url("../imgs/jE3izRb2.png") center center no-repeat;
+        background-size: 10px;
+        top: 50px;
+        transform: scale(0, 0);
+        transition: transform .3s ease;
+        z-index:100;
+    }
+
+    .container > div.left {
+        left: 5px;
+    }
+
+    .container > div.right {
+        right: 5px;
+        background: rgba(0, 0, 0, .4) url("../imgs/Jqm9O4XG.png") center center no-repeat;
+        background-size: 10px;
+    }
+
+    .container:hover > div {
+        transform: scale(1, 1);
+    }
+
+    ul {
+        width:100%;
+        overflow: hidden;
+        position: absolute;
+    }
+
+    ul > li {
+        width: 200px;
+        height: 150px;
+        float: left;
+        border-right: 1px solid #ffffff;
+        box-sizing: border-box;
+    }
+
+    ul > li:last-of-type {
+        border-right: 0;
+    }
+
+    ul > li img {
+        width: 100%;
+        height: 100%;
+    }
 </style>
 <body>
-<div monkey="NI_new_album" class="mod mod-release">
+<div class="container">
+    <div class="left prev"></div>
+    <ul>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+    </ul>
+    <div class="right next"></div>
+</div>
+<!--<div monkey="NI_new_album" class="mod modrelease">
     <div class="hd clearfix">
-        <div class="mui-slider-controller">
-            <div class="slider-page slider-right">
-                <div id="bar" class="slider-page-inner">
+        <div class="muislidercontroller">
+            <div class="sliderpage sliderright">
+                <div id="bar" class="sliderpageinner">
                     <a class="page on" href=""><i> </i> </a>
                     <a class="page " href=""><i> </i></a>
                 </div>
@@ -86,18 +181,18 @@
         </div>
     </div>
     <div class="bd">
-        <div id="box" class="release mui-slider">
-            <a href="#" id="prev" class="control-left"><i> </i> <em> </em> </a>
-            <a href="#" id="next" class="control-right"><i> </i> <em> </em> </a>
-            <div class="mui-slider-scroll-wrap">
-                <div id="container" class="mui-slider-scroll-container">
+        <div id="box" class="release muislider">
+            <a href="#" id="prev" class="controlleft"><i> </i> <em> </em> </a>
+            <a href="#" id="next" class="controlright"><i> </i> <em> </em> </a>
+            <div class="muisliderscrollwrap">
+                <div id="container" class="muisliderscrollcontainer">
                     <ul class="clearfix">
                         <li>
                             <div class="pic">
                                 <a target="_blank" href="#">
                                     <img alt="" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                         <li>
@@ -105,24 +200,16 @@
                                 <a target="_blank" href="#">
                                     <img alt="" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                         <li>
                             <div class="pic">
-                                <span class="icon icon-cover-special icon-top-right"></span>
+                                <span class="icon iconcoverspecial icontopright"></span>
                                 <a target="_blank" href="#">
                                     <img alt="" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="pic">
-                                <a target="_blank" href="#">
-                                    <img alt="" src="../imgs/car_400_300.jpg">
-                                </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                         <li>
@@ -130,16 +217,24 @@
                                 <a target="_blank" href="#">
                                     <img alt="" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                         <li>
                             <div class="pic">
-                                <span class="icon icon-cover-special icon-top-right"></span>
                                 <a target="_blank" href="#">
                                     <img alt="" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <span class="icon iconcoverspecial icontopright"></span>
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                     </ul>
@@ -149,7 +244,7 @@
                                 <a target="_blank" href="#">
                                     <img alt="images/1.jpg" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                         <li>
@@ -157,24 +252,16 @@
                                 <a target="_blank" href="#">
                                     <img alt="" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                         <li>
                             <div class="pic">
-                                <span class="icon icon-cover-special icon-top-right"></span>
+                                <span class="icon iconcoverspecial icontopright"></span>
                                 <a target="_blank" href="#">
                                     <img alt="" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="pic">
-                                <a target="_blank" href="#">
-                                    <img alt="" src="../imgs/car_400_300.jpg">
-                                </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                         <li>
@@ -182,16 +269,24 @@
                                 <a target="_blank" href="#">
                                     <img alt="" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                         <li>
                             <div class="pic">
-                                <span class="icon icon-cover-special icon-top-right"></span>
                                 <a target="_blank" href="#">
                                     <img alt="" src="../imgs/car_400_300.jpg">
                                 </a>
-                                <span><a class="play icon-play-white js-play-album" href="#"></a></span>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <span class="icon iconcoverspecial icontopright"></span>
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
                             </div>
                         </li>
                     </ul>
@@ -199,7 +294,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
@@ -233,26 +328,26 @@
         // 点击上一页
         prev.onclick = function(){
             if(now > 0){
-                now--;
+                now;
             } else {
-                now = half - 1;
-                container.left = -(ul_w * half) + 'px';
+                now = half  1;
+                container.left = (ul_w * half) + 'px';
             }
             scroll();
         }
         // 点击下一页
         next.onclick = function(){
-            if(now < page - 1){
+            if(now < page  1){
                 now++;
             } else {
                 now = half;
-                container.left = -(ul_w * (half - 1)) + 'px';
+                container.left = (ul_w * (half  1)) + 'px';
             }
             scroll();
         }
         function scroll(){
             tab();
-            act(container, 'left', -ul_w * now);
+            act(container, 'left', ul_w * now);
         }
         // 鼠标移入清除定时器
         box.onmouseover = function(){
@@ -285,7 +380,7 @@
             obj.timer = setInterval(function(){
                 var stop = true;
                 var cur = parseInt(css(obj, attr));
-                var speed = (target - cur) / 8;
+                var speed = (target  cur) / 8;
                 speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
                 if(target != cur){
                     stop = false;
@@ -329,21 +424,34 @@
         link.setAttribute('href','../style.css');*/
 
         // 自动轮播
-        var prev = $('#prev'),
+        /*var prev = $('#prev'),
             next = $('#next');
         var dis = $('ul.clearfix li')[0].offsetWidth;
         //点击上一页
         var now = 0;
-        prev.on('click',function () {
-            now ++;
-            $('#container').animate({'left':'-'+ dis*now +'px'},100)
+        prev.on('click', function () {
+            now++;
+            $('#container').animate({'left': '' + dis * now + 'px'}, 100)
         })
         // 点击下一页
-        next.on('click',function () {
-            now ++;
-            $('#container').animate({'left':''+ dis*now +'px'},100)
-        })
+        next.on('click', function () {
+            now++;
+            $('#container').animate({'left': '' + dis * now + 'px'}, 100)
+        })*/
 
+        console.log($('.container'));
+        var dis = $('ul li')[0].offsetWidth;
+        var num = 0;
+        //点击上一页
+        $('.prev').on('click', function () {
+            num++;
+            $('.container ul').animate({'left': '-' + dis * num + 'px'}, 300);
+        })
+        //点击下一页
+        $('.next').on('click', function () {
+            num++;
+            $('.container ul').animate({'left': '' + dis * num + 'px'}, 300);
+        })
     })
 </script>
 </html>
