@@ -205,7 +205,7 @@
 <script>
     $(function () {
         /*页面元素获取*/
-        var box = $('#box');
+        /*var box = $('#box');
         var bar = $('#bar');
         var dot = bar.find('a');
         var prev = $('#prev');
@@ -216,15 +216,15 @@
         container[0].innerHTML += container[0].innerHTML;
         var li = ul.eq(0).find('li');
 //        var li = ul[0].getElementsByTagName('li');
-        /*获取盒子宽度*/
+        /!*获取盒子宽度*!/
         var ul_w = ul[0].offsetWidth;
         var len = li.length * 2;
         var page = 4;
         var half = (page/2);
         var now = 0;
-        var timer = null;
+        var timer = null;*/
 
-        // 自动轮播
+        /*// 自动轮播
         function auto(){
             next.onclick();
         }
@@ -262,14 +262,14 @@
         box.onmouseout = function(){
             timer = setInterval(auto, 3000);
         }
-        /*顶部圆点显示效果*/
+        /!*顶部圆点显示效果*!/
         function tab(){
             for(var i = 0; i < 2; i++){
                 dot[i].className = 'page';
             }
             dot[now % 2].className = 'page on';
         }
-        /*获取对象样式(兼容写法)*/
+        /!*获取对象样式(兼容写法)*!/
         function css(obj, attr){
             if(obj.currentStyle){
                 return obj.currentStyle[attr];
@@ -297,7 +297,7 @@
                     fn && fn();
                 }
             }, 30);
-        }
+        }*/
 
 
         // 地址栏参数获取
@@ -327,6 +327,23 @@
 
         /*var link = document.createElement('link');
         link.setAttribute('href','../style.css');*/
+
+        // 自动轮播
+        var prev = $('#prev'),
+            next = $('#next');
+        var dis = $('ul.clearfix li')[0].offsetWidth;
+        //点击上一页
+        var now = 0;
+        prev.on('click',function () {
+            now ++;
+            $('#container').animate({'left':'-'+ dis*now +'px'},100)
+        })
+        // 点击下一页
+        next.on('click',function () {
+            now ++;
+            $('#container').animate({'left':''+ dis*now +'px'},100)
+        })
+
     })
 </script>
 </html>
