@@ -439,18 +439,15 @@
             $('#container').animate({'left': '' + dis * now + 'px'}, 100)
         })*/
 
-        console.log($('.container'));
-        var dis = $('ul li')[0].offsetWidth;
-        var num = 0;
         //点击上一页
         $('.prev').on('click', function () {
-            num++;
-            $('.container ul').animate({'left': '-' + dis * num + 'px'}, 300);
+            var nL = $('.container ul')[0].offsetLeft;
+            $('.container ul').animate({'left': '' + nL-200 + 'px'}, 300);
         })
         //点击下一页
         $('.next').on('click', function () {
-            num++;
-            $('.container ul').animate({'left': '' + dis * num + 'px'}, 300);
+            var nL = $('.container ul')[0].offsetLeft;
+            $('.container ul').animate({'left': '' + (nL+200) + 'px'}, 300);
         })
     })
 </script>
