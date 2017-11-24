@@ -66,6 +66,8 @@
     <p class="qianyan">
         之前项目中有一个需求，需要用到进度条的拖拽事件，写了好几个都不尽人意，因为项目对时间和用户体验有所要求，故而从网上找了一个方法，可以快速的实现该方法。
         <br><br>
+
+        <!--文章链接：https://mp.weixin.qq.com/s/Bwg0pjwjat8rnY_9aB-sBA-->
         <b>git 工作流程：(工作区 -- 暂存区 -- 本地仓库 -- 远程仓库)</b>
         <span>
             <i>git add . </i>把所有文件放入 暂存区<br>
@@ -78,8 +80,13 @@
             <i>推送代码：</i>git push origin master(将本地代码推送到远程master分支)<br>
             <i>拉取代码：</i>git pull origin master(将远程最新的代码更新到本地，防止冲突)<br>
             <i>查看当前项目有哪些远程仓库：</i>git remote -v<br>
-            <i>查看哪些文件做了修改：</i>git diff<br>
+            <i>已修改未暂存：(工作区和暂存区之间)</i>git diff<br>
+            <i>已暂存未提交：(暂存区和本地仓库之间)</i>git diff --cached<br>
+            <i>已提交未推送：</i>git diff master origin/master<br>
             <i>已修改，未暂存(只是在编辑器里修改了文件，但还没有执行 git add .)：</i>git checkout . 或者 git reset --hard<br>
+            <i>已暂存未提交：(已经执行了 git add . ，但还没有执行 git commit -m "comment")</i>git reset git checkout . 或者 git reset --hard<br>
+            <i>已提交未推送：(既执行了 git add . ，又执行了 git commit)</i>git reset --hard origin/master<br>
+            <i>已推送：(既 git add 了，又 git commit 了，并且还 git push 了)</i>git reset --hard HEAD^  git push -f<br>
         </span>
 
 
