@@ -11,13 +11,14 @@
     <script src="../js/jquery.dragsort-0.5.2.min.js"></script>
 </head>
 <style>
-    body { font-family:Arial; font-size:12pt; padding:20px; width:820px; margin:20px auto; border:solid 1px black; }
-    h1 { font-size:16pt; }
-    h2 { font-size:13pt; }
+    body { font-family:Arial; font-size:12pt; padding:20px; width:820px; margin:20px auto; border:solid 1px #23d160; }
+    h1 { font-size:16pt;}
+    h2 { font-size:13pt;}
+    h1,h2{ color:#23d160;}
     ul { margin:0px; padding:0px; margin-left:20px; }
     #list1, #list2 { width:350px; list-style-type:none; margin:0px; }
     #list1 li, #list2 li { float:left; padding:5px; width:100px; height:100px; }
-    #list1 div, #list2 div { width:90px; height:50px; border:solid 1px black; background-color:#E0E0E0; text-align:center; padding-top:40px; }
+    #list1 div, #list2 div { width:90px; height:50px; border:solid 1px #ffffff; background-color:#ff3860; text-align:center; padding-top:40px; color:#ffffff;}
     #list2 { float:right; }
     .placeHolder div { background-color:white !important; border:dashed 1px gray !important; }
 </style>
@@ -77,11 +78,11 @@ $(function () {
             var oldgroup = $("#" + oldgroupid);
             var groupval = oldgroup.val().replace(currentid, "");
             oldgroup.val(groupval);
-            }
+        }
 
         $("#" + groupid).val(data.join(",")); //添加所属组记录
         $this.attr("data-groupid", groupid); //改变所属组id
-        };
+    };
 
     /**
      * 保存位置
@@ -99,15 +100,15 @@ $(function () {
             url: "${ctx}/test/position.json",
             type: "POST",
             data: { "tiles": arr },
-        dataType: "json",
+            dataType: "json",
             success: function(data) {
             if (data.flag)
                 alert("保存成功");
             else
-            alert("保存失败");
+                alert("保存失败");
             }
         });
-        }
+    }
 })
 </script>
 </html>
