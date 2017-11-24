@@ -66,7 +66,7 @@ $(function () {
         var $this = $(this);
         var data = $this.parent().children().map(function() {
             return $this.attr("data-id");
-            }).get();
+        }).get();
 
         var currentid = $this.attr("data-id"); //组件id
         var oldgroupid = $this.attr("data-groupid"); //所属组id
