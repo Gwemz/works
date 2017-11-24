@@ -104,6 +104,8 @@
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!--搜狐IP查询接口-->
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script>
     var scale = function (btn,bar,title){
         this.btn=document.getElementById(btn);
@@ -200,5 +202,15 @@
             // 用户取消分享后执行的回调函数
         }
     });
+
+
+    //当前页面地址和主机域名
+    console.log(window.location.href);
+    console.log(window.location.host);
+    //获取访问者IP(通过搜狐接口)
+    console.log(returnCitySN["cip"]+','+returnCitySN["cname"]+','+returnCitySN["cid"]);
+    //太平洋网络IP地址查询Web接口(http://whois.pconline.com.cn/?ip=0.0.0.0)
+
+
 </script>
 </html>
