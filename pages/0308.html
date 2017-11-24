@@ -24,7 +24,9 @@
 <body>
 <h1>示例</h1>
      <h2>可以在两个分组直接进行拖拽</h2>
-
+    <script>
+        $("ul:first").dragsort();
+    </script>
      <ul id="list2" class="draglist"  data-groupid="gid-2">
          <li data-id="10" data-groupid="gid-2"><div>10</div></li>
          <li data-id="11" data-groupid="gid-2"><div>11</div></li>
@@ -54,7 +56,6 @@
 </body>
 <script>
 $(function () {
-    $("ul:first").dragsort();
     $(".draglist").dragsort({
         dragSelector: "li",
         dragBetween: true,
