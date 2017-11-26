@@ -44,20 +44,122 @@
     <!--图片拖拽-->
     <!--单张图片小于10M-->
     <div class="container">
-        <ul>
+        <ul id="uploadTd">
             <li><img src="../imgs/car_400_300.jpg" alt=""></li>
             <li><img src="../imgs/car_400_300_2.jpg" alt=""></li>
             <li><img src="../imgs/car_400_300.jpg" alt=""></li>
             <li><img src="../imgs/car_400_300_2.jpg" alt=""></li>
             <li><img src="../imgs/car_400_300.jpg" alt=""></li>
-            <li><img src="../imgs/car_400_300_2.jpg" alt=""></li>
+            <li class="edit" id="upLoadPicButton"><img src="../imgs/car_400_300_2.jpg" alt=""></li>
         </ul>
     </div>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery.dragsort-0.5.2.min.js"></script>
+    <!--图片上传flash插件-->
+    <script type="text/javascript" src="/web/common/swf/plupload.js?t=20171024"></script>
+    <script type="text/javascript" src="/web/common/swf/plupload.silverlight.js"></script>
+    <script type="text/javascript" src="/web/common/swf/plupload.flash.js"></script>
 </body>
 <script>
     $(function () {
+        var CONTEXTPATH='';
+        var fileupload = {
+
+            uploadUrl: "", //请求的URL
+            maxUploadCount: 16, //上传图片张数
+            uploadButton: 'upLoadPicButton', //图片按钮ID
+            container: 'uploadTd', //存放图片的容器ID
+            maxFileSize: '10mb', //存放图片的容器
+            getUploadedCountHandler: function() { //上传图片的张数的方法
+                alert("错误：没有定义获取已经上传图片的张数的方法");
+            },
+            fileAddHandler: function() { //上传队列的方法定义
+            },
+            progressHandler: function() { //图片上传进程处理
+
+            },
+            successHandler: function() { //上传图片成功后处理方法
+                alert("错误：没有定义上传图片成功后的处理方法");
+            },
+            errorHandler: function(up, err) { //上传图片成功后处理方法
+                if (err.code == plupload.FILE_EXTENSION_ERROR) {
+                    alert('图片：' + err.file.name + '不是JPG格式');
+                } else if (err.code == plupload.FILE_SIZE_ERROR) {
+                    alert('图片：' + err.file.name + '超过10MB,上传失败');
+                } else if (err.code == plupload.INIT_ERROR) {
+                    alert('初始化控件错误，请检查flash控件版本是否过低');
+                } else if (err.code == plupload.IO_ERROR) {
+                    alert("数据传输错误,网络不稳定,请检查网络环境或请稍候再试");
+                } else if (err.code == plupload.HTTP_ERROR) {
+                    alert("网络通信中断,请稍候再试");
+                } else if (err.code == plupload.SECURITY_ERROR) {
+                    alert("存在安全隐患，请检查文件是否安全或稍后后再试");
+                } else if (err.code == plupload.IMAGE_FORMAT_ERROR || err.code == plupload.IMAGE_MEMORY_ERROR || err.code == plupload.IMAGE_DIMENSIONS_ERROR) {
+                    alert("图片处理过程出现异常,请稍后再试");
+                } else {
+                    alert("上传失败，请刷新后再试");
+                }
+            }
+        };
+
+        uploader = new plupload.Uploader({
+            runtimes: 'flash,silverlight',
+            browse_button: fileupload.uploadButton,
+            container: fileupload.container,
+            max_file_size: fileupload.maxFileSize,
+            url: fileupload.uploadUrl,
+            //CONTEXTPATH,这里处理了跨域问题，所以这里是正确的，不要改这一块的逻辑
+            flash_swf_url: CONTEXTPATH + '/resource/web/common/swf/plupload.flash.swf?' + Math.round(Math.random() * 100000),
+            silverlight_xap_url: CONTEXTPATH + '/resource/web/common/swf/plupload.silverlight.xap?' + Math.round(Math.random() * 100000),
+            filters: [{
+                title: "Image files",
+                extensions: "jpg,jpeg,gif,bmp,png"
+            }],
+            resize: {
+                width: 1200,
+                height: 900,
+                quality: 100
+            }
+        });
+
+        uploader.init();
+        uploader.bind('FilesAdded', function(up, files) {
+            if (!checkFlag) {
+                for (var i = 0; i < files.length; i++) {
+                    uploader.removeFile(files[i]);
+                }
+                checkFlag = true;
+                return;
+            }
+            var uploadedCount = fileupload.getUploadedCountHandler();
+            if (files.length + uploadedCount + queueCount > fileupload.maxUploadCount) {
+                alert("目前最多能上传" + fileupload.maxUploadCount + "张!");
+
+                for (var i = 0; i < files.length; i++) {
+                    uploader.removeFile(files[i]);
+                }
+                return;
+            } else {
+                queueCount = files.length;
+                jQuery.each(files, function(i, file) {
+                    fileupload.fileAddHandler(file);
+                });
+                up.refresh();
+                uploader.start();
+            }
+        });
+        uploader.bind('UploadProgress', function(up, file) {
+            fileupload.progressHandler(up, file);
+        });
+        uploader.bind('Error', function(up, err) {
+            fileupload.errorHandler(up, err);
+            checkFlag = false;
+            up.refresh();
+        });
+        uploader.bind('FileUploaded', function(up, file, res) {
+            fileupload.successHandler(file, res.response);
+        });
+
 
         $("ul").dragsort({
             dragSelector: "li img",
@@ -66,9 +168,10 @@
             placeHolderTemplate: "<li class='placeHolder'></li>"
         });
 
-        //  判断是否支持canvas
+        //  判断是否支持canvas(思想：不支持canvas用flash方式上传图片,否则用普通方式上传)
         if (typeof (Worker) == "undefined" || isIE()) {
             console.log('不支持canvas');
+            $("#file1").change(normalUploadPic);
             //  	不支持
         } else {
             console.log('支持canvas');
