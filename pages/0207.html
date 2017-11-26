@@ -8,6 +8,27 @@
           href="../imgs/favicon.ico">
     <title>图片上传</title>
 </head>
+<style>
+    .container{
+        width:1200px;
+        overflow:hidden;
+        margin:50px auto;
+    }
+    *{
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+    ul>li{
+        float:left;
+        width:200px;
+        height:150px;
+    }
+    ul > li img{
+        width:100%;
+        height:100%;
+    }
+</style>
 <body>
     <!--手机上传图片-->
     <!--电脑上传-->
@@ -15,5 +36,145 @@
     <!--canvas上传-->
     <!--图片拖拽-->
     <!--单张图片小于10M-->
+    <div class="container">
+        <ul>
+            <li><img src="../imgs/car_400_300.jpg" alt=""></li>
+            <li><img src="../imgs/car_400_300_2.jpg" alt=""></li>
+            <li><img src="../imgs/car_400_300.jpg" alt=""></li>
+            <li><img src="../imgs/car_400_300_2.jpg" alt=""></li>
+            <li><img src="../imgs/car_400_300.jpg" alt=""></li>
+            <li><img src="../imgs/car_400_300_2.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.dragsort-0.5.2.min.js"></script>
 </body>
+<script>
+    $(function () {
+
+        $("ul").dragsort({
+            dragSelector: "li img",
+            dragBetween: false,
+            dragEnd: saveOrder,
+            placeHolderTemplate: "<li class='placeHolder'></li>"
+        });
+
+        //  判断是否支持canvas
+        if (typeof (Worker) == "undefined" || isIE()) {
+            console.log('不支持canvas');
+            //  	不支持
+        } else {
+            console.log('支持canvas');
+        }
+
+        //判断是否为IE浏览器
+        function isIE() { //ie?
+            if (!!window.ActiveXObject || "ActiveXObject" in window)
+                return true;
+            else
+                return false;
+        }
+        //拖拽  map():用于使用指定函数处理数组中的每个元素(或对象的每个属性)，并将处理结果封装为新的数组返回。
+        function saveOrder() {
+            $(".container ul li").map(function(i,n) {
+//                console.log(i,n);
+                console.log(i,$(n));
+                /*if(i==0){
+                    $(n).find('.pPhoto').append('<span class="pCover"></span>').find('.pGotop').remove();
+                }else{
+                    $(n).find('.pPhoto').append('<span class="pGotop" onclick="gotoTop(this);" style="display: none;">设为封面</span>').find('.pCover').remove();
+                }*/
+            })
+        };
+        saveOrder();
+
+        // 前移图片
+        function goAhead(ts) {
+            var whichctrl = $('ul li').index($(ts).parents('li'));
+            if (whichctrl == 0) {
+                return false;
+            } else {
+                photoExchange(whichctrl, whichctrl - 1);
+            }
+        }
+
+        // 后移图片
+        function goBack(ts) {
+            var whichctrl = $('ul li').index($(ts).parents('li'));
+            var piclength = $('ul li').length;
+
+            if (whichctrl == piclength - 1) {
+                return false;
+            } else {
+                photoExchange(whichctrl, whichctrl + 1);
+            }
+        }
+
+
+        //图片交换 prop() 方法设置或返回被选元素的属性和值。  replaceWith:用指定的 HTML 内容或元素替换被选元素
+        function photoExchange(tindex, oindex) {
+            var piclength = $('ul li').length;
+            // 删除封面
+            if (tindex == 0 || oindex == 0) {
+                $('ul li').eq(0).find('.pPhoto .pCover').remove();
+                $('ul li').eq(0).find('.pPhoto').append('<span class="pGotop" onclick="gotoTop(this);" style="display:none;">设为封面</span>');
+            }
+
+            var replaceTarget = $('ul li').eq(tindex).prop('outerHTML');
+            var otherTarget = $('ul li').eq(oindex).prop('outerHTML');
+
+            if ($('ul li').eq(oindex).find('.pPhoto img').attr('src').indexOf('shili') != -1) {
+                //无
+                $('ul li').eq(oindex).replaceWith(replaceTarget);
+                $('ul li').eq(tindex).find('.pPhoto .pDelete').click();
+            } else {
+                $('ul li').eq(oindex).replaceWith(replaceTarget);
+                $('ul li').eq(tindex).replaceWith(otherTarget);
+            }
+
+            // 添加封面
+            if ((tindex == 0 || oindex == 0) && oindex <= tindex) {
+                $('ul li').eq(0).find('.pPhoto').append('<span class="pCover"></span>');
+                $('ul li').eq(0).find('.pPhoto .pGotop').remove();
+            }
+
+            // 弹出置顶层
+            $('ul li .pPhoto.loadSuccess').off().on({
+                mouseenter: function() {
+                    $(this).find('.pGotop').fadeIn('fast');
+                },
+                mouseleave: function() {
+                    $(this).find('.pGotop').fadeOut('fast');
+                }
+            });
+        }
+
+        //普通方式上传图片
+        function normalUploadPic() {
+            var count = $('#picViewUl li').length;
+            if (count >= 16) {
+                alert("您不能上传更多的图片!");
+            } else {
+                addQueue();
+                $.ajaxFileUpload({
+                    url: CONTEXTPATH + '/car/upload2.htm',
+                    //用于文件上传的服务器端请求地址
+                    secureuri: false,
+                    //一般设置为false
+                    fileElementId: 'file1',
+                    //文件上传空间的id属性  <input type="file" id="file" name="file" />
+                    dataType: 'json',
+                    //返回值类型 一般设置为json
+                    success: function(data, status) {
+                        var uploadObj = eval('(' + data + ')');
+                        addPhoto(uploadObj.relativeSmallImgPath, uploadObj.relativePath);
+                    },
+                    error: function(data, status, e) {
+                        alert(e);
+                    }
+                });
+            }
+        }
+    })
+</script>
 </html>
