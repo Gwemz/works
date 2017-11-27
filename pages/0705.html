@@ -200,7 +200,19 @@
     }
   })
 
-
+  /**
+   * 2017-11-27
+   * 引用插件：jquery.qrcode.min.js
+   * table方式：
+   * jQuery('#qrcodeTable').qrcode({
+		render	: "table",
+		text	: "http://jetienne.com"
+	});
+    canvas方式：
+   jQuery('#qrcodeCanvas').qrcode({
+		text	: "http://jetienne.com"
+	});
+   **/
   $('#qrcodeCanvas').qrcode({
       text	: "http://www.bootcdn.cn/"
   });
