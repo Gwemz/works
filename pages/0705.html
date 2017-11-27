@@ -71,7 +71,7 @@
       background: #ffffff;
       margin-bottom: 18px;
     }
-  .QRcode > div .QRimg img{
+  .QRcode > div .QRimg canvas{
       width: 100%;
       height: 100%;
   }
@@ -157,8 +157,8 @@
       <div class="QRcode">
           <div class="scanLogin active">
             <h3>扫码登陆</h3>
-            <div class="QRimg">
-              <img src="../imgs/0705_images/qrcode.png" alt="">
+            <div class="QRimg" id="qrcodeCanvas">
+              <!--<img src="../imgs/0705_images/qrcode.png" alt="">-->
             </div>
             <div class="infos">
               <div class="scanIcon"></div>
@@ -186,6 +186,7 @@
 
 </body>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/jquery.qrcode.min.js"></script>
 <script>
   var screenHeight = $(window).height();
   $('body').height(''+screenHeight+'px');
@@ -198,5 +199,10 @@
       $('.QRcode').children('div:eq(0)').addClass('active');
     }
   })
+
+
+  $('#qrcodeCanvas').qrcode({
+      text	: "http://www.bootcdn.cn/"
+  });
 </script>
 </html>
