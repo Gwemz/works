@@ -39,15 +39,19 @@
     </div>
 </body>
 <script src="../js/jquery.min.js"></script>
+<script src="../js/md5/md5.js"></script>
 <script src="../js/jquery.qrcode.min.js"></script>
 <script>
-    var code = Math.random();
+//    var code = Math.random();
+    var date = new Date();
+    var token = md5(''+ date +'');
     $('#qrcodeTable').qrcode({
         render	: "table",
-        text	: "http://gwem.tk/works?r="+ code +""
+        text	: "http://gwem.tk/works?r="+ token +""
     });
     $('#qrcodeCanvas').qrcode({
-        text	: "http://gwem.tk/works?r="+ code +""
+        text	: "http://gwem.tk/works?r="+ token +""
     });
+
 </script>
 </html>
