@@ -11,11 +11,13 @@
 <style>
     *{list-style: none;margin:0;padding:0;}
     a{text-decoration:none;}
-    body{font-family:"Helvetica, 微软雅黑, arial";}
+    body{font-family:"Helvetica, 微软雅黑, arial";padding-bottom:100px;}
     h3{margin-top:20px;margin-bottom:20px;}
     p{line-height:34px;}
     p span{color:#0366d6;margin-left:50px;}
     .container{width:1200px;margin:20px auto 0;}
+    ul li{line-height:34px;}
+    ul li a{margin-left:20px;color:#0366d6;}
 </style>
 <script src="../js/jquery.min.js"></script>
 <body>
@@ -53,6 +55,10 @@
 
         var url = ["https://phodal.coding.me/growth/articles/api/all.json","https://phodal.coding.me/growth/awesome/api/all.json","https://phodal.coding.me/growth/fe/api/all.json","https://phodal.coding.me/growth/growth-in-action/api/all.json","https://phodal.coding.me/growth/ideabook/api/all.json","https://phodal.coding.me/growth/project/api/all.json","https://phodal.coding.me/growth/toolbox/api/all.json","https://phodal.github.io/growth-api-gitbook/api.json","https://phodal.github.io/growth-api-awesome/api/awesomes.json"];
         var title = ["文章合集","学习路线","我的职业是前端工程师","Growth 实战指南","ideabook项目集","练手项目","工具箱","开源书列表","Awesome 项目列表"]
+        $.each(url,function (i,v) {
+//            console.log(i,v);
+            ajax(i,v)
+        })
 
         //异步获取数据
         function ajax(i,v){
@@ -66,7 +72,6 @@
                     content = data.content;
                     source = data.source;
                     index = i;
-                    console.log(title[i])
                     $('<h3>'+ title[i] +'</h3>').appendTo('.container');
                     if(index == 0 || index == 2 || index == 3 || index == 4 || index == 6){
                         content.forEach(function (i,v) {
@@ -78,12 +83,22 @@
                         })
                     }else if(index == 5){
                         content.forEach(function (i,v) {
-                            $('<p>'+ i.name +'<a href="'+ data.source +'"><span>'+ i.subdomains +'</span></a></p>').appendTo('.container');
+                            var li = '';
+                            i.subdomains.forEach(function (i,v) {
+                                li += '<li>'+ i.name +'<a href="'+ i.projects +'">'+ i.projects +'</a></li>';
+                            })
+                            $('<p style="font-weight:bold;">'+ i.name +'<ul>'+ li +'</ul></p>').appendTo('.container');
                         })
                     }else if(index == 7 || index == 8){
-                        content.forEach(function (i,v) {
-                            $('<p>'+ i.heading +'<a href="'+ data.source +'"><span>'+ i.childrens +'</span></a></p>').appendTo('.container');
+                        data.forEach(function (i,v) {
+                            var li = '';
+                            i.childrens.forEach(function (i) {
+                                li += '<li>'+ i.title +'<a href="'+ i.href +'">'+ i.href +'</a></li>';
+                            })
+                            $('<p style="font-weight:bold;">'+ i.heading +'<ul>'+ li +'</ul></p>').appendTo('.container');
                         })
+                    }else{
+
                     }
 
 
@@ -93,9 +108,6 @@
                 }
             });
         }
-        $.each(url,function (i,v) {
-            ajax(i,v)
-        })
         /*$.ajax({
             type : "get",
             async:false,
