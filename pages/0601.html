@@ -16,9 +16,10 @@
     p{line-height:34px;}
     .container{width:1200px;margin:20px auto 0;}
 </style>
+<script src="../js/jquery.min.js"></script>
 <body>
     <div class="container">
-        <h3>JQuery中常用方法整理</h3>
+        <h3>JQuery中常用方法整理(详情查看控制台)</h3>
         <p>
             去除字符串两边空格：$.trim <br>
             替换字符串：replace <br>
@@ -27,6 +28,16 @@
         </p>
     </div>
 </body>
+<script>
+    $(function () {
+        var a = ' $.trim ',
+            b = '4895793759fjefjeh38ru_small_400_300.jpg',
+            c = 'abc123/[]/g',
+            d = 'abcdefghigklmn';
+        console.table([$.trim(a),b.replace('_small_400_300.jpg','.jpg'),c.indexOf('f'),d.split("")]);
+
+    })
+</script>
 <!--
     date:2017/12/7
     by:winter
