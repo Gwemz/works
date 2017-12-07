@@ -35,7 +35,19 @@
             c = 'abc123/[]/g',
             d = 'abcdefghigklmn';
         console.table([$.trim(a),b.replace('_small_400_300.jpg','.jpg'),c.indexOf('f'),d.split("")]);
-
+        var newObj = {
+            type: '1',
+            title: '弹框',
+            carTitle: '车辆标题',
+            carInfoTxt: '车辆内容',
+            carPrice: '车辆价格',
+            carPic: '车辆图片路径',
+            conform: callback()
+        }
+        function callback(){
+            return 'This is a callback function!';
+        }
+        console.log(newObj,newObj.conform);
     })
 </script>
 <!--
