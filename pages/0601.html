@@ -12,8 +12,9 @@
     *{list-style: none;margin:0;padding:0;}
     a{text-decoration:none;}
     body{font-family:"Helvetica, 微软雅黑, arial";}
-    h3{margin-bottom:50px;}
+    h3{margin-top:20px;margin-bottom:20px;}
     p{line-height:34px;}
+    p span{color:#0366d6;margin-left:50px;}
     .container{width:1200px;margin:20px auto 0;}
 </style>
 <script src="../js/jquery.min.js"></script>
@@ -26,6 +27,7 @@
             截取字符串：split<br>
             indexOf   正则方法
         </p>
+        <br><br><br>
     </div>
 </body>
 <script>
@@ -34,7 +36,7 @@
             b = '4895793759fjefjeh38ru_small_400_300.jpg',
             c = 'abc123/[]/g',
             d = 'abcdefghigklmn';
-        console.table([$.trim(a),b.replace('_small_400_300.jpg','.jpg'),c.indexOf('f'),d.split("")]);
+//        console.table([$.trim(a),b.replace('_small_400_300.jpg','.jpg'),c.indexOf('f'),d.split("")]);
         var newObj = {
             type: '1',
             title: '弹框',
@@ -47,7 +49,72 @@
         function callback(){
             return 'This is a callback function!';
         }
-        console.log(newObj,newObj.conform);
+//        console.log(newObj,newObj.conform);
+
+        var url = ["https://phodal.coding.me/growth/articles/api/all.json","https://phodal.coding.me/growth/awesome/api/all.json","https://phodal.coding.me/growth/fe/api/all.json","https://phodal.coding.me/growth/growth-in-action/api/all.json","https://phodal.coding.me/growth/ideabook/api/all.json","https://phodal.coding.me/growth/project/api/all.json","https://phodal.coding.me/growth/toolbox/api/all.json","https://phodal.github.io/growth-api-gitbook/api.json","https://phodal.github.io/growth-api-awesome/api/awesomes.json"];
+        var title = ["文章合集","学习路线","我的职业是前端工程师","Growth 实战指南","ideabook项目集","练手项目","工具箱","开源书列表","Awesome 项目列表"]
+
+        //异步获取数据
+        function ajax(i,v){
+            $.ajax({
+                type : "get",
+                async:false,
+                url : v,
+                dataType : "json",
+                success : function(data){
+                    var content,source,index;
+                    content = data.content;
+                    source = data.source;
+                    index = i;
+                    console.log(title[i])
+                    $('<h3>'+ title[i] +'</h3>').appendTo('.container');
+                    if(index == 0 || index == 2 || index == 3 || index == 4 || index == 6){
+                        content.forEach(function (i,v) {
+                            $('<p>'+ i.title +'<a href="'+ data.source +'"><span>'+ i.path +'</span></a></p>').appendTo('.container');
+                        })
+                    }else if (index == 1){
+                        content.forEach(function (i,v) {
+                            $('<p>'+ i.name +'<a href="'+ data.source +'"><span>'+ i.roadmap +'</span></a></p>').appendTo('.container');
+                        })
+                    }else if(index == 5){
+                        content.forEach(function (i,v) {
+                            $('<p>'+ i.name +'<a href="'+ data.source +'"><span>'+ i.subdomains +'</span></a></p>').appendTo('.container');
+                        })
+                    }else if(index == 7 || index == 8){
+                        content.forEach(function (i,v) {
+                            $('<p>'+ i.heading +'<a href="'+ data.source +'"><span>'+ i.childrens +'</span></a></p>').appendTo('.container');
+                        })
+                    }
+
+
+                },
+                error:function(){
+
+                }
+            });
+        }
+        $.each(url,function (i,v) {
+            ajax(i,v)
+        })
+        /*$.ajax({
+            type : "get",
+            async:false,
+            url : url,
+            dataType : "json",
+            /!*jsonp: "callbackparam",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+            jsonpCallback:"success_jsonpCallback",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名*!/
+            success : function(data){
+                var content,source;
+                content = data.content;
+                source = data.source;
+                content.forEach(function (i,v) {
+                    $('<p>'+ i.title +'<a href="'+ data.source +'"><span>'+ i.path +'</span></a></p>').appendTo('.container');
+                })
+            },
+            error:function(){
+
+            }
+        });*/
     })
 </script>
 <!--
