@@ -30,7 +30,7 @@
 ```
 #### Gulp插件安装
 ##### 静态服务器（ gulp-webserver ） 网页自动刷新（ gulp-livereload ）
-`npm install gulp-livereload gulp-webserver --save-dev`    
+`cnpm install gulp-livereload gulp-webserver --save-dev`    
 
 #### 在项目根目录下创建一个名为 gulpfile.js 的文件
 ```
@@ -71,6 +71,10 @@ gulp.task('default',['webserver','watch']);
   [16:53:55] Starting 'default'...
   [16:53:55] Finished 'default' after 19 μs
 
+>  注：1. Gulp插件可以通过Gulp官网 、 npm官网 或 Browsenpm 上找到你所要的插件。 2. 不要在node_modules文件夹内手动删除插件，请使用命令卸载。因为手动删除的只是下载插件包，但package.jason中的配置信息并没有清除。 3. 不要直接移动Gulp插件，否则由于系统层级限制，出现错误提示“文件名对目标文件夹可能过长。您可以缩短文件名并重试，或者尝试路径较短的位置。”。此时把文件夹打包成RAR后再操作便可。 4. npm常用命令： 安装插件：npm [-g] [--save-dev] 更新插件：npm update [-g] [--save-dev] 卸载插件：npm uninstall [-g] [--save-dev] 指定版本：npm install @VERSION [--save-dev] （其中VERSION就是你所需要的版本号）
+
 #### 参考文档
-https://github.com/zhonglimh/Gulp/tree/master/Example1
-https://github.com/gulpjs/gulp/blob/master/docs/API.md
+* [Gulp构建前端自动化工作流之：入门介绍及LiveReload的使用](http://www.bluesdream.com/blog/gulp-frontend-automation-introduction-and-livereload.html)
+* [ Gulp API docs](https://github.com/gulpjs/gulp/blob/master/docs/API.md)
+* [https://github.com/zhonglimh/Gulp/tree/master/Example1](https://github.com/zhonglimh/Gulp/tree/master/Example1)
+* [https://github.com/zhonglimh/Gulp/tree/master/Example2](https://github.com/zhonglimh/Gulp/tree/master/Example2)
