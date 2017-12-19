@@ -1359,3 +1359,62 @@ function debounce(delay, atBegin, callback) {
 
 };
 ```
+#### 获取浏览器信息
+```
+window.navigator.userAgent
+
+//用于区分qq浏览器
+function isMqqBrowser(){
+	var ua = window.navigator.userAgent.toLowerCase();
+    var index = ua.indexOf("mqqbrowser");
+    if (index != -1) {
+    	return true;
+    } else {
+    	return false;
+    }
+}
+function isUcBrowser(){
+	var ua = window.navigator.userAgent.toLowerCase();
+    var index = ua.indexOf("ucbrowser");
+    if (index != -1) {
+    	return true;
+    } else {
+    	return false;
+    }
+}
+function isAdroid(){
+	var ua = window.navigator.userAgent.toLowerCase();
+    var index = ua.indexOf("iphone os");
+    var indexIpad = ua.indexOf("ipad")
+    if (index == -1 && indexIpad == -1) {
+    	return true;
+    } else {
+    	return false;
+    }
+}
+function isWeiXin(){
+	var ua = window.navigator.userAgent.toLowerCase();
+	if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+		return true;
+	}else{
+		return false;
+	}
+}
+//判断是否为qq内置浏览器
+function isQQ(){
+	var ua = window.navigator.userAgent.toLowerCase();  
+	if(ua.match(/QQ/i) == 'qq'){
+		return true;
+	}else{
+		return false;
+	}
+}
+function isSafari(){
+	var ua = window.navigator.userAgent.toLowerCase();  
+	if(ua.indexOf("safari")>0){
+		return true;
+	}else{
+		return false;
+	}
+}
+```
