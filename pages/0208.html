@@ -10,12 +10,18 @@
     <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">
     <title>分页功能实现</title>
 </head>
-<!--注：bootstrap版本为3-->
+<!--
+    插件参考文档：http://jqpaginator.keenwon.com/
+-->
 <style>
-    li.active a{background:#e9ecef;}
+    body{padding-top:50px;}
+    li a.page-link{color:#0a0a0a;}
+    li.active a{background:#e9ecef;color:#007bff;}
+    #text{margin-bottom:20px;}
 </style>
 <body>
     <div class="container">
+        <div id="text"></div>
         <nav aria-label="Page navigation example">
             <ul class="pagination" id="demo1">
                 <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -35,8 +41,20 @@ $(function () {
         totalPages: 100,
         visiblePages: 10,
         currentPage: 1,
+        totalCounts:9,
         onPageChange: function (num, type) {
-            $('#text').html('当前第' + num + '页');
+            $.ajax({
+                type:"get",
+                async:true,
+                url:'https://interface.meiriyiwen.com/article/today?dev=1',
+                dataType : "json",
+                success:function (data) {
+                    var data = data.data;
+                    $('#text').html('<h3>'+ data.title +'</h3>'+ data.author +'<br>'+ data.content +'<br>')
+                    console.log(data.data);
+                }
+            })
+            /*$('#text').html('当前第' + num + '页');*/
         }
     });
 })
