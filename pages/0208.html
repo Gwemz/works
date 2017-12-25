@@ -6,9 +6,39 @@
           rel="shortcut icon"
           type="image/png"
           href="../imgs/favicon.ico">
+    <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">
     <title>分页功能实现</title>
 </head>
+<!--注：bootstrap版本为3-->
+<style>
+    li.active a{background:#e9ecef;}
+</style>
 <body>
-
+    <div class="container">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" id="demo1">
+                <!--<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+            </ul>
+        </nav>
+    </div>
 </body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jqPaginator.js"></script>
+<script>
+$(function () {
+    $('#demo1').jqPaginator({
+        totalPages: 100,
+        visiblePages: 10,
+        currentPage: 1,
+        onPageChange: function (num, type) {
+            $('#text').html('当前第' + num + '页');
+        }
+    });
+})
+</script>
 </html>
