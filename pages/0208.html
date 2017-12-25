@@ -63,7 +63,7 @@ $(function () {
             $.ajax({
                 type:"get",
                 async:true,
-                url:'https://interface.meiriyiwen.com/article/day?dev=1&date='+ time +'',
+                url:'https://interface.meiriyiwen.com/article/random?dev=1',
                 dataType : "json",
                 success:function (data) {
                     var data = data.data;
