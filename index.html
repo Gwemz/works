@@ -187,12 +187,6 @@
 
         })
 
-        //添加事件统计
-        $("[data-track]").on("click", function () {
-            var label = $(this).data("track");
-            window._hmt && window._hmt.push(['_trackEvent', label, 'click']);
-        });
-
         var _hmt = _hmt || [];
         (function() {
             var hm = document.createElement("script");
@@ -200,6 +194,12 @@
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
+
+        //添加事件统计
+        $("[data-track]").on("click", function () {
+            var label = $(this).data("track");
+            window._hmt && window._hmt.push(['_trackEvent', label, 'click']);
+        });
     })
 </script>
 <!-- About test github提交代码不显示自己的提交记录 账号或邮箱和github记录不一致 -->
