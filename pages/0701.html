@@ -104,6 +104,17 @@
         <div class="back"> < </div>
         <button>刷新页面</button>
     </section>
+    <textarea cols="20" rows="10" id="biao1">用户定义的代码区域</textarea>
+    <input type="button" onClick="copyUrl2()" value="点击复制代码" />
+    <script type="text/javascript">
+        function copyUrl2()
+        {
+            var Url2=document.getElementById("biao1");
+            Url2.select(); // 选择对象
+            document.execCommand("Copy"); // 执行浏览器复制命令
+            alert("已复制好，可贴粘。");
+        }
+    </script>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -122,7 +133,7 @@
     })
 
     // 微信分享测试
-    wx.config({
+    /* wx.config({
         debug: false,
         appId: 'wxfb95e4025a5d4614',
         timestamp: '1498633007',
@@ -145,7 +156,115 @@
     });
     wx.error(function (res) {
         //alert(res.errMsg);//错误提示
+    }); */
+
+    /* wx.config({
+        debug: false,
+        appId: "{$signPackage.appId}",
+        timestamp: "{$signPackage.timestamp}",
+        nonceStr: "{$signPackage.nonceStr}",
+        signature: "{$signPackage.signature}",
+        jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ", "chooseImage", "uploadImage"]
     });
+    wx.ready(function () {
+        var title = $("#wx-share").attr("wx-title") || "";
+        title = title.replace(/\s/, "").replace(" ", "");
+        var descript = $("#wx-share").attr("wx-desc");
+        var shareurl = $("#wx-share").attr("wx-link");
+        var imgurl = $("#wx-share").attr("wx-imgUrl");
+        if (descript == '') {
+            descript = title;
+        }
+        //分享给朋友
+        wx.onMenuShareAppMessage({
+            title: title, //  分享标题
+            desc: descript, //  分享链接
+            link: shareurl, // 分享图标
+            imgUrl: imgurl,
+            type: 'link',
+            dataUrl: '',
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: title, // 分享标题
+            link: shareurl, // 分享链接
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //分享到QQ
+        wx.onMenuShareQQ({
+            title: title, // 分享标题
+            desc: descript, // 分享描述
+            link: shareurl, // 分享链接
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //分享到腾讯微博
+        wx.onMenuShareWeibo({
+            title: title, // 分享标题
+            desc: descript, // 分享描述
+            link: shareurl, // 分享链接
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //分享到QQ空间
+        wx.onMenuShareQZone({
+            title: title, // 分享标题
+            desc: descript, // 分享描述
+            link: shareurl, // 分享链接
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+    wx.error(function(res) {
+    console.log(res.errMsg);
+    }); */
 
     function reload(){
         window.location.href = location.href+'?time='+((new Date()).getTime());
