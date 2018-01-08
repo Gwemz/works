@@ -6,7 +6,7 @@
     <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
 </head>
 <style>
-    
+    .btn2{width:100px;height:50px;background:rgb(224, 31, 31);}
 </style>
 <!--github地址链接:https://github.com/zenorocha/clipboard.js/-->
 <body>
@@ -16,6 +16,11 @@
     <button class="btn" data-clipboard-target="#foo">
         复制路径到剪切板
     </button>
+
+    <div class="neirong" id="content">为了车商无限的价值，简单易懂，功能强大；
+        完整的销售管理系统，贯通经营、卖车、收车3大环节；
+        及人所不能及，想生意人之所想</div>
+    <div class="btn2" data-clipboard-target="#content"></div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/clipboard/clipboard.js"></script>
@@ -31,5 +36,14 @@
         console.log(e);
     });
     
+    var clipboard2 = new Clipboard('.btn2');
+    clipboard2.on('success', function(e) {
+        alert('已成功复制！')
+    });
+
+    clipboard2.on('error', function(e) {
+        alert('复制失败！');
+    });
+
 </script>
 </html>
