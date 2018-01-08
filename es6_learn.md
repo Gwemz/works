@@ -94,3 +94,15 @@ PI = 3;
 // TypeError: Assignment to constant variable.
 ```
 const的作用域与let命令相同：只在声明所在的块级作用域内有效。
+
+### ES6 变量的解构赋值
+ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
+```
+var a = 1;
+var b = 2;
+var c = 3;
+```
+ES6允许写成下面这样。
+```
+var [a, b, c] = [1, 2, 3];
+```

@@ -9,8 +9,9 @@
     .container{width:1200px;height:auto;margin:0 auto;}
     .btn2,.btn3{width:100px;height:50px;background:rgb(224, 31, 31);text-align: center;line-height: 50px;color:#ffffff;cursor: pointer;}
     .num{font-size:10rem;}
-    .btn3,#copy_text{width:10rem;height:5rem;border:0;background:#ee2ac3;font-size:2rem;}
+    .btn3,#copy_text,.link{width:10rem;height:5rem;border:0;background:#ee2ac3;font-size:2rem;}
     #text_input{width:20rem;height:4.5rem;font-size:2.5rem;}
+    .link{width:auto;text-align: center;line-height: 5rem;margin-top:50px;color:#ffffff;background:#0feed0;cursor: pointer;}
 </style>
 <!--github地址链接:https://github.com/zenorocha/clipboard.js/-->
 <body>
@@ -32,10 +33,12 @@
 
         <input type="text" id="text_input" />
         <button type="button" id="copy_text">copy</button>
+        <div class="link">点击跳转APP</div>
     </div> 
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/clipboard/clipboard.js"></script>
+<script src="http://static.hx2cars.com/resource/web/mobpages/js/common/jsPlug.min.js?t=20180104"></script>
 <script>
     
     var clipboard = new Clipboard('.btn');
@@ -101,5 +104,8 @@
             console.error('copy fail');
         }
     });
+    $('.link').on('touchstart',function(){
+        $.hxWaptoapp();
+    })
 </script>
 </html>
