@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复制内容到剪切板</title>
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+</head>
+<style>
+    
+</style>
+<!--github地址链接:https://github.com/zenorocha/clipboard.js/-->
+<body>
+    <input id="foo" value="hello winter!">
+
+    <!-- Trigger -->
+    <button class="btn" data-clipboard-target="#foo">
+        复制路径到剪切板
+    </button>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/clipboard/clipboard.js"></script>
+<script>
+    
+    var clipboard = new Clipboard('.btn');
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    
+</script>
+</html>
