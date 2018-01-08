@@ -6,21 +6,29 @@
     <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
 </head>
 <style>
-    .btn2{width:100px;height:50px;background:rgb(224, 31, 31);}
+    .container{width:1200px;height:auto;margin:0 auto;}
+    .btn2,.btn3{width:100px;height:50px;background:rgb(224, 31, 31);text-align: center;line-height: 50px;color:#ffffff;cursor: pointer;}
+    .num{font-size:10rem;}
+    .btn3{width:10rem;height:5rem;border:0;background:#ee2ac3;font-size:2rem;}
 </style>
 <!--github地址链接:https://github.com/zenorocha/clipboard.js/-->
 <body>
-    <input id="foo" value="hello winter!">
+    <div class="container">
+        <input id="foo" value="hello winter!">
 
-    <!-- Trigger -->
-    <button class="btn" data-clipboard-target="#foo">
-        复制路径到剪切板
-    </button>
-
-    <div class="neirong" id="content">为了车商无限的价值，简单易懂，功能强大；
-        完整的销售管理系统，贯通经营、卖车、收车3大环节；
-        及人所不能及，想生意人之所想</div>
-    <div class="btn2" data-clipboard-target="#content"></div>
+        <!-- Trigger -->
+        <button class="btn" data-clipboard-target="#foo">
+            复制路径到剪切板
+        </button>
+    
+        <div class="neirong" id="content">为了车商无限的价值，简单易懂，功能强大；
+            完整的销售管理系统，贯通经营、卖车、收车3大环节；
+            及人所不能及，想生意人之所想</div>
+        <div class="btn2" data-clipboard-target="#content">点击复制</div>
+        
+        <div class="num" id="num">895545454545</div>
+        <button class="btn3">点击复制</button>
+    </div> 
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/clipboard/clipboard.js"></script>
@@ -45,5 +53,32 @@
         alert('复制失败！');
     });
 
+    /* HTML5 完美解决javascript中iphone手机和android手机复制文本到剪切板问题 */
+    function img(){  
+        console.log('fjeingiegnein');
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {//区分iPhone设备  
+            window.getSelection().removeAllRanges();//这段代码必须放在前面否则无效  
+            var Url2=document.getElementById("num");//要复制文字的节点  
+            var range = document.createRange();  
+            // 选中需要复制的节点  
+            range.selectNode(Url2);  
+            // 执行选中元素  
+            window.getSelection().addRange(range);  
+            // 执行 copy 操作  
+            var successful = document.execCommand('copy');  
+
+            // 移除选中的元素  
+            window.getSelection().removeAllRanges();  
+            alert('已成功复制');
+        }else{  
+            var Url2=document.getElementById("num");//要复制文字的节点  
+            Url2.select(); // 选择对象  
+            document.execCommand("Copy"); // 执行浏览器复制命令  
+            alert('已成功复制');
+        }  
+    } 
+    $('.btn3').on('touchstart',function(){
+        img() 
+    })
 </script>
 </html>
