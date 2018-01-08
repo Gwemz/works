@@ -214,4 +214,180 @@ function example() {
 }
 var { foo, bar } = example();
 ```
+* 函数参数的定义
+解构赋值可以方便地将一组参数与变量名对应起来。
+```
+// 参数是一组有次序的值
+function f([x, y, z]) { ... }
+f([1, 2, 3]);
+
+// 参数是一组无次序的值
+function f({x, y, z}) { ... }
+f({z: 3, y: 2, x: 1});
+```
+* 提取JSON数据
+解构赋值对提取JSON对象中的数据，尤其有用。
+```
+var jsonData = {
+  id: 42,
+  status: "OK",
+  data: [867, 5309]
+};
+
+let { id, status, data: number } = jsonData;
+
+console.log(id, status, number);
+// 42, "OK", [867, 5309]
+```
+* 函数参数的默认值
+```
+jQuery.ajax = function (url, {
+  async = true,
+  beforeSend = function () {},
+  cache = true,
+  complete = function () {},
+  crossDomain = false,
+  global = true,
+  // ... more config
+}) {
+  // ... do stuff
+};
+```
+* 遍历Map结构
+任何部署了Iterator接口的对象，都可以用for...of循环遍历。Map结构原生支持Iterator接口，配合变量的解构赋值，获取键名和键值就非常方便。
+```
+var map = new Map();
+map.set('first', 'hello');
+map.set('second', 'world');
+
+for (let [key, value] of map) {
+  console.log(key + " is " + value);
+}
+// first is hello
+// second is world
+```
+如果只想获取键名，或者只想获取键值，可以写成下面这样。
+```
+// 获取键名
+for (let [key] of map) {
+  // ...
+}
+
+// 获取键值
+for (let [,value] of map) {
+  // ...
+}
+```
+* 输入模块的指定方法
+加载模块时，往往需要指定输入那些方法。解构赋值使得输入语句非常清晰。
+```
+const { SourceMapConsumer, SourceNode } = require("source-map");
+```
+
+## ES6 字符串的扩展
+ES6加强了对Unicode的支持，并且扩展了字符串对象。
+
+#### 字符的Unicode表示法
+JavaScript允许采用\uxxxx形式表示一个字符，其中“xxxx”表示字符的码点。
+```
+"\u0061"
+// "a"
+```
+但是，这种表示法只限于\u0000——\uFFFF之间的字符。超出这个范围的字符，必须用两个双字节的形式表达。
+```
+"\uD842\uDFB7"
+// "𠮷"
+
+"\u20BB7"
+// " 7"
+```
+
+```
+'\z' === 'z'  // true
+'\172' === 'z' // true
+'\x7A' === 'z' // true
+'\u007A' === 'z' // true
+'\u{7A}' === 'z' // true
+```
+#### codePointAt()
+ES6提供了codePointAt方法，能够正确处理4个字节储存的字符，返回一个字符的码点。
+#### String.fromCodePoint()
+ES5提供String.fromCharCode方法，用于从码点返回对应字符，但是这个方法不能识别32位的UTF-16字符（Unicode编号大于0xFFFF）。
+
+#### 字符串的遍历器接口
+ES6为字符串添加了遍历器接口（详见《Iterator》一章），使得字符串可以被for...of循环遍历。
+```
+for (let codePoint of 'foo') {
+  console.log(codePoint)
+}
+// "f"
+// "o"
+// "o"
+```
+除了遍历字符串，这个遍历器最大的优点是可以识别大于0xFFFF的码点，传统的for循环无法识别这样的码点。
+#### charAt()
+ES5对字符串对象提供charAt方法，返回字符串给定位置的字符。该方法不能识别码点大于0xFFFF的字符。
+```
+'abc'.charAt(0) // "a"
+'𠮷'.charAt(0) // "\uD842"
+```
+#### normalize()
+ES6提供字符串实例的normalize()方法，用来将字符的不同表示方法统一为同样的形式，这称为Unicode正规化。
+```
+'\u01D1'.normalize() === '\u004F\u030C'.normalize()
+// true
+```
+#### includes(), startsWith(), endsWith()
+传统上，JavaScript只有indexOf方法，可以用来确定一个字符串是否包含在另一个字符串中。ES6又提供了三种新方法。
+* includes()：返回布尔值，表示是否找到了参数字符串。
+* startsWith()：返回布尔值，表示参数字符串是否在源字符串的头部。
+* endsWith()：返回布尔值，表示参数字符串是否在源字符串的尾部。
+#### repeat()
+repeat方法返回一个新字符串，表示将原字符串重复n次。
+```
+'x'.repeat(3) // "xxx"
+'hello'.repeat(2) // "hellohello"
+'na'.repeat(0) // ""
+```
+参数如果是小数，会被取整。
+```
+'na'.repeat(2.9) // "nana"
+```
+如果repeat的参数是负数或者Infinity，会报错。
+#### padStart()，padEnd()
+ES7推出了字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。padStart用于头部补全，padEnd用于尾部补全。
+```
+'x'.padStart(5, 'ab') // 'ababx'
+'x'.padStart(4, 'ab') // 'abax'
+
+'x'.padEnd(5, 'ab') // 'xabab'
+'x'.padEnd(4, 'ab') // 'xaba'
+```
+#### 模板字符串
+传统的JavaScript语言，输出模板通常是这样写的。
+```
+$('#result').append(
+  'There are <b>' + basket.count + '</b> ' +
+  'items in your basket, ' +
+  '<em>' + basket.onSale +
+  '</em> are on sale!'
+);
+```
+
+```
+$('#result').append(`
+  There are <b>${basket.count}</b> items
+   in your basket, <em>${basket.onSale}</em>
+  are on sale!
+`);
+```
+
+#### 标签模板
+模板字符串的功能，不仅仅是上面这些。它可以紧跟在一个函数名后面，该函数将被调用来处理这个模板字符串。这被称为“标签模板”功能（tagged template）。
+```
+alert`123`
+// 等同于
+alert(123)
+```
+#### String.raw()
 
