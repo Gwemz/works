@@ -56,7 +56,17 @@
 <!-- 
     onselectstart="return false"   取消浏览器拖动的蓝色选择区
  -->
-<body onselectstart="return false">
+ <style>
+     /* 禁止复制文本 */
+ body{
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+ }
+ </style>
+<body>
 <!--背景音乐-->
 <!--<audio src="http://dl.stream.qqmusic.qq.com/C400004HwcUS4QLPuY.m4a?vkey=DE94F0DD4CF4705D987354085B1505B1B5475CF7FCAD2E62476CFEE670FF13299ED1E6CC9225E185B51B2556282C92F1A04D488B4AE59F44&guid=6525565592&uin=1955743279&fromtag=66"
        autoplay="autoplay"></audio>-->
@@ -178,6 +188,10 @@
                 }
             }
         }*/
+        /* 解决低版本IE不支持user-select问题 */
+        document.body.onselectstart = document.body.ondrag = function(){
+            return false;
+        }
         // jquery
         $('.wrap li').on('click','h1',function () {
             var hg = $(this).next().children().height();
