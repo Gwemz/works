@@ -13,7 +13,9 @@
     #text_input{width:20rem;height:4.5rem;font-size:2.5rem;}
     .link{width:auto;text-align: center;line-height: 5rem;margin-top:50px;color:#ffffff;background:#0feed0;cursor: pointer;}
 </style>
-<!--github地址链接:https://github.com/zenorocha/clipboard.js/-->
+<!--github地址链接:https://github.com/zenorocha/clipboard.js/
+    bug解决：iPhone手机若div未设置`cursor:pointer;`会无法绑定点击事件,会导致clipboard插件无效(搞了好几个小时，发现是这个问题......)
+-->
 <body>
     <div class="container">
         <input id="foo" value="hello winter!">
