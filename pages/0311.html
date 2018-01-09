@@ -23,9 +23,7 @@
             复制路径到剪切板
         </button>
     
-        <div class="neirong" id="content">为了车商无限的价值，简单易懂，功能强大；
-            完整的销售管理系统，贯通经营、卖车、收车3大环节；
-            及人所不能及，想生意人之所想</div>
+        <div class="neirong" id="content">犯我中华者虽远必诛</div>
         <div class="btn2" data-clipboard-target="#content">点击复制</div>
         
         <div class="num" id="num">895545454545</div>
@@ -60,8 +58,7 @@
     });
 
     /* HTML5 完美解决javascript中iphone手机和android手机复制文本到剪切板问题 */
-    function img(){  
-        console.log('fjeingiegnein');
+    function copy(){  
         if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {//区分iPhone设备  
             window.getSelection().removeAllRanges();//这段代码必须放在前面否则无效  
             var Url2=document.getElementById("num");//要复制文字的节点  
@@ -83,8 +80,8 @@
             alert('已成功复制');
         }  
     } 
-    $('.btn3').on('touchstart',function(){
-        img() 
+    $('.btn3').on('click',function(){
+        copy() 
     })
 
     var inputElem = document.getElementById('text_input');
