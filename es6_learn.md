@@ -974,4 +974,42 @@ foo.call({ id: 42 });
 // id: 42
 ```
 #### 嵌套的箭头函数
+箭头函数内部，还可以再使用箭头函数。下面是一个ES5语法的多重嵌套函数。
+```
+function insert(value) {
+  return {into: function (array) {
+    return {after: function (afterValue) {
+      array.splice(array.indexOf(afterValue) + 1, 0, value);
+      return array;
+    }};
+  }};
+}
 
+insert(2).into([1, 3]).after(1); //[1, 2, 3]
+```
+上面这个函数，可以使用箭头函数改写。
+```
+let insert = (value) => ({into: (array) => ({after: (afterValue) => {
+  array.splice(array.indexOf(afterValue) + 1, 0, value);
+  return array;
+}})});
+
+insert(2).into([1, 3]).after(1); //[1, 2, 3]
+```
+#### 绑定 this
+函数绑定运算符是并排的两个双冒号（::），双冒号左边是一个对象，右边是一个函数。该运算符会自动将左边的对象，作为上下文环境（即this对象），绑定到右边的函数上面。
+```
+foo::bar;
+// 等同于
+bar.bind(foo);
+
+foo::bar(...arguments);
+// 等同于
+bar.apply(foo, arguments);
+
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+function hasOwn(obj, key) {
+  return obj::hasOwnProperty(key);
+}
+```
+## 尾调用优化
