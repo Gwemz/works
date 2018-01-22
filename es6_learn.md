@@ -1013,3 +1013,170 @@ function hasOwn(obj, key) {
 }
 ```
 ## 尾调用优化
+
+## Class
+#### Class基本语法
+JavaScript语言的传统方法是通过构造函数，定义并生成新对象。
+
+```
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+Point.prototype.toString = function () {
+  return '(' + this.x + ', ' + this.y + ')';
+};
+
+var p = new Point(1, 2);
+```
+ES6提供了更接近传统语言的写法，引入了Class（类）这个概念，作为对象的模板。
+```
+//定义类
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  toString() {
+    return '(' + this.x + ', ' + this.y + ')';
+  }
+}
+```
+// 暂时不需要，略过...
+
+## 模块
+Module语法是JavaScript模块的标准写法，坚持使用这种写法。使用import取代require。
+```
+// bad
+const moduleA = require('moduleA');
+const func1 = moduleA.func1;
+const func2 = moduleA.func2;
+
+// good
+import { func1, func2 } from 'moduleA';
+```
+使用export取代module.exports。
+```
+// commonJS的写法
+var React = require('react');
+
+var Breadcrumbs = React.createClass({
+  render() {
+    return <nav />;
+  }
+});
+
+module.exports = Breadcrumbs;
+
+// ES6的写法
+import React from 'react';
+
+const Breadcrumbs = React.createClass({
+  render() {
+    return <nav />;
+  }
+});
+
+export default Breadcrumbs
+```
+不要在模块输入中使用通配符。因为这样可以确保你的模块之中，有一个默认输出（export default）。
+```
+// bad
+import * as myObject './importModule';
+
+// good
+import myObject from './importModule';
+```
+如果模块默认输出一个函数，函数名的首字母应该小写。
+```
+function makeStyleGuide() {
+}
+
+export default makeStyleGuide;
+```
+如果模块默认输出一个对象，对象名的首字母应该大写。
+```
+const StyleGuide = {
+  es6: {
+  }
+};
+
+export default StyleGuide;
+```
+## ES6 modules
+历史上，JavaScript 一直没有模块（module）体系，无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。其他语言都有这项功能，比如 Ruby 的require、Python 的import，甚至就连 CSS 都有@import，但是 JavaScript 任何这方面的支持都没有，这对开发大型的、复杂的项目形成了巨大障碍。
+
+ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。
+#### export命令
+模块功能主要由两个命令构成：export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。
+
+一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。
+```
+// profile.js
+export var firstName = 'Michael';
+export var lastName = 'Jackson';
+export var year = 1958;
+
+or:
+
+var firstName = 'Michael';
+var lastName = 'Jackson';
+var year = 1958;
+
+export {firstName, lastName, year};
+```
+export命令除了输出变量，还可以输出函数或类（class）。
+```
+export function multiply(x, y) {
+  return x * y;
+};
+```
+通常情况下，export输出的变量就是本来的名字，但是可以使用as关键字重命名。
+```
+function v1() { ... }
+function v2() { ... }
+
+export {
+  v1 as streamV1,
+  v2 as streamV2,
+  v2 as streamLatestVersion
+};
+```
+需要特别注意的是，export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。
+```
+// 报错
+export 1;
+
+// 报错
+var m = 1;
+export m;
+```
+第一种写法直接输出1，第二种写法通过变量m，还是直接输出1。1只是一个值，不是接口。
+正确的写法：
+```
+// 写法一
+export var m = 1;
+
+// 写法二
+var m = 1;
+export {m};
+
+// 写法三
+var n = 1;
+export {n as m};
+```
+同样的，function和class的输出，也必须遵守这样的写法。
+```
+// 报错
+function f() {}
+export f;
+
+// 正确
+export function f() {};
+
+// 正确
+function f() {}
+export {f};
+```
