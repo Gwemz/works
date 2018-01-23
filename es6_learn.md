@@ -1180,3 +1180,159 @@ export function f() {};
 function f() {}
 export {f};
 ```
+export语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。
+```
+export var foo = 'bar';
+setTimeout(() => foo = 'baz',500)
+```
+上面代码输出变量foo，值为bar，500毫秒之后变成baz。
+#### import命令
+使用export命令定义了模块的对外接口以后，其他 JS 文件就可以通过import命令加载这个模块。
+```
+// main.js
+import {firstName, lastName, year} from './profile';
+
+function setName(element) {
+  element.textContent = firstName + ' ' + lastName;
+}
+```
+上面代码的import命令，用于加载profile.js文件，并从中输入变量。
+如果想为输入的变量重新取一个名字，import命令要使用as关键字，将输入的变量重命名。
+```
+import {lastName as surname} from './profile';
+```
+import后面的from指定模块文件的位置，可以是相对路径，也可以是绝对路径，.js路径可以省略。如果只是模块名，不带有路径，那么必须有配置文件，告诉 JavaScript 引擎该模块的位置。
+```
+import {myMethod} from 'util';
+```
+`注意，import命令具有提升效果，会提升到整个模块的头部，首先执行。`
+```
+foo();
+
+import { foo } from 'my_module';
+```
+上面的代码不会报错，因为import的执行早于foo的调用。这种行为的本质是，import命令是编译阶段执行的，在代码运行之前。
+
+由于import是静态执行，所以不能使用表达式和变量，这些只有在运行时才能得到结果的语法结构。
+
+```
+// 报错
+import { 'f' + 'oo' } from 'my_module';
+
+// 报错
+let module = 'my_module';
+import { foo } from module;
+
+// 报错
+if (x === 1) {
+  import { foo } from 'module1';
+} else {
+  import { foo } from 'module2';
+}
+```
+如果多次重复执行同一句import语句，那么只会执行一次，而不会执行多次。
+```
+import { foo } from 'my_module';
+import { bar } from 'my_module';
+
+// 等同于
+import { foo, bar } from 'my_module';
+```
+#### 模块的整体加载
+除了指定加载某个输出值，还可以使用整体加载，即用星号（*）指定一个对象，所有输出值都加载在这个对象上面。
+
+下面是一个circle.js文件，它输出两个方法area和circumference。
+```
+// circle.js
+
+export function area(radius) {
+  return Math.PI * radius * radius;
+}
+
+export function circumference(radius) {
+  return 2 * Math.PI * radius;
+}
+```
+现在，加载这个模块。
+```
+// main.js
+
+import { area, circumference } from './circle';
+
+console.log('圆面积：' + area(4));
+console.log('圆周长：' + circumference(14));
+```
+上面写法是逐一指定要加载的方法，整体加载的写法如下。
+```
+import * as circle from './circle';
+
+console.log('圆面积：' + circle.area(4));
+console.log('圆周长：' + circle.circumference(14));
+```
+#### export default 命令
+export default命令，为模块指定默认输出。
+```
+// export-default.js
+export default function () {
+  console.log('foo');
+}
+```
+上面代码是一个模块文件export-default.js，它的默认输出是一个函数。
+其他模块加载该模块时，import命令可以为该匿名函数指定任意名字。
+```
+// import-default.js
+import customName from './export-default';
+customName(); // 'foo'
+```
+export default命令用在非匿名函数前，也是可以的。
+```
+// export-default.js
+export default function foo() {
+  console.log('foo');
+}
+
+// 或者写成
+
+function foo() {
+  console.log('foo');
+}
+
+export default foo;
+```
+上面代码中，foo函数的函数名foo，在模块外部是无效的。加载的时候，视同匿名函数加载。
+
+对比默认输出和正常输出。
+```
+// 第一组
+export default function crc32() { // 输出
+  // ...
+}
+
+import crc32 from 'crc32'; // 输入
+
+// 第二组
+export function crc32() { // 输出
+  // ...
+};
+
+import {crc32} from 'crc32'; // 输入
+```
+第一组是使用export default时，对应的import语句不需要使用大括号；第二组是不使用export default时，对应的import语句需要使用大括号。
+
+#### export 与 import 的复合写法
+如果在一个模块之中，先输入后输出同一个模块，import语句可以与export语句写在一起。
+```
+export { foo, bar } from 'my_module';
+
+// 等同于
+import { foo, bar } from 'my_module';
+export { foo, boo};
+```
+模块的接口改名和整体输出，也可以采用这种写法。
+```
+// 接口改名
+export { foo as myFoo } from 'my_module';
+
+// 整体输出
+export * from 'my_module';
+```
