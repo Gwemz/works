@@ -1887,3 +1887,6 @@ a[mySymbol] // "Hello!"
 http://mta.qq.com/mta/custom/ctr_promotion/links?app_id=3201809466&plan_id=384
 http://docs.developer.qq.com/mta/advance_access/promotiom.html
 http://www.hx2car.com/help/carxcdown.htm?ADTAG=384.361
+
+安装来源分析：
+http://docs.developer.qq.com/mta/advance_access/promotiom.html
