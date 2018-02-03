@@ -6,4 +6,5 @@ Node(npm)
 Vscode
 Chrome
 Wox
+ssh 配置
 重启有效
