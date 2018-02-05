@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link data-react-helmet="true"
+          rel="shortcut icon"
+          type="image/png"
+          href="../imgs/favicon.ico">
+    <link rel="stylesheet" href="../css/csshake/csshake.css">      
+    <title>csshake</title>
+</head>
+<!-- 
+    github: https://github.com/elrumordelaluz/csshake
+    static.js: https://github.com/mrdoob/stats.js
+ -->
+<style>
+    .container{
+        width:1200px;
+        height:auto;
+        margin:20px auto 0;
+        display:flex;
+        justify-content:space-between;
+    }
+    .container .box{
+        width:100px;
+        height:100px;
+        background:#ffd200;
+        flex-wrap: nowrap;
+        font-size:16px;
+        line-height: 100px;
+        text-align: center;
+        color:#ffffff;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="box shake">shake</div>
+        <div class="box shake shake-hard">shake-hard</div>
+        <div class="box shake shake-slow shake-constant">shake-slow</div>
+        <div class="box shake shake-little">shake-little</div>
+        <div class="box shake shake-horizontal">shake-horizontal</div>
+        <div class="box shake shake-vertical">shake-vertical</div>
+        <div class="box shake shake-rotate">shake-rotate</div>
+        <div class="box shake shake-opacity">shake-opacity</div>
+        <div class="box shake shake-crazy">shake-crazy</div>
+    </div>
+</body>
+</html>

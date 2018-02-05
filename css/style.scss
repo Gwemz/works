@@ -1,6 +1,20 @@
 @charset "UTF-8";
+@font-face {
+	font-family: "Kimberley";
+	/*src: url(/resource/web/mobile/html5/css/font.TTF) format("truetype");*/
+	src: url(./font.TTF) format("truetype");
+}
+
+/*苹方*/
+@font-face {
+	font-family: "PingFangBold";
+	/*src: url(/resource/web/mobile/html5/css/PingFangBold.ttf) format("truetype");*/
+	/*字体会有跨域问题*/
+	src: url(./PingFangBold.ttf) format("truetype");
+}
 body{
-  font:14px/1.5 "Helvetica, 微软雅黑, arial";
+  // font:14px/1.5 "Helvetica, 微软雅黑, arial";
+  font:14px/1.5 "PingFangBold, 微软雅黑, arial";
   background: #fff;
 }
 body,h1,h2,h3,h4,h5,h6,ul,li,dl,dd,p{
