@@ -90,6 +90,70 @@
     .box.active{
         height:300px;
     }
+    .border{
+        width:500px;
+        height:auto;
+        margin:10px auto 20px;
+        overflow: hidden;
+    }
+    .border > div{
+        float:left;
+    }
+    .border .border-left,.border .border-right{
+        width:200px;
+        height:50px;
+        background:#f3941d;
+        text-align: center;
+        line-height:50px;
+        color:#ffffff;
+    }
+    .border .border-right{
+        background:#f5d7d7;
+        color:#000000;
+    }
+    .border-icon{
+        width:0px;
+        height:0px;
+        border-width:50px 25px 0px 0px;
+        border-style:solid;
+        border-color:#f3941d #f5d7d7 #f3941d #f3941d;
+    }
+    .border1{
+        width:0px;
+        height:0px;
+        border-width:100px 100px 100px 100px;
+        border-style:solid;
+        border-color:#aaa #bbb #ccc #ddd;
+        margin:0 auto 20px;
+    }
+    .content .border3{
+        width:50px;
+        height:100px;
+        margin:0 auto 20px;
+        background:#ac2250;
+        text-align: center;
+        line-height: 100px;
+        position: relative;
+        color:#ffffff;
+    }
+    .small-triangle{
+        position: absolute;
+        width:0;
+        height:0;
+        border-width:15px 10px 0px 0px;
+        border-style: solid;
+        border-top-color: #ffffff;
+        border-right-color: #ac2250;
+        left:-10px;
+    }
+    .big-triangle{
+        width:0;
+        height:0;
+        border-width:15px 25px; 
+        border-style:solid;
+        border-color:#ac2250 #ac2250 #ffffff #ac2250;
+        margin-top:-15px;
+    }
 </style>
 <body>
     <img src="http://ovcf0m6s4.bkt.clouddn.com/IMG_20170902_124433.jpg" width="0" height="0" />
@@ -106,6 +170,23 @@
     </section>
     <textarea cols="20" rows="10" id="biao1">用户定义的代码区域</textarea>
     <input type="button" onClick="copyUrl2()" value="点击复制代码" />
+
+    <!-- 简单实用属性border -->
+    <div class="border">
+        <div class="border-left">商品介绍</div>
+        <div class="border-icon"></div>
+        <div class="border-right">商品评价</div>
+    </div>
+    <div class="border1">
+
+    </div>
+    <div class="content">
+        <div class="border3">
+            <div class="small-triangle"></div>
+            介绍
+            <div class="big-triangle"></div>
+        </div>
+    </div>
     <script type="text/javascript">
         function copyUrl2()
         {
