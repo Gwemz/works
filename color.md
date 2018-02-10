@@ -41,3 +41,23 @@ Wox
 ssh 配置
 
 重启有效
+
+## Github中国区排行榜
+[Github中国区排行榜](http://www.githubrank.com/)
+
+## 职位术语表述
+RD：研发（研究与开发）
+
+FE：前端研发
+
+QA：测试
+
+UE：用户体验
+
+OP：运维
+
+UI：用户设计
+
+DB：数据库
+
+PM：产品经理
