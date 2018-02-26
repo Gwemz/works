@@ -67,4 +67,32 @@ function greet(name = 'Anon', callback = function(){}) {
 function greet(name, callback = function(){}) {}
 ```
 
+#### 7.js闭包
+什么是闭包？
+```
+function a(){
+  var n = 0;
+  function inc() {
+    n++;
+    console.log(n);
+  }
+  inc(); 
+  inc(); 
+}
+a(); //控制台输出1，再输出2
+```
 
+另一串代码：
+```
+function a(){
+  var n = 0;
+  this.inc = function () {
+    n++; 
+    console.log(n);
+  };
+}
+var c = new a();
+c.inc();  //控制台输出1
+c.inc();  //控制台输出2
+```
+有权访问另一个函数作用域内变量的函数都是闭包。这里inc函数访问了构造函数a里面的变量n，所以形成了一个闭包。
