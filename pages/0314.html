@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
-    <title>alloy_touch</title>
+    <title>下拉刷新</title>
 </head>
 <style>
     * {
@@ -49,7 +49,7 @@
         font-weight: bold;
     }
 
-    #footer {
+    /* #footer {
         position: absolute;
         z-index: 12;
         bottom: 0;
@@ -58,7 +58,7 @@
         height: 48px;
         background: #e2e2e2;
         padding: 0;
-    }
+    } */
 
     #wrapper {
         position: absolute;
@@ -126,11 +126,11 @@
     }
 
     .arrow:after {
-        content: "Pull to refresh";
+        content: "下拉刷新页面";
     }
 
     .arrow_up.arrow:after {
-        content: "Release to refresh";
+        content: "松开刷新页面";
     }
 
     .arrow_up img {
@@ -173,7 +173,7 @@
             </div>
         </div>
         <div class="loading">
-            <svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default">
+            <!-- <svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default">
                 <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
                 <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00a9f2" transform="rotate(0 50 50) translate(0 -30)">
                     <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s" repeatCount="indefinite"></animate>
@@ -211,11 +211,13 @@
                 <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00a9f2" transform="rotate(330 50 50) translate(0 -30)">
                     <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.9166666666666666s" repeatCount="indefinite"></animate>
                 </rect>
-            </svg>
+            </svg> -->
+            <img src="http://static.hx2cars.com/resource/web/dist/static/mobile_index/image/loading.gif" alt="loading">
+            <!-- <div class="title">加载中...</div> -->
         </div>
     </div>
     <div id="header">
-        Gwemz
+        winter Guo
     </div>
     <div id="wrapper">
         <div id="scroller" style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);">
@@ -293,7 +295,7 @@
             target: scroller, //运动的对象
             property: "translateY",  //被滚动的属性
             initialValue: 0,
-            min: window.innerHeight - 45 - 48 - 2000, //不必需,滚动属性的最小值
+            min: window.innerHeight - 45  - 2000, //不必需,滚动属性的最小值
             max: 0, //不必需,滚动属性的最大值
             change: function (value) {
                 pull_refresh.translateY = value;
