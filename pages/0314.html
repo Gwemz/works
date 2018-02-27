@@ -297,6 +297,7 @@
             max: 0, //不必需,滚动属性的最大值
             change: function (value) {
                 pull_refresh.translateY = value;
+                console.log(value);
             },
             touchMove: function (evt, value) {
                 if (value > 70) {
@@ -317,6 +318,16 @@
 
         function mockRequest(at) {
             pull_refresh.classList.add("refreshing");
+
+            // 请求发送
+            // setTimeout(function(){
+            //     arrow.classList.remove("arrow_up");
+            //     pull_refresh.classList.remove("refreshing");
+            //     pull_refresh.translateY = 0;
+            //     at.to(at.initialValue);
+            //     at.min -= 40 * 3;   
+            // },500)
+
             setTimeout(function () {
                 var i = 0,
                     len = 3;
