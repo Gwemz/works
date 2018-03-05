@@ -127,9 +127,12 @@ GitHub 非常适合公有仓库，其有着不可替代的作用，但如若绑�
 
 码云地址： https://gitee.com/
 
-## 关于那些插件
+## About extension js
 
 * jquery.transit.js : 下拉刷新加载动画
+* underscore.js
+* pinchzoom.js  图片缩放
+* mobBigPic.js
 
 ```
 //下拉刷新
