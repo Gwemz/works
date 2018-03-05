@@ -126,3 +126,175 @@ GitHub 非常适合公有仓库，其有着不可替代的作用，但如若绑�
 今日发现 `码云`可以部署1000多个免费的私有仓库，且其页面可在微信中正常访问并打开。速度也不错。至少至今还未发现有何劣势。故而对于私有的代码，部署到码云上或许是一个不错选择。
 
 码云地址： https://gitee.com/
+
+## 关于那些插件
+
+* jquery.transit.js : 下拉刷新加载动画
+
+```
+//下拉刷新
+$.downDragload = function (tsobj, options) {
+    var defaults = {
+            dragAppend: '', //加载添加位置
+            choiceStyle: 1, //选个样式
+            drStyle: '', //样式1
+            drpStyle: '', //样式2
+            dragCallback: null
+        },
+        $obj = $(tsobj),
+        startPoint, endPoint,
+        opt;
+
+    this.init = function (options) {
+        opt = $.extend(false, {}, defaults, options);
+        var dragstr = '';
+        switch (opt.choiceStyle) {
+            case 1:
+                dragstr = '<div class="topLoad" id="topLoad" style="width: 100%;height: 6rem;background-color: #f6f6f6;position: absolute;z-index:-1;top: -6rem;' + opt.drStyle + '"><p style="width: 100%;text-align: center;height: 5rem;line-height: 5rem;font-size: 1.5rem;position: absolute;bottom: 0;left: 0;z-index:-1;' + opt.drpStyle + '"><img src = "http://static.hx2cars.com/resource/web/dist/static/mobpages/images/mindex/toplogo.png" style="width:1.8rem;height:1.8rem;display:inline-block;vertical-align: middle;margin: 0 0.5rem 0 0;"><span class="dragSpan" style="vertical-align: middle;color:#333">下拉刷新页面</span></p></div>';
+                break;
+            default:
+                break;
+        }
+        //添加加载动画
+        $(opt.dragAppend).prepend(dragstr);
+
+        //绑定滑动事件
+        $obj.off('touchstart').on({
+            'touchstart': function (e) {
+                //判断手指个数
+                if (e.originalEvent.touches.length > 1) {
+                    $(this).off('touchmove').off('touchend');
+                    return;
+                }
+                var touchs = e.originalEvent.targetTouches[0];
+                dragStart.call($(this), opt, touchs);
+            }
+        });
+    };
+
+    function dragStart(ops, touch) {
+        startPoint = {
+            y: touch.pageY
+        };
+        $(this).off('touchmove').on({
+            'touchmove': function (e) {
+                if (e.originalEvent.touches.length > 1) {
+                    $(this).off('touchmove').off('touchend');
+                    return;
+                }
+                var es = e;
+                var touchs = e.originalEvent.targetTouches[0];
+                dragMove.call($(this), opt, touchs, es);
+            }
+        });
+    }
+
+    function dragMove(ops, touch, es) {
+        var scrtop = $(document).scrollTop();
+        if (scrtop === 0) {
+            endPoint = {
+                y: touch.pageY
+            };
+            var hmove = (endPoint.y - startPoint.y) / 3;
+            if (hmove > 0) {
+                es.preventDefault();
+                if (hmove > 60) {
+                    $('.topLoad .dragSpan').html('松开刷新页面');
+                    $(this).off('touchend').on('touchend', function (e) {
+                        trueEnd.call($(this), ops);
+                    });
+                } else {
+                    $(this).off('touchend').on('touchend', function (e) {
+                        falseEnd.call($(this));
+                    });
+                }
+                $obj.css({
+                    'y': hmove + 'px',
+                    'transition-duration': '0s',
+                    '-webkit-transition-duration': '0s'
+                });
+                var rdeg = '-' + (hmove * 6) + 'deg';
+                switch (ops.choiceStyle) {
+                    case 1:
+                        $('.topLoad img').css({
+                            'rotate': rdeg,
+                            'transition-duration': '0s',
+                            '-webkit-transition-duration': '0s'
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
+    function trueEnd(ops) {
+        var tsend = $(this);
+        $(this).css({
+            'y': '5rem',
+            'transition-duration': '.3s',
+            '-webkit-transition-duration': '.3s'
+        });
+        setTimeout(function () {
+            if ($.type(ops.dragCallback) === 'function') {
+                var ifgo = ops.dragCallback();
+                if (ifgo === 1) {
+                    setTimeout(function () {
+                        falseEnd.call(tsend);
+                    }, 1000);
+                }
+            }
+        }, 300);
+        $(this).off('touchend').off('touchmove');
+        $('.topLoad .dragSpan').html('刷新中...');
+        switch (ops.choiceStyle) {
+            case 1:
+                $('.topLoad img').css({
+                    'rotate': '-180deg',
+                    'transition-duration': '.3s',
+                    '-webkit-transition-duration': '.3s'
+                });
+                break;
+            default:
+                break;
+        }
+    }
+
+    function falseEnd() {
+        var tsend = $(this);
+        $(this).css({
+            'y': 0,
+            'transition-duration': '.3s',
+            '-webkit-transition-duration': '.3s'
+        });
+        $('.topLoad img').css({
+            'rotate': '0',
+            'transition-duration': '.3s',
+            '-webkit-transition-duration': '.3s'
+        });
+        $(this).off('touchend').off('touchmove');
+        //重新绑定
+        $('body').on('touchmove', function () {
+        });
+
+        $('.topLoad .dragSpan').html('下拉刷新页面');
+    }
+
+    this.init(options);
+};
+```
+
+use：
+
+```
+// 下拉刷新
+$('#carList').downDragload({
+    dragAppend: '#carList',
+    drpStyle:'font-size:1rem;',
+    dragCallback: hxdragCallback
+});
+function hxdragCallback(){
+    location.reload();
+}
+```
