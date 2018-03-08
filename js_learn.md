@@ -96,3 +96,31 @@ c.inc();  //控制台输出1
 c.inc();  //控制台输出2
 ```
 有权访问另一个函数作用域内变量的函数都是闭包。这里inc函数访问了构造函数a里面的变量n，所以形成了一个闭包。
+
+#### each()和forEach()的区别
+
+forEach()为js方法，而each()为jquery方法(简单的东西往往被我们忽略)
+
+```
+var arr = ['aa','bb','cc','dd'];
+arr.forEach(function(i,v){
+    console.log(i,v);
+})
+
+aa 0
+bb 1
+cc 2
+dd 3
+```
+
+```
+var arr = ['aa','bb','cc','dd'];
+$.each(arr,function(i,v){
+    console.log(i,v);
+})
+
+0 "aa"
+1 "bb"
+2 "cc"
+3 "dd"
+```
