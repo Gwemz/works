@@ -301,3 +301,44 @@ function hxdragCallback(){
     location.reload();
 }
 ```
+
+## meta标签大全
+
+[meta 标签大全](http://www.cnblogs.com/libin-1/p/5979300.html)
+
+## css不常见的属性
+
+<!-- a链接或javascript事件选中后背景颜色 -->
+-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+<!-- 移除原生样式，如IOS中button标签的默认样式 -->
+-webkit-appearance: none;
+
+移动端-webkit-user-select:none导致input/textarea输入框无法输入
+
+```
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    // 后面的几行是新加的
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    outline: none;
+}
+```
+
+```
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+*:not(input,textarea) { 
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+}
+```
