@@ -370,3 +370,4 @@ function hxdragCallback(){
 
 `那些斗争到底的国家会再次雄起，那些乖乖投降的国家会灭亡。`
 
+[使用 SVG 符号和 CSS 变量实现多彩图标](https://juejin.im/post/5a8409e06fb9a063342672b6?utm_source=wechat)
