@@ -35,6 +35,7 @@
     </div>
 </body>
 <script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.lazyload.min.js"></script>
 <script>
     $(function(){
         var data = [];
@@ -48,8 +49,14 @@
             }
         })
         for(var i=0;i<data.length;i++){
-            $('<img alt="'+ data[i].shortname +'" src="../imgs/svg/'+ data[i].files[0] +'" data-i="'+ i +'" data-link="'+ data[i].url +'" data-name="'+ data[i].name +'"/>').appendTo('.container');
+            $('<img class="lazy" alt="'+ data[i].shortname +'" src="../imgs/0401_images/yixin.png" data-original="../imgs/svg/'+ data[i].files[0] +'" data-i="'+ i +'" data-link="'+ data[i].url +'" data-name="'+ data[i].name +'"/>').appendTo('.container');
         }
+
+        $("img.lazy").lazyload({
+            effect:"fadeIn",
+            threshold : 400,
+            container: $(".container")
+        });
     })
 </script>
 </html>
