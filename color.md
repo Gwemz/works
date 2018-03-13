@@ -306,6 +306,48 @@ function hxdragCallback(){
 
 [meta 标签大全](http://www.cnblogs.com/libin-1/p/5979300.html)
 
+`<meta charset="UTF-8">`设定网页字符编码，常用的有utf-8和gb2312
+
+`<meta content="keyword" name="keywords">`keywords关键字，以逗号区分
+
+`<meta content="description" name="description">`description描述
+
+`<meta name="renderer" content="webkit">`优先使用chrome内核渲染页面
+
+`<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">`优先使用最新版IE和Chrome浏览器
+
+`<meta http-equiv="Cache-Control" content="no-siteapp" />` 通过手机百度打开网页时，百度可能会对页面进行转码，只展现页面内容，头底部会被替换并植入广告。
+
+`<meta name="author" content="author,email address">`定义页面作者
+
+`<meta name="robots" content="index,follow">`定义网页搜索引擎索引方式  常见几种取值方式：none，noindex，nofollow，all，index和follow
+
+`<meta name="viewport" content="width=device-width, initial-scale=1.0">`为移动设备设定，viewport也可作为宽度单位，一些参数设定，width viewport宽度（数值/device-width）,height viewport 高度（数值/device-height）
+
+`<meta name="apple-mobile-web-app-capable" content="yes" />`是否启用webApp全屏模式
+
+`<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />`设置状态栏的背景颜色，只有在"apple-mobile-web-app-capable" content="yes"时生效
+
+`<meta name="format-detection" content="telephone=no,email=no" />`不自动识别页面中的电话和邮箱
+
+`<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />`设置IOS图标
+
+`<meta name="screen-orientation" content="portrait">`UC强制竖屏
+
+`<meta name="x5-orientation" content="portrait">`QQ强制竖屏
+
+`<meta name="full-screen" content="yes">`UC强制全屏
+
+`<meta name="x5-fullscreen" content="true">`QQ强制全屏
+
+`<meta name="browsermode" content="application">`UC应用模式
+
+`<meta name="x5-page-mode" content="app">`QQ应用模式
+
+`<link rel="icon" type="image/ico" href="/favicon.ico" />`网页ico图标设置
+
+`<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />`rss订阅
+
 ## css不常见的属性
 
 <!-- a链接或javascript事件选中后背景颜色 -->
@@ -371,3 +413,6 @@ function hxdragCallback(){
 `那些斗争到底的国家会再次雄起，那些乖乖投降的国家会灭亡。`
 
 [使用 SVG 符号和 CSS 变量实现多彩图标](https://juejin.im/post/5a8409e06fb9a063342672b6?utm_source=wechat)
+
+有没有这么一瞬间，觉得自己什么都不懂，猛然间发现掌握的东西只是冰山一角，看不到目的地，然后还不愿意进取？就如同蒙在被子中，已经喘不上气，但是还不愿意歇开被子。先人们给它定义了一个标签“懒”!
+
