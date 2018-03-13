@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>table布局</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        list-style:none;
+    }
+    .container{
+        width:1200px;
+        margin:0 auto;
+        padding-top:50px;
+    }
+    table{
+        text-align: center;
+        height:auto;
+    }
+    table tr{
+        width:100%;
+        line-height: 45px;
+    }
+</style>
+<body>
+    <div class="container">
+        <table width="100%">
+            <tr>
+                <td colspan="3" width="100%" height="150px" style="background-color: chartreuse">这是头部</td>
+            </tr>
+            <tr>
+                <td width="20%" height="80%" style="background-color: antiquewhite">左菜单</td>
+                <td width="60%" height="80%" style="background-color: coral">内容</td>
+                <td width="20%" height="80%" style="background-color: cornflowerblue">右菜单</td>
+            </tr>
+            <tr>
+                <td colspan="3" width="100%" height="10%" style="background-color: crimson">这是底部</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
