@@ -17,6 +17,8 @@
     body{
         margin:0;
         padding:0;
+        padding-bottom:12rem;
+        background:#000000;
     }
     *{
         list-style: none;
@@ -32,9 +34,20 @@
         border: 0;
         font-size: 1.64rem;
         color: #ffffff;
-        margin:20rem auto;
+        margin:20rem auto 3rem;
         text-align:center;
         line-height:6rem;
+    }
+    .collect,.confirm{
+        width:65%;
+        height:6rem;
+        background:#ff6600;
+        border-radius:5px;
+        text-align: center;
+        line-height: 6rem;   
+        margin:0 auto 5rem;
+        font-size:1.8rem;
+        color:#ffffff;
     }
     #page{
         position:fixed;
@@ -159,12 +172,53 @@
         height:240px;
         margin:0 auto;
     }
+    .messageBox{
+        width:12rem;
+        height:4.5rem;
+        background:rgba(0,0,0,.8);
+        color:#ffffff;
+        border-radius: 5px;
+        line-height: 4.5rem;
+        text-align: center;
+        margin:0 auto;
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        margin:auto;
+        opacity: 0;
+        transition: all .3s;
+    }
+    .messageBox.active{
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    .alertBox{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        margin:auto;
+        transition: all .3s;
+        width:75%;
+        height:15rem;
+        background:#ffffff;
+        border-radius:10px;
+    }
 </style>
 <body>
     <img src="http://ovcf0m6s4.bkt.clouddn.com/IMG_20170902_124433.jpg" width="0" height="0" />
     <h2>This is a test title!!!</h2>
     <div class="button">
         提交
+    </div>
+    <div class="collect">
+        收藏
+    </div>
+    <div class="confirm">
+        确定
     </div>
     <div class="box">
         I'm Chineses!!!
@@ -242,6 +296,12 @@
             </rect>
         </svg>
     </div>
+    <div class="messageBox">
+        收藏成功！
+    </div>
+    <!-- <div class="alertBox">
+
+    </div> -->
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -415,7 +475,7 @@
     wx.error(function(res) {
     console.log(res.errMsg);
     }); */
-
+    
     function reload(){
         window.location.href = location.href+'?time='+((new Date()).getTime());
     }
@@ -448,6 +508,23 @@
         $('.box').toggleClass('active');
     })
     
+    $('.collect').on('click',function(){
+        $('.messageBox').toggleClass('active');
+        setTimeout(function(){
+            $('.messageBox').removeClass('active');
+        },1000)
+    })
+
+    // 点击confirm确定
+    $('.confirm').on('click',function(){
+        var r = confirm("确定删除吗?");
+        if(r==true){
+            window.location.href='https://www.baidu.com';
+        }else{
+            document.write('伟大的科学家霍金于今日去世，享年76岁，一颗巨星陨落了！');
+        }
+    })
+
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
