@@ -1418,3 +1418,27 @@ function isSafari(){
 	}
 }
 ```
+#### 移动端阻止背景滑动
+
+```
+//阻止背景滑动
+function docprevent() {
+    $('body').css({
+        'height': $(window).height(),
+        'overflow': 'hidden'
+    });
+    $(document).off('touchmove').on('touchmove', function (e) {
+        e.preventDefault();
+    });
+}
+
+//添加滑动
+function docrecover() {
+    $('body').css({
+        'height': 'auto',
+        'overflow': 'auto'
+    });
+    $(document).off('touchmove').on('touchmove', function () {
+    });
+}
+```
