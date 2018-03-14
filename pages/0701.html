@@ -206,6 +206,38 @@
         height:15rem;
         background:#ffffff;
         border-radius:10px;
+        font-size:1.5rem;
+        opacity:0;
+        transition:all .3s;
+    }
+    .alertBox .content{
+        width:100%;
+        height:10.5rem;
+        text-align: center;
+        line-height:10.5rem;
+    }
+    .alertBox ul.bottom{
+        position:absolute;
+        width:100%;
+        height:4.5rem;
+        bottom:0;
+        border-top:1px solid #cccccc;
+        padding-left:0;
+        margin:0;
+    }
+    .alertBox ul.bottom > li{
+        float:left;
+        width:50%;
+        height:100%;
+        text-align: center;
+        line-height: 4.5rem;
+        box-sizing: border-box;
+    }
+    .alertBox ul.bottom li:first-of-type{
+        border-right:1px solid #cccccc;
+    }
+    .alertBox.active{
+        opacity:1;
     }
 </style>
 <body>
@@ -299,9 +331,15 @@
     <div class="messageBox">
         收藏成功！
     </div>
-    <!-- <div class="alertBox">
-
-    </div> -->
+    <div class="alertBox">
+        <div class="content">
+            确定删除吗？
+        </div>
+        <ul class="bottom">
+            <li>取消</li>
+            <li>确定</li>
+        </ul>
+    </div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -517,11 +555,27 @@
 
     // 点击confirm确定
     $('.confirm').on('click',function(){
-        var r = confirm("确定删除吗?");
-        if(r==true){
-            window.location.href='https://www.baidu.com';
-        }else{
-            document.write('伟大的科学家霍金于今日去世，享年76岁，一颗巨星陨落了！');
+        // var r = confirm("确定删除吗?");
+        // if(r==true){
+        //     window.location.href='https://www.baidu.com';
+        // }else{
+        //     document.write('伟大的科学家霍金于今日去世，享年76岁，一颗巨星陨落了！');
+        // }
+
+        $('.alertBox').addClass('active');
+    })
+
+    // 自定义弹窗确定取消
+    $('.alertBox').on('click','li',function(){
+        var index = $(this).index();
+        console.log(index);
+        // 取消
+        if(index == 0){
+            $('.alertBox').removeClass('active');
+        }
+        // 
+        else if(index == 1){
+            window.location.reload();
         }
     })
 
