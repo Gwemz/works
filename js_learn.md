@@ -124,3 +124,11 @@ $.each(arr,function(i,v){
 2 "cc"
 3 "dd"
 ```
+
+#### 阻止键盘抬起
+
+```
+$("#item").focus(function(){
+    document.activeElement.blur();
+})
+```
