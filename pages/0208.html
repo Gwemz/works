@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link datareacthelmet="true"
-          rel="shortcut icon"
-          type="image/png"
-          href="../imgs/favicon.ico">
+    <link datareacthelmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
     <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
     <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">
     <title>分页功能实现</title>
@@ -15,21 +13,35 @@
     接口参考文档：https://github.com/jokermonn/-Api
 -->
 <style>
-    body{padding-top:50px;}
-    li a.page-link{color:#0a0a0a;}
-    li.active a{background:#e9ecef;color:#007bff;}
-    #text{margin-bottom:20px;}
+    body {
+        padding-top: 50px;
+    }
+
+    li a.page-link {
+        color: #0a0a0a;
+    }
+
+    li.active a {
+        background: #e9ecef;
+        color: #007bff;
+    }
+
+    #text {
+        margin-bottom: 20px;
+    }
+
     ::selection {
-        background:#222;
-        color:#fff;
+        background: #222;
+        color: #fff;
     }
 </style>
+
 <body>
     <div class="container">
         <div id="text"></div>
         <nav aria-label="Page navigation example">
             <ul class="pagination" id="demo1">
-                
+
             </ul>
         </nav>
     </div>
@@ -37,48 +49,106 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jqPaginator.js"></script>
 <script>
-$(function () {
-    function nowtime(){//将当前时间转换成yyyymmdd格式
-        var mydate = new Date();
-        var str = "" + mydate.getFullYear();
-        var mm = mydate.getMonth()+1
-        if(mydate.getMonth()>9){
-            str += mm;
+    $(function () {
+        function nowtime() {//将当前时间转换成yyyymmdd格式
+            var mydate = new Date();
+            var str = "" + mydate.getFullYear();
+            var mm = mydate.getMonth() + 1
+            if (mydate.getMonth() > 9) {
+                str += mm;
+            }
+            else {
+                str += "0" + mm;
+            }
+            if (mydate.getDate() > 9) {
+                str += mydate.getDate();
+            }
+            else {
+                str += "0" + mydate.getDate();
+            }
+            return str;
         }
-        else{
-            str += "0" + mm;
-        }
-        if(mydate.getDate()>9){
-            str += mydate.getDate();
-        }
-        else{
-            str += "0" + mydate.getDate();
-        }
-        return str;
-    }
-    var time = nowtime();
+        var time = nowtime();
 
-    $('#demo1').jqPaginator({
-        totalPages: 100,
-        visiblePages: 10,
-        currentPage: 1,
-        totalCounts:9,
-        onPageChange: function (num, type) {
-            console.log(num,type);
-            $.ajax({
-                type:"get",
-                async:true,
-                url:'https://interface.meiriyiwen.com/article/random?dev=1',
-                dataType : "json",
-                success:function (data) {
-                    var data = data.data;
-                    console.log(data.date);
-                    $('#text').html('<h3>'+ data.title +'</h3>'+ data.author +'<br>'+ data.content +'<br>')
-                    time = data.date.prev;
-                }
-            })
+        $('#demo1').jqPaginator({
+            totalPages: 100,
+            visiblePages: 10,
+            currentPage: 1,
+            totalCounts: 9,
+            onPageChange: function (num, type) {
+                console.log(num, type);
+                $.ajax({
+                    type: "get",
+                    async: true,
+                    url: 'https://interface.meiriyiwen.com/article/random?dev=1',
+                    dataType: "json",
+                    success: function (data) {
+                        var data = data.data;
+                        console.log(data.date);
+                        $('#text').html('<h3>' + data.title + '</h3>' + data.author + '<br>' + data.content + '<br>')
+                        time = data.date.prev;
+                    }
+                })
+            }
+        });
+
+
+
+
+        var now = new Date();
+        var currYear = now.getFullYear();
+        var currMonth = now.getMonth() + 1;
+        var currDay = now.getDate();
+        var option = {
+            preset: 'date', //日期，可选：date\datetime\time\tree_list\image_text\select
+            theme: 'android-ics light', //皮肤样式，可选：default\android\android-ics light\android-ics\ios\jqm\sense-ui\wp light\wp
+            display: 'modal', //显示方式 ，可选：modal\inline\bubble\top\bottom
+            lang: "Chinese",
+            showLabel: true,//false  显示头部
+            rows: 5,//显示多少行，定义3就显示3行,
+            dateFormat: 'yyyy-mm-dd', // 面板日期格式
+            setText: '确认', //确认按钮名称
+            cancelText: '取消', //取消按钮名称
+            dateOrder: 'yyyymmdd', //面板中日期排列格式
+            dayText: '日',
+            monthText: '月',
+            yearText: '年', //面板中年月日文字
+            // showNow: false,
+            nowText: "今",
+            endYear: currYear + 10, //结束年份
+            minDate: new Date(currYear, currMonth - 1, currDay + 1),
+            onSelect: function (textVale, inst) { //选中时触发事件
+                console.log("我被选中了.....");
+            },
+            onClose: function (textVale, inst) { //插件效果退出时执行 inst:表示点击的状态反馈：set/cancel
+                console.log("textVale--" + textVale);
+                console.log(this.id);//this表示调用该插件的对象
+            }
+
+            //wheels:[[11,12,13],[21,22,23],[01,02,03]],// 当前你定义的数组(即要滚动的数组),
+            //defaultValue: [12,22]//默认显示当前滚动到哪个值,
+            // formatResult://滚动到某个值后执行某个方法
+            // function(){
+            //   console.log(1);
+            // }
         }
-    });
-})
+
+        //面板显示日期
+        $("#input").mobiscroll().date(option);
+
+        //面板显示时间
+        // $("#input").mobiscroll().time(option);
+
+        $("#clear").click(function () {
+            $("#input").mobiscroll("clear");
+            return false;
+        });
+
+        $("#show").click(function () {
+            $("#input").mobiscroll("show");
+            return false;
+        });
+    })
 </script>
+
 </html>
