@@ -508,3 +508,61 @@ Pandora.js
 
 人们在大谈特谈匠人精神的时候，可曾有一瞬间想过那些就活在自己身边那些活生生的例子。拐角炸了一辈子油条的王大爷，街口修了三十年自行车的喻叔叔，写了一辈子对联的李伯伯······
 
+
+## 关于移动端遇到的那些问题
+
+近来构建了一个移动端的应用，框架用的是比较传统的jquery...在写完之后，突出反映了一些问题，记录下来，防止日后再犯
+
+#### 问题偏小
+
+目前显著的一个问题便是，按照设计稿的大小用rem写出来的文字大小偏小，到测试阶段的时候，文字大小基本上是挨个调整。。。
+
+#### 背景层滑动
+
+在布局阶段遇到了滑动弹出层时背景层滑动的问题，正常情况下的解决方式是在弹出层出现时，将body的高度设为屏幕高度，超出部分隐藏。
+
+```
+function docprevent() {
+    $('body').css({
+        'height': $(window).height(),
+        'overflow': 'hidden'
+    });
+    $(document).off('touchmove').on('touchmove', function (e) {
+        e.preventDefault();
+    });
+}
+```
+而当弹出层消失后，将body恢复
+```
+function docrecover() {
+    $('body').css({
+        'height': 'auto',
+        'overflow': 'auto'
+    });
+    $(document).off('touchmove').on('touchmove', function () {
+    });
+}
+```
+当然，问题不可能这么简单，布局方面需要注意的是，在内容外包一层盒子，最好操控这一层盒子，而非body
+
+#### 弹出层滑动卡顿
+
+`-webkit-overflow-scrolling: touch;`该属性可有效改善弹出层滑动卡情况。
+
+#### 固定定位上移
+
+另一个比较突出的问题便是固定定位，固定定位中存在input元素，当软键盘抬起之后在IOS中会出现定位上移，光标错乱等问题，通过调整布局，将内容区固定到一个大盒子中，在弹出层弹出之后，阻止大盒子的滚动，而非body滚动，弹出层消失之后，恢复原状。
+
+#### 日期选择控件
+
+项目中涉及到的日期选择，最后选择了mobiscroll.custom-2.6.2.min.js插件来解决
+
+#### 呼起数字键盘
+
+input输入框呼起数字键盘，添加属性 `type = "tel"`解决
+
+参考链接：
+
+[web端ios布局fixed元素软键盘唤起时fixed失效的解决方案](https://www.jianshu.com/p/782e61068334)
+
+[如何做一个听话的 “输入框”](http://zzfe.org/#/detail/5a8e3e67e772cd17475c8c6b)
