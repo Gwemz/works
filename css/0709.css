@@ -37,9 +37,22 @@ body {
 .icon {
     font-size: 150px;
 }
-h1{
-    font-size:100px;
-    font-family: PingFang SC,STHeitiSC-Light,Helvetica-Light,arial,sans-serif;
+
+h1 {
+    font-size: 100px;
+    font-family: PingFang SC, STHeitiSC-Light, Helvetica-Light, arial, sans-serif;
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width: 1300px) {
+    body {
+        /* background-color: lightblue; */
+    }
+    h1{
+        font-size:75px;
+    }
+    .icon{
+        font-size:100px;
+    }
 }
