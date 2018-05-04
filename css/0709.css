@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* background:rebeccapurple; */
+}
+
+.icon {
+    font-size: 150px;
+}
+h1{
+    font-size:100px;
+    font-family: PingFang SC,STHeitiSC-Light,Helvetica-Light,arial,sans-serif;
+    display: flex;
+    justify-content: center;
+}
