@@ -23,3 +23,11 @@ bug提交以及回复
 
 #### 两个google groups:mongodb-user与mongo-cn
 用户交流
+
+#### windows安装指南
+
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
+
+#### node.js教程
+
+https://yunnysunny.gitbooks.io/nodebook
