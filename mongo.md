@@ -23,3 +23,5 @@ bug提交以及回复
 
 #### 两个google groups:mongodb-user与mongo-cn
 用户交流
+
+研究内容:node 爬虫
