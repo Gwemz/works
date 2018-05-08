@@ -1,7 +1,7 @@
 <template>
 
   <div class="hello">
-    <img src="../assets/logo2.png">
+    <img src="../assets/postcss.svg">
     <!-- 淘宝前端团队logo:http://taobaofed.org/ -->
     <h1>{{ msg }}</h1>
     <h2>教程示例</h2>
@@ -18,12 +18,15 @@
         </a> -->
       </li>
       <li>
-        <a
+        <router-link to="/exam2">
+          示例二
+        </router-link>
+        <!-- <a
           href="https://vuejs.org"
           target="_blank"
         >
           示例二
-        </a>
+        </a> -->
       </li>
       <li>
         <a
