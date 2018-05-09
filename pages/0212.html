@@ -24,7 +24,7 @@
                 <source src="http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/video_1232351.mp4" type="video/mp4" width="100%">
             </video>
             <div class="home-header">
-                <div class="header tiny colorful">
+                <div class="header tiny">
                     <div class="wrapper clearfix">
                         <a href="" class="logo">度小满金融</a>
                         <nav class="header__nav">
@@ -133,9 +133,23 @@
         </div>
     </div>
 </body>
+<script src="../js/jquery.min.js"></script>
 <script src="../js/bscroll.min.js"></script>
 <script>
-
+    $(function(){
+        let flag = true;
+        let winHeight = $(window).height();
+        $('video').css({'height':winHeight});
+        $(window).scroll(function(e){
+            let scrolltop = $(window).scrollTop();
+            if(scrolltop > winHeight){
+                $('.home-header .header').addClass('colorful');
+            }else{
+                $('.home-header .header').removeClass('colorful');
+            }
+            
+        })
+    })
 </script>
 
 </html>
