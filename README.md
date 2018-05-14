@@ -1,9 +1,9 @@
 # works
 http://gwem.tk/works   :smiling_imp:  :smiling_imp:  :smiling_imp:
 
-GitHub:  
+<!-- GitHub:   -->
 
-![GitHub forks](https://img.shields.io/github/forks/Gwemz/works.svg?style=social&label=Fork)
+<!-- ![GitHub forks](https://img.shields.io/github/forks/Gwemz/works.svg?style=social&label=Fork)
 
 ![GitHub stars](https://img.shields.io/github/stars/Gwemz/works.svg?style=social&label=Stars)
 
@@ -17,4 +17,4 @@ GitHub:
 
 ![commit-activity](https://img.shields.io/github/commit-activity/y/Gwemz/works.svg)
 
-![languages](https://img.shields.io/github/languages/top/Gwemz/works.svg)
+![languages](https://img.shields.io/github/languages/top/Gwemz/works.svg) -->
