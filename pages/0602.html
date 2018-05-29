@@ -9,69 +9,201 @@
     原文地址：https://github.com/judasn/IntelliJ-IDEA-Tutorial
     https://github.com/judasn/IntelliJ-IDEA-Tutorial/blob/master/emmet-introduce.md
 -->
+<style>
+    .container{
+        width:1200px;
+        margin:0 auto;
+        overflow: hidden;
+    }
+    .container #nav{
+        float: left;
+    }
+</style>
 
 <body>
     <!-- ul#nav>li.item*4>a{Item $} -->
-    jfiengiegneigje /r /n fjeigniegn
+    <!-- jfiengiegneigje /r /n fjeigniegn
+    <button class="baidu">这是一个按钮</button> -->
+    <div class="container">
+        <div id="nav">
+            <a id="a11" href="#a1" class="c">书籍目录</a>
+            <a id="a22" href="#a2">作品试读</a>
+            <a id="a33" href="#a3">购买须知</a>
+            <a id="a44" href="#a4">注意事项</a>
+            <a id="a55" href="#a5">用户点评</a>
+        </div>
+        <br />
+        <br /> 页面结构如下：
+        <div id="a1">测试</div>
+        <div id="a2">测试</div>
+        <div id="a3">测试</div>
+        <div id="a4">测试</div>
+        <div id="a5">测试</div>
+    </div>
+
 </body>
+<script src="../js/jquery.min.js"></script>
 <script>
-    function formatRemainTime(endTime) {
+    // function formatRemainTime(endTime) {
 
-        var startDate = new Date(); //开始时间
+    //     var startDate = new Date(); //开始时间
 
-        var endDate = new Date(endTime); //结束时间
+    //     var endDate = new Date(endTime); //结束时间
 
-        var t = endDate.getTime() - startDate.getTime(); //时间差
+    //     var t = endDate.getTime() - startDate.getTime(); //时间差
 
-        var d = 0,
+    //     var d = 0,
 
-            h = 0,
+    //         h = 0,
 
-            m = 0,
+    //         m = 0,
 
-            s = 0;
+    //         s = 0;
 
-        if (t >= 0) {
+    //     if (t >= 0) {
 
-            d = Math.floor(t / 1000 / 3600 / 24);
+    //         d = Math.floor(t / 1000 / 3600 / 24);
 
-            h = Math.floor(t / 1000 / 60 / 60 % 24);
+    //         h = Math.floor(t / 1000 / 60 / 60 % 24);
 
-            m = Math.floor(t / 1000 / 60 % 60);
+    //         m = Math.floor(t / 1000 / 60 % 60);
 
-            s = Math.floor(t / 1000 % 60);
+    //         s = Math.floor(t / 1000 % 60);
 
-        }
+    //     }
 
-        return d + "天 " + h + "小时 " + m + "分钟 " + s + "秒";
+    //     return d + "天 " + h + "小时 " + m + "分钟 " + s + "秒";
 
-    }
-    console.log(formatRemainTime('1527143621000'));
-    function formatPassTime(startTime) {
-        var currentTime = Date.parse(new Date()),
-            time = currentTime - startTime,
-            day = parseInt(time / (1000 * 60 * 60 * 24)),
-            hour = parseInt(time / (1000 * 60 * 60)),
-            min = parseInt(time / (1000 * 60)),
-            month = parseInt(day / 30),
-            year = parseInt(month / 12);
-        if (year) return year + "年前"
+    // }
+    // console.log(formatRemainTime('1527143621000'));
+    // function formatPassTime(startTime) {
+    //     var currentTime = Date.parse(new Date()),
+    //         time = currentTime - startTime,
+    //         day = parseInt(time / (1000 * 60 * 60 * 24)),
+    //         hour = parseInt(time / (1000 * 60 * 60)),
+    //         min = parseInt(time / (1000 * 60)),
+    //         month = parseInt(day / 30),
+    //         year = parseInt(month / 12);
+    //     if (year) return year + "年前"
 
-        if (month) return month + "个月前"
+    //     if (month) return month + "个月前"
 
-        if (day) return day + "天前"
+    //     if (day) return day + "天前"
 
-        if (hour) return hour + "小时前"
+    //     if (hour) return hour + "小时前"
 
-        if (min) return min + "分钟前"
+    //     if (min) return min + "分钟前"
 
-        else return '刚刚'
-    }
-    // 时间戳向后转换5分钟
-    let time = 1527143621000+1000*60*5;
+    //     else return '刚刚'
+    // }
+    // // 时间戳向后转换5分钟
+    // let time = 1527143621000 + 1000 * 60 * 5;
 
-    console.log(formatPassTime('1527143621000'));
-    console.log(time);
+    // console.log(formatPassTime('1527143621000'));
+    // console.log(time);
+
+
+    //pc公共会员充值弹框
+
+
+    $(function () {
+        $(window).scroll(function () {
+            //为页面添加页面滚动监听事件
+            var wst = $(window).scrollTop() //滚动条距离顶端值
+            for (i = 1; i < 6; i++) {             //加循环
+                if ($("#a" + i).offset().top <= wst) { //判断滚动条位置
+                    $('#nav a').removeClass("c"); //清除c类
+                    $("#a" + i + i).addClass("c");	//给当前导航加c类
+                }
+            }
+        })
+        $('#nav a').click(function () {
+            $('#nav a').removeClass("c");
+            $(this).addClass("c");
+        });
+    });
+
+</script>
+<script>
+    // $.pcBuyVip = function ($this) {
+    //     var $tob = $this;
+    //     //var opt;
+    //     this.init = function () {
+    //         var bindFun = function () {
+    //             addHtml();
+    //             addFun();
+    //         };
+    //         $tob.on('click', bindFun);
+    //     }
+    //     function addHtml() {
+    //         console.log('addHTML执行');
+    //         var str = '';
+    //         str += '<div class="openvipModel">';
+    //         str += '<div class="openVipContainer">';
+    //         str += '<div class="vipBenefit">';
+    //         str += '<div class="titleText">开通个人会员</div>';
+    //         str += '<div class="BenefitTextContainer">';
+    //         str += '<ul class="BenefitText">';
+    //         str += '<li><i class=""></i><span>4大收车频道，每天多享10倍车源；</span></li>';
+    //         str += '<li><i></i><span>精准呈现意向车源，一打开就是自己需要的车；</span></li>';
+    //         str += '<li><i></i><span>无需加好友，也能看到批发大佬朋友圈的车源;</span></li>';
+    //         str += '<li><i></i><span>4S查询5折优惠，低至6元！</span></li>';
+    //         str += '</ul>';
+    //         str += '</div>';
+    //         str += '</div>';
+    //         str += '<div class="vipSetMeal">';
+    //         str += '<i class="closeVip"></i>';
+    //         str += '<p class="stext">请选择套餐：</p>';
+    //         str += '<div class="vipType">';
+    //         str += '<ul class="allType">';
+    //         str += '<li>半年会员<i></i></li>';
+    //         str += '<li class="select">特惠礼包<i></i></li>';
+    //         str += '<li>年度会员<i></i></li>';
+    //         str += '<li>至尊会员<i></i></li>';
+    //         str += '</ul>';
+    //         str += '<p class="explainText">六个月个人会员+20张4S免费券（有效期60天）</p>';
+    //         str += '</div>';
+    //         str += '<div class="paymentMoney">';
+    //         str += '<p class="payMoney">实付金额：<span class="text1">￥<em class="moneyText">389</em>元</span><span class="text2">（已抵扣10元）</span></p>';
+    //         str += '<p class="payText">请选择支付方式：</p>';
+    //         str += '<ul class="RechargeType">';
+    //         str += '<li class="wechats select"><i></i></li>';
+    //         str += '<li class="alipay"><i></i></li>';
+    //         str += '</ul>';
+    //         str += '<p class="payMoneyBtn">立即支付</p>';
+    //         str += '</div>';
+    //         str += '</div>';
+    //         str += '</div>';
+    //         str += '</div>';
+    //         $('body').append(str);
+    //     }
+    //     function addFun() {
+    //         console.log('addFun执行');
+    //         $('.closeVip').click(function () {
+    //             $('.openvipModel').remove();
+    //         });
+    //         $('.allType li').click(function () {
+    //             $(this).addClass('select').siblings().removeClass('select');
+    //         });
+    //         $('.RechargeType li').click(function () {
+    //             $(this).addClass('select').siblings().removeClass('select');
+    //         });
+    //         $('.payMoneyBtn').click(function () {
+    //             if ($('.wechats').hasClass('select')) {
+    //                 //微信支付
+    //             } else {
+    //                 //支付宝支付
+    //             }
+    //         }).off();
+    //     }
+    //     this.init();
+    // }
+    // $.fn.pcBuyVip = function () {
+    //     return this.each(function (i, v) {
+    //         new $.pcBuyVip($(this));
+    //     });
+    // };
+    // $('.baidu').pcBuyVip();
 </script>
 
 </html>
