@@ -4,19 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <title>IntelliJ-IDEA</title>
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
 </head>
 <!--
     原文地址：https://github.com/judasn/IntelliJ-IDEA-Tutorial
     https://github.com/judasn/IntelliJ-IDEA-Tutorial/blob/master/emmet-introduce.md
 -->
 <style>
-    .container{
-        width:1200px;
-        margin:0 auto;
+    .container {
+        width: 1200px;
+        height: 5000px;
+        margin: 0 auto;
         overflow: hidden;
     }
-    .container #nav{
-        float: left;
+
+    .container #nav {
+        position: fixed;
+        top:0;
+        left:0;
+        right: 0;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:rgba(255, 255, 255, .8);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+    }
+    #nav a{
+        text-decoration: none;
+        color:#666666;
+        margin-right:25px;
+    }
+    #nav a.c{
+        color:#cf4646;
+        font-weight: bold;
+    }
+    #a1,#a2,#a3,#a4,#a5{
+        width:100%;
+        height: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100px;
+        color:#ffffff;
+    }
+    #a1.c,#a2.c,#a3.c,#a4.c,#a5.c{
+        background: #cf4646;
     }
 </style>
 
@@ -34,11 +67,11 @@
         </div>
         <br />
         <br /> 页面结构如下：
-        <div id="a1">测试</div>
-        <div id="a2">测试</div>
-        <div id="a3">测试</div>
-        <div id="a4">测试</div>
-        <div id="a5">测试</div>
+        <div id="a1" class="c">测试(书籍目录)</div>
+        <div id="a2">测试(作品试读)</div>
+        <div id="a3">测试(购买须知)</div>
+        <div id="a4">测试(注意事项)</div>
+        <div id="a5">测试(用户点评)</div>
     </div>
 
 </body>
@@ -110,9 +143,16 @@
         $(window).scroll(function () {
             //为页面添加页面滚动监听事件
             var wst = $(window).scrollTop() //滚动条距离顶端值
+            console.log($('#a1').offset().top);
+            console.log($('#a2').offset().top);
+            console.log($('#a3').offset().top);
+            console.log($('#a4').offset().top);
+            console.log($('#a5').offset().top);
             for (i = 1; i < 6; i++) {             //加循环
                 if ($("#a" + i).offset().top <= wst) { //判断滚动条位置
                     $('#nav a').removeClass("c"); //清除c类
+                    $('#a1,#a2,#a3,#a4,#a5').removeClass('c');
+                    $('#a'+ i).addClass('c');
                     $("#a" + i + i).addClass("c");	//给当前导航加c类
                 }
             }
