@@ -66,13 +66,14 @@ var c = new Crawler({
             var $ = res.$;
             // $ is Cheerio by default
             //a lean implementation of core jQuery designed specifically for the server
-            // console.log($("img").attr('src'));
+            console.log($("img").attr('src'));
+            return false;
             for (var i = 0; i < $('img').length; i++) {
                 let img = $('img').eq(i).attr('src');
                 console.log($('img').eq(i).attr('src'));
                 a.queue({
                     uri:"https:"+ img +"",
-                    filename:'imooc_'+ (i+1) +'.jpg'
+                    filename:'weibo_'+ (i+1) +'.jpg'
                 })
             }
         }
@@ -80,7 +81,8 @@ var c = new Crawler({
     }
 });
 
-c.queue('https://www.imooc.com/');
+// c.queue('https://www.imooc.com/');
+c.queue('https://weibo.com/hug8217?is_all=1');
 
 // c.queue({
 //     uri:"https://img.mukewang.com/5ac356a6000166ec09360316.jpg",
