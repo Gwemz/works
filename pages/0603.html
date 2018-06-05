@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/bulma-docs.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <title>Github接口分析</title>
+    <link rel="stylesheet" href="../css/0603.css">
 </head>
 
 <body>
@@ -383,6 +384,9 @@
             </div>
         </div>
     </div>
+    <div class="box">
+        这是一段测试文本
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -406,7 +410,7 @@
             }).then(function (res) {
                 let data = res.data;
                 that.years = data.years;
-                that.contributions = data.contributions;
+                // that.contributions = data.contributions;
                 console.log(data);
             })
                 .catch(function (error) {

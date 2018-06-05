@@ -1,0 +1,10 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+@mixin fontSize($size){
+    font-size:($size/40)rem;
+}
+
+.box{
+    @include fontSize(200);
+}
