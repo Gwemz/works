@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>WebSocket</title>
+</head>
+
+<body>
+
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        var ws = new WebSocket("wss://echo.websocket.org");
+        // var ws = new WebSocket("ws://hx2car.com/mobile/filteData.json");
+        ws.onopen = function (evt) {
+            console.log("Connection open ...");
+            ws.send("Hello WebSockets!");
+        };
+
+        ws.onmessage = function (evt) {
+            console.log("Received Message: " + evt.data);
+            ws.close();
+        };
+
+        ws.onclose = function (evt) {
+            console.log("Connection closed.");
+        };
+    })
+</script>
+
+</html>
