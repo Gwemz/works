@@ -9,25 +9,91 @@
     <link href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.css" rel="stylesheet">
     <title>WebSocket</title>
     <style>
+        body{
+            padding-bottom:100px;
+        }
+        * {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         .swiper-container {
+            width: 100%;
             background: rgba(0, 0, 0, .8);
             color: #ffffff;
+        }
+
+        ul {
+            width: 100%;
+        }
+
+        ul>li {
+            width: 100%;
+            list-style: none;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul>li span {
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 150px;
+            height: 45px;
         }
     </style>
 </head>
 
 <body>
-    <div class="swiper-container swiper-container-horizontal" id="swiper-container1" style="height:300px;">
-        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1600px, 0px, 0px);">
-            <div class="swiper-slide blue-slide" style="width: 800px;">
-                slider1</div>
-            <div class="swiper-slide red-slide swiper-slide-prev" style="width: 800px;">
-                slider2</div>
-            <div class="swiper-slide orange-slide swiper-slide-active" style="width: 800px;">
-                slider3</div>
+    <div class="container">
+        <div class="swiper-container swiper-container-horizontal" id="swiper-container1" style="height:300px;">
+            <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1600px, 0px, 0px);">
+                <div class="swiper-slide blue-slide" style="width: 800px;">
+                    slider1</div>
+                <div class="swiper-slide red-slide swiper-slide-prev" style="width: 800px;">
+                    slider2</div>
+                <div class="swiper-slide orange-slide swiper-slide-active" style="width: 800px;">
+                    slider3</div>
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
         </div>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+
+        <ul>
+            <li>这是内容区域
+                <span class="add">增加</span>
+            </li>
+            <li>这是内容区域
+                <span class="delete">删除</span>
+            </li>
+            <li>这是内容区域
+                <span class="delete">删除</span>
+            </li>
+        </ul>
+        <button class="btn">点击提交</button>
+        <!-- <audio controls>
+            <source src="horse.ogg" type="audio/ogg">
+            <source src="horse.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+        </audio> -->
+        <video class="video" controls="controls"  style="height: 634px;" poster="https://www.duxiaoman.com/static/duxiaoman/portal/images/home/screen-bg_cc52b7f.jpg">
+            <source src="https://www.duxiaoman.com/static/duxiaoman/portal/images/home/video_1232351.mp4" type="video/mp4" width="100%">
+        </video>
     </div>
+
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.js"></script>
@@ -55,6 +121,16 @@
             // console.log(num);
             // num++;
         }
+        // 点击增加
+        var ul = $(ul);
+        $('.add').click(function () {
+            $('<li>这是内容区域<span class="delete">删除</span></li>').appendTo('ul');
+        })
+        // 点击提交
+        $('.btn').on('click', function () {
+
+        })
+
 
         // var ws = new WebSocket("wss://echo.websocket.org");
         // // var ws = new WebSocket("ws://hx2car.com/mobile/filteData.json");
