@@ -15,17 +15,34 @@
     <meta name="author" content="">
     <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
     <link rel="stylesheet" href="../css/bulma.min.css">
-    <title></title>
+    <title>china_city</title>
 
 </head>
-
+<style>
+    #app{
+        width:1200px;
+        margin:0 auto;
+    }
+    .provinces{
+        font-size:18px;
+        font-weight: bold;
+        color:#333;
+        text-align: center;
+    }
+    .city{
+        font-size:14px;
+        color:#666;
+        line-height: 45px;
+        text-align: center;
+    }
+</style>
 <body>
     <div id="app">
         <ul>
-            <li v-for="(item,key) in data.provinces">
+            <li class="provinces" v-for="(item,key) in data.provinces">
                 {{item.provinceName}}
                 <ul>
-                    <li v-for="(item,key) in item.citys">
+                    <li class="city" v-for="(item,key) in item.citys">
                         {{item.citysName}}
                     </li>
                 </ul>
