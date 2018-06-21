@@ -5,49 +5,161 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 分享显示的标题-->
-    <meta itemprop="name" content="欢迎访问小阿草官方网站" />
-    <!-- 分享显示的缩略图-->
-    <meta itemprop="image" content="http://www.iiover.com/img/icon/qq.png" />
-    <!-- 分享显示的简介-->
-    <meta name="description" itemprop="description" content="小阿草，一个神奇的幕后人，支撑着一个神奇的网站" />
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta itemprop="name" content="全国城市收集" />
+    <meta itemprop="image" content="http://img.hb.aicdn.com/e472d09b8005c0364d169ba117b6d5ba089e3262401c-xRoLoJ_sq320" />
+    <meta name="description" itemprop="description" content="基于vue全国城市展示 布局灵感来源：https://gmtc.geekbang.org/" />
+    <meta name="author" content="winterGuo">
     <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
     <link rel="stylesheet" href="../css/bulma.min.css">
     <title>china_city</title>
 
 </head>
 <style>
-    #app{
-        width:1200px;
-        margin:0 auto;
+    body {
+        background: #000;
+        color: #ffffff;
     }
-    .provinces{
-        font-size:18px;
-        font-weight: bold;
-        color:#333;
+
+    #app {
+        padding: 20px 10px;
+        width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    h3 {
+        padding-top: 56px;
         text-align: center;
+        font-size: 45px;
+        color: #337ef5;
+        text-shadow: 0 0 100px #3375fe, 0 0 40px #3375fe;
+        display: block;
     }
-    .city{
-        font-size:14px;
-        color:#666;
+
+    .provinces {
+        width: 187px;
+        height: 187px;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        background: #666;
+        padding: 5px;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+        overflow: hidden;
+        transition: all .25s;
+        cursor: pointer;
+    }
+
+    .provinces:hover {
+        background-color: #ffffff;
+        box-shadow: 0 0 1px #3375fe, 0 0 40px #3375fe;
+    }
+
+    .provinces:hover .name {
+        background: #333;
+        color: #ffffff;
+    }
+
+    .name {
+        width: 100%;
+        height: 100%;
+        background: #cccccc;
+        border-radius: 50%;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url('http://img.hb.aicdn.com/e472d09b8005c0364d169ba117b6d5ba089e3262401c-xRoLoJ_sq320');
+        background-size: 100%;
+    }
+
+    .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .8);
+        box-shadow: 0 0 20px 0 #d3dce5;
+    }
+
+    .item {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 2;
+        width: 800px;
+        height: 600px;
+        border-radius: 5px;
+        background: #fff;
+        color: #333;
+        cursor: default;
+        padding: 20px;
+        box-sizing: border-box;
+        background-image: url('http://img.hb.aicdn.com/6ccebbdaa0180011bf15ebc4890b6d5e52c0fc1230b13-cfnEqs_fw658');
+        background-size: cover;
+    }
+
+    .item .title {
+        margin-bottom: 0;
+    }
+
+    .item .title a {
+        color: #ffffff;
+    }
+
+    .item .content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .city {
+        width: 150px;
+        height: 75px;
+        border-radius: 50%;
+        font-size: 20px;
         line-height: 45px;
         text-align: center;
+        padding: 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .city a {
+        color: #ffffff;
     }
 </style>
+
 <body>
+    <h3>全国城市</h3>
     <div id="app">
-        <ul>
-            <li class="provinces" v-for="(item,key) in data.provinces">
-                {{item.provinceName}}
-                <ul>
-                    <li class="city" v-for="(item,key) in item.citys">
-                        {{item.citysName}}
-                    </li>
-                </ul>
-            </li>
-        </ul>
+
+        <div class="provinces" v-for="(item,key) in data.provinces">
+            <div class="name" @click="greet">{{item.provinceName}}</div>
+            <div class="item" style="display: none;">
+                <div class="title">
+                    <a :href="'https://baike.baidu.com/item/'+ item.provinceName +''" target="_blank">{{item.provinceName}}</a>
+                </div>
+                <div class="content">
+                    <div class="city" v-for="(item,key) in item.citys">
+                        <a :href="'https://baike.baidu.com/item/'+ item.citysName +''" target="_blank">{{item.citysName}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mask" @click="close" v-if="showmask"></div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -56,7 +168,22 @@
     let vue = new Vue({
         el: '#app',
         data: {
-            data: []
+            data: [],
+            showmask: false,
+            target: ''
+        },
+        methods: {
+            greet: function (e) {
+                let temp = this, sibling = e.target.nextElementSibling;
+                temp.showmask = true;
+                temp.target = sibling;
+                sibling.style.display = 'block';
+            },
+            close: function () {
+                let temp = this;
+                temp.showmask = false;
+                temp.target.style.display = 'none';
+            }
         },
         created: function () {
             let that = this;
