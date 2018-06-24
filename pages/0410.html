@@ -12,23 +12,97 @@
     http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 -->
 <style>
-    h3{
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    h3 {
         text-align: center;
     }
-    .grid{
+
+    .grid {
         display: flex;
     }
-    .grid-cell{
 
+    .grid-cell {}
+
+    .image-show {
+        position: relative;
+        margin: 0;
+        width: 2048px;
+        height: 682px;
+    }
+
+    .image-show::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 19920px;
+        height: 720px;
+        background: url('../imgs/river.jpg') center center no-repeat;
+        animation-duration: 500s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .image-show::after {
+        content: '';
+        display: block;
+        position: absolute;
+        background: url('../imgs/river.jpg') center center no-repeat;
+        width: 19860px;
+        height: 626px;
+        animation-duration: 500s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .image-show.fog-active::before {
+        animation-name: showAnimationAfterLarge;
+    }
+
+    .image-show.fog-active::after {
+        animation-name: showAnimationBeforeLarge;
+    }
+
+    @keyframes showAnimationAfterLarge {
+        0% {
+            transform: translate3d(19860px, 0, 0);
+        }
+        50% {
+            transform: translate3d(0, 0, 0);
+        }
+        100% {
+            transform: translate3d(-19860px, 0, 0);
+        }
+    }
+
+    @keyframes showAnimationBeforeLarge {
+        0% {
+            transform: translate3d(0, 0, 0);
+        }
+        50% {
+            transform: translate3d(-19860px, 0, 0);
+        }
+        50.001% {
+            transform: translate3d(19860px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
     }
 </style>
+
 <body>
-    <h3>语法篇：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</h3>
+    <figure class="image-show fog-active"></figure>
+    <!-- <h3>语法篇：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</h3>
     <div class="grid">
         <div class="grid-cell"></div>
         <div class="grid-cell"></div>
         <div class="grid-cell"></div>
-    </div>
+    </div> -->
 </body>
 
 </html>
