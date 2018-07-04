@@ -81,6 +81,11 @@ a {
   height: 0;
   line-height: 45px;
   overflow: hidden;
+  transition: height linear .5s;
+}
+
+.sub-dl.active {
+  height: auto;
 }
 
 #pages_0101 {
