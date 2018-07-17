@@ -60,7 +60,7 @@
         <div class="wrap shadow">
             <ol id="ol" class="list">
                 <li :track="item.title" v-for="(item,index) of data" :key="index">
-                    <h1 v-on:click="handleClick" :number="index" ref="dataNum">
+                    <h1 @click="handleClick" :number="index" ref="dataNum">
                         <a href="javascript:;" :title="item.title">{{item.title}}</a>
                     </h1>
                     <dl class="sub-dl" :class="showcontent?'active':''">
@@ -72,7 +72,6 @@
             </ol>
         </div>
     </div>
-
 </body>
 <!-- <script src="./js/jquery.min.js"></script> -->
 <script>
@@ -191,7 +190,6 @@
         methods: {
             handleClick: function (e) {
                 this.showcontent = !this.showcontent;
-                console.log(this.$refs.dataNum)
             }
         }
     })
