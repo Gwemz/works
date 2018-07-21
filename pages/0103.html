@@ -1,62 +1,95 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
     <title>禁止用户输入</title>
 </head>
 <!--id名不能为数字-->
-<body>
-<div id="pages_0102">
 
-    <form class="form-horizontal user-input" id="form" role="form">
-        <div class="form-group">
-            <label for="user" class="col-sm-2 control-label">用户名</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="user" placeholder="用户名" disabled="disabled">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password" class="col-sm-2 control-label">密码</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="password" placeholder="密码">
+<body onbeforeunload="checkLeave()">
+    <div id="pages_0102">
 
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="msg" class="col-sm-2 control-label">备注</label>
-            <div class="col-sm-10">
-                <textarea class="from-control" name="" id="msg" placeholder="备注" cols="47" rows="10"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">  记住我
-                    </label>
+        <form class="form-horizontal user-input" id="form" role="form">
+            <div class="form-group">
+                <label for="user" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="user" placeholder="用户名" disabled="disabled">
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button id="btn" type="button" class="btn btn-primary btn-block">提 交</button>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" placeholder="密码">
+
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+            <div class="form-group">
+                <label for="msg" class="col-sm-2 control-label">备注</label>
+                <div class="col-sm-10">
+                    <textarea class="from-control" name="" id="msg" placeholder="备注" cols="47" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 记住我
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button id="btn" type="button" class="btn btn-primary btn-block">提 交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        // var _hmt = _hmt || [];
+        //   (function() {
+        //     var hm = document.createElement("script");
+        //     hm.src = "https://hm.baidu.com/hm.js?7117e1fef39f18ac2431859dffdda945";
+        //     var s = document.getElementsByTagName("script")[0];
+        //     s.parentNode.insertBefore(hm, s);
+        //   })();
+
+        // window.onbeforeunload = function () {
+        //     // alert("===onbeforeunload===");
+        //     if (event.clientX > document.body.clientWidth && event.clientY < 0 || event.altKey) {
+        //         alert("你关闭了浏览器");
+        //     } else {
+        //         alert("你正在刷新页面");
+        //     }
+        // }
+        // window.onbeforeunload = function () {
+        //     //  这是用来设定一个时间, 时间到了, 就会执行一个指定的 method。
+        //     setTimeout(onunloadcancel, 10);
+        //     return "真的离开?";
+        // }
+        // window.onunloadcancel = function () {
+        //     alert("取消离开");
+        // }
+
+        // window.onbeforeunload = function () {
+        //     var bln = confirm('是否真的关闭浏览器');
+        //     if (bln) {
+        //         window.onunload = function () {                    //不调用此函数新打开的游览器也会被关闭
+        //             window.open('http://www.baidu.com/');
+        //         }
+        //     }
+        // }
+        function checkLeave() {
+            event.returnValue = "shit";
+        }
+    </script>
 </body>
-<script>
-var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?7117e1fef39f18ac2431859dffdda945";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
+
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>sessionStorage</title>
+    <!-- 
+        js计算在页面停留时间:https://blog.csdn.net/superit401/article/details/72900792?locationNum=12&fps=1
+     -->
+</head>
+
+<body>
+    <h2>　sessionStorage 是HTML5新增的一个会话存储对象，用于临时保存同一窗口(或标签页)的数据，在关闭窗口或标签页之后将会删除这些数据。(案例查看源代码)</h2>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    sessionStorage.setItem('testKey', 'on shit, this is a test value');
+    localStorage.setItem('demoKey', 'on funck hello world!')
+    console.log(sessionStorage.getItem('testKey'));
+    var userEntity = {
+        name: 'winter',
+        age: 200,
+        motto: 'on shit!'
+    };
+    // 存储值：将对象转换为Json字符串
+    sessionStorage.setItem('user', JSON.stringify(userEntity));
+    // 取值时：把获取到的Json字符串转换回对象
+    var userJsonStr = sessionStorage.getItem('user');
+    console.log(JSON.parse(userJsonStr));
+</script>
+
+</html>
