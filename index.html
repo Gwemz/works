@@ -213,11 +213,11 @@
             var hg = $(this).next().children().height();
             var num = $(this).next().children().length;
             $(this).next().toggleClass('active');
-            if ($(this).next().hasClass('active')) {
-                $(this).siblings('.active').animate({ height: '' + hg * num + 'px' }, 500);
-            } else {
-                $(this).next().animate({ height: 0 }, 500);
-            }
+            // if ($(this).next().hasClass('active')) {
+            //     $(this).siblings('.active').animate({ height: '' + hg * num + 'px' }, 500);
+            // } else {
+            //     $(this).next().animate({ height: 0 }, 500);
+            // }
 
         })
 

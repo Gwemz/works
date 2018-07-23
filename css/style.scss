@@ -68,12 +68,13 @@ a{
   }
 }
 .sub-dl{
-  height: 0;
+  max-height: 0;
   line-height:45px;
   overflow: hidden;
-  transition: height linear .5s;
+  transition: max-height linear .5s;
   &.active{
-    height: auto;
+    max-height:935px;
+    // height: auto;
   }
 }
 
