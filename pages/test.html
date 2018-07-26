@@ -6,45 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
-    <title>sessionStorage</title>
+    <title>test</title>
+    <link rel="stylesheet" href="http://www.pailixiang.com/Themes/mbo/reset.css?v=87">
     <!-- 
         js计算在页面停留时间:https://blog.csdn.net/superit401/article/details/72900792?locationNum=12&fps=1
      -->
 </head>
 <style>
-    .wrap{
-        width:300px;
-        margin:0 auto;
-        /* display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        flex-shrink:0; */
+    body{
+        height: 100rem;
     }
-    button{
-        margin:0;
-        padding:0;
+    .bottom{
+        position: fixed;
+        bottom:0;
+        width:100%;
+        height:3rem;
+        background: rgba(0, 0, 0, .8);
+        font-size:1.1rem;
+        color:#ffffff;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .bottom > div{
+        width: 33.33%;
+        height: 75%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid #ffffff;
+    }
+    .bottom > div:last-of-type{
+        border-right:0;
+    }
+    .FSearch {
+        width:100% !important;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .SBox{
+        width:75%;
+        height:100%;
+    }
+    #searchUser{
+        height:100%;
     }
 </style>
 <body>
-    <h2>　sessionStorage 是HTML5新增的一个会话存储对象，用于临时保存同一窗口(或标签页)的数据，在关闭窗口或标签页之后将会删除这些数据。(案例查看源代码)</h2>
-    <div class="wrap">点击进行
-        <a href="#" class="weixin">微信授权</a>，可在服务通知中随时接收查询订单进度</div>
+    <div class="bottom">
+        <div>买车</div>
+        <div>批发</div>
+        <div class="search">搜索</div>
+    </div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
-    sessionStorage.setItem('testKey', 'on shit, this is a test value');
-    localStorage.setItem('demoKey', 'on funck hello world!')
-    console.log(sessionStorage.getItem('testKey'));
-    var userEntity = {
-        name: 'winter',
-        age: 200,
-        motto: 'on shit!'
-    };
-    // 存储值：将对象转换为Json字符串
-    sessionStorage.setItem('user', JSON.stringify(userEntity));
-    // 取值时：把获取到的Json字符串转换回对象
-    var userJsonStr = sessionStorage.getItem('user');
-    console.log(JSON.parse(userJsonStr));
+    $(function(){
+        $('.search').click(function(){
+            $('.bottom').children().remove();
+            $('<div class="FSearch" style="bottom: 0rem;"><div class="SBox"><input class="searchipt" id="searchUser" type="text" placeholder="请输入手机号或姓名搜索"></div><div class="ancelS">取消</div></div>').appendTo('.bottom');
+        })
+        $('.ancelS').click(function(){
+            $('.bottom').children().remove();
+            $('<div>买车</div><div>批发</div><div class="search">搜索</div>').appendTo('.bottom');
+        })
+    })
 </script>
 
 </html>
