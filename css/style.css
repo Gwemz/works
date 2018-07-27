@@ -25,13 +25,82 @@ body, h1, h2, h3, h4, h5, h6, ul, li, dl, dd, p {
   border: 0;
 }
 
+body, a, div, i, img, ul, li {
+  cursor: url("../imgs/mouse.cur"), default;
+}
+
 a {
   color: #cf4646;
   text-decoration: none;
 }
 
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url("../imgs/post.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* ---- stats.js ---- */
+.count-particles {
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles {
+  font-size: 1.1em;
+}
+
+#stats,
+.count-particles {
+  -webkit-user-select: none;
+}
+
+#stats {
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.count-particles {
+  border-radius: 0 0 3px 3px;
+}
+
+#content {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding-top: 50px;
+  box-sizing: border-box;
+  z-index: 2;
+  overflow-y: scroll;
+}
+
 .wrap {
-  margin: 50px auto 0;
+  margin: 0 auto;
   width: 500px;
   font-size: 22px;
   padding: 40px 20px;
@@ -41,7 +110,7 @@ a {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   box-shadow: 0px 2px 3px #ececec;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .list {

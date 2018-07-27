@@ -58,15 +58,30 @@
     <!--背景音乐-->
     <!--<audio src="http://dl.stream.qqmusic.qq.com/C400004HwcUS4QLPuY.m4a?vkey=DE94F0DD4CF4705D987354085B1505B1B5475CF7FCAD2E62476CFEE670FF13299ED1E6CC9225E185B51B2556282C92F1A04D488B4AE59F44&guid=6525565592&uin=1955743279&fromtag=66"
        autoplay="autoplay"></audio>-->
-    <div class="wrap shadow">
-        <ol id="ol" class="list">
-            <li>
-
-            </li>
-        </ol>
+    <div id="particles-js">
+        <div id="content">
+            <div class="wrap shadow">
+                <ol id="ol" class="list">
+                    <li>
+        
+                    </li>
+                </ol>
+            </div>
+        </div>
     </div>
+    <!-- <div id="content">
+        <div class="wrap shadow">
+            <ol id="ol" class="list">
+                <li>
+    
+                </li>
+            </ol>
+        </div>
+    </div> -->
 </body>
 <script src="./js/jquery.min.js"></script>
+<script src="./pages/particles.js/particles.min.js"></script>
+<script src="./js/particles/app.js"></script>
 <script>
     $(function () {
         //原生
@@ -174,10 +189,10 @@
             for (var j = 0; j < item.length; j++) {
                 if (j == 0) {
                     sub += '<li data-track="title点击"><h1><a href="javascript:;" title="' + item[j].title + '">' + item[j].title + '</a></h1><dl class="sub-dl">';
-                    console.log('## ' + item[j].title + '');
+                    // console.log('## ' + item[j].title + '');
                 } else {
                     sub += '<dd><a href="' + item[j].url + '" target="_blank" title="' + item[j].title + '">' + item[j].title + '</a></dd>';
-                    console.log('#### [' + item[j].title + '](http://gwem.tk/works/' + item[j].url + ')');
+                    // console.log('#### [' + item[j].title + '](http://gwem.tk/works/' + item[j].url + ')');
                 }
 
                 if (j == item.length - 1) {
