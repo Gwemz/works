@@ -52,6 +52,7 @@
         -khtml-user-select: none;
         /*早期浏览器*/
         user-select: none;
+        padding-top:100px;
     }
 </style>
 
@@ -63,7 +64,7 @@
                     <h1 @click="handleClick" :number="index" ref="dataNum">
                         <a href="javascript:;" :title="item.title">{{item.title}}</a>
                     </h1>
-                    <dl class="sub-dl" :class="showcontent?'active':''">
+                    <dl class="sub-dl" :class="item.show?'active':''">
                         <dd v-for="(content,index) of item.content" :key="index">
                             <a :href="content.url">{{content.title}}</a>
                         </dd>
@@ -91,7 +92,8 @@
                 { url: 'pages/0110.html', title: '全国城市三级联动' },
                 { url: 'pages/0111.html', title: 'Angular数据渲染' },
                 { url: 'pages/0112.html', title: 'JS生成图片验证码' }
-            ]
+            ],
+            show:false
         },
         {
             title: '第二章 JS效果相关代码',
@@ -108,7 +110,8 @@
                 { url: 'pages/0210.html', title: '下拉刷新、上拉加载' },
                 { url: 'pages/0211.html', title: 'H5照片查看' },
                 { url: 'pages/0212.html', title: 'better-scroll' }
-            ]
+            ],
+            show:false
         },
         {
             title: '第三章 js相关插件',
@@ -130,7 +133,8 @@
                 { url: 'pages/0315.html', title: '百度MVVM框架San' },
                 { url: 'pages/0316.html', title: 'flowplayer' },
                 { url: 'pages/0317.html', title: 'ffmpeg' }
-            ]
+            ],
+            show:false
         },
         {
             title: '第四章 CSS3效果层',
@@ -144,14 +148,16 @@
                 { url: 'pages/0410.html', title: 'flex布局' },
                 { url: 'pages/0411.html', title: 'About svg' },
                 { url: 'pages/Cayman', title: 'Cayman theme' }
-            ]
+            ],
+            show:false
         },
         {
             title: '第五章 移动端效果',
             content: [
                 { url: 'pages/0501.html', title: 'LCalendar移动端日期时间选择控件' },
                 { url: 'http://gwem.tk/douban-vue/', title: 'vue-豆瓣电影' }
-            ]
+            ],
+            show:false
         },
         {
             title: '第六章 时间日期效果',
@@ -159,7 +165,8 @@
                 { url: 'pages/0601.html', title: '学习资源整理(By phodal Huang)' },
                 { url: 'pages/0602.html', title: 'IntelliJ-IDEA' },
                 { url: 'pages/0603.html', title: 'Github接口分析' }
-            ]
+            ],
+            show:false
         },
         {
             title: '第七章 其它练习',
@@ -176,7 +183,8 @@
                 { url: 'pages/0710.html', title: 'emoji' },
                 { url: 'pages/0711.html', title: 'WebSocket' },
                 { url: 'pages/0712.html', title: 'china_city' }
-            ]
+            ],
+            show:false
         }
     ];
     var vm = new Vue({
@@ -184,12 +192,13 @@
         props: ['content'],
         data: {
             list: data,
-            showcontent: false,
+            // showcontent: false,
             brands: ['奥迪','大众','雷克萨斯','阿尔法-罗密欧','阿斯顿马丁','乔治·巴顿','宝马','奔驰','丰田']
         },
         methods: {
             handleClick: function (e) {
-                this.showcontent = !this.showcontent;
+                console.log(e.target);
+                // this.showcontent = !this.showcontent;
             }
         }
     })
