@@ -208,4 +208,109 @@ var mydata = [
 
 // console.log('程序执行完毕');
 
-// 链式流
+// var Hello = require('./hello');
+// hello = new Hello();
+// hello.setName('winter Guo');
+// hello.sayHello();
+
+// function say(word){
+//     console.log(word);
+// }
+
+// function execute(someFunction,value){
+//     someFunction(value)
+// }
+
+// execute(say,'on shit');
+
+// var util = require('util');
+// function Base() { 
+//     this.name = 'base'; 
+//     this.base = 1991; 
+//     this.sayHello = function() { 
+//     console.log('Hello ' + this.name); 
+//     }; 
+// } 
+// Base.prototype.showName = function() { 
+//     console.log(this.name);
+// }; 
+// function Sub() { 
+//     this.name = 'sub'; 
+// } 
+// util.inherits(Sub, Base); 
+// var objBase = new Base(); 
+// objBase.showName(); 
+// objBase.sayHello(); 
+// console.log(objBase); 
+// var objSub = new Sub(); 
+// objSub.showName(); 
+// //objSub.sayHello(); 
+// console.log(objSub); 
+
+var http = require('http');
+var url = require('url');
+var util = require('util');
+// 获取GET的请求内容
+// http://127.0.0.1:3000/user?id=1000&age=25&name=winterGuo&sex=boy
+// http.createServer(function(req, res){
+//     res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
+//     // 解析url参数
+//     var params = url.parse(req.url, true).query;
+//     res.write('用户ID:'+params.id);
+//     res.write('\n');
+//     res.write('用户名:'+params.name);
+//     res.write('\n');
+//     res.write('年龄:'+params.age);
+//     res.write('\n');
+//     res.write('性别:'+params.sex);
+//     res.end();
+// }).listen(3000);
+
+// 获取POST请求
+// var querystring = require('querystring');
+// var postHTML = 
+//   '<html><head><meta charset="utf-8"><title>POST请求</title></head>' +
+//   '<body>' +
+//   '<form method="post">' +
+//   '网站名： <input name="name"><br>' +
+//   '网站 URL： <input name="url"><br>' +
+//   '<input type="submit">' +
+//   '</form>' +
+//   '</body></html>';
+
+// http.createServer(function(req,res){
+//     var body = '';
+//     req.on('data',function(chunk){
+//         body += chunk;
+//     })
+//     req.on('end',function(){
+//         body = querystring.parse(body);
+//         res.writeHead(200,{'Content-Type':'text/html; charset=utf8'});
+//         if(body.name && body.url){
+//             res.write('网站名: '+body.name)
+//             res.write('<br>')
+//             res.write('网站URL: '+body.url)
+//         }else{
+//             res.write(postHTML)
+//         }
+//         res.end()
+//     })
+// }).listen(3000);
+
+// Node.js OS模块
+var os = require('os');
+console.log('系统的默认临时文件夹 ' + os.tmpdir())
+console.log(' CPU 的字节序 ' + os.endianness())
+console.log('操作系统的主机名 ' + os.hostname())
+console.log('操作系统名 ' + os.type())
+console.log('操作系统名 ' + os.platform())
+console.log('操作系统 CPU 架构 ' + os.arch())
+console.log('操作系统的发行版本 ' + os.release())
+console.log('操作系统运行的时间 ' + os.uptime())
+console.log('包含 1、5、15 分钟平均负载的数组 ' + os.loadavg())
+console.log('系统内存总量 ' + os.totalmem())
+console.log('操作系统空闲内存量 ' + os.freemem())
+console.log('所安装的每个 CPU/内核的信息')
+console.log(os.cpus())
+console.log('获得网络接口列表')
+console.log(os.networkInterfaces())
