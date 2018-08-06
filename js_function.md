@@ -2028,7 +2028,7 @@ function ajaxRequest(type, url, params, callback, lock, async, closeLock) {
     });
 }
 ```
-// Ajax请求（GET请求方式），url请求地址，params请求参数（不包含?），callback成功返回后的调用方法，lock是否锁屏，async是否异步请求
+// Ajax请求（GET请求方式），url请求地址，params请求参数（不包含?），call back成功返回后的调用方法，lock是否锁屏，async是否异步请求
 ```
 function ajaxGet(url, params, callback, lock, async) {
     ajaxRequest("GET", url, params, callback, lock, async);
