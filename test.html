@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+</head>
+<style>
+    select{
+        width:64px;
+        overflow: hidden;
+    }
+</style>
+<body>
+    <select id="test" name="">
+        <option value="1">text1</option>
+        <option value="2">内蒙古自治区</option>
+        <option value="2">广西壮族自治区</option>
+    </select>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script>
+    $(function(){
+        // console.log($('#test option:selected'));
+        $('#test').change(function(){
+            console.log($(this));
+            // $(this)[0].value = '123';
+            // console.log($(this).val());
+        })
+        // $('#test').on('click','option',function(){
+        //     console.log($(this));
+        // })
+    })
+</script>
+</html>
