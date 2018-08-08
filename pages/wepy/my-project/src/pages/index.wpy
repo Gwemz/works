@@ -18,10 +18,10 @@
 <template>
   <view class="container">
     <!-- This is a test page by winter on 2018/8/8 -->
-    <view class="userinfo" @tap="handleViewTap">
+    <!-- <view class="userinfo" @tap="handleViewTap">
       <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
       <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
-    </view>
+    </view> -->
 
     <panel>
       <view class="title" slot="title">测试数据绑定</view>
@@ -237,9 +237,9 @@
     onLoad() {
       let self = this
       this.$parent.getUserInfo(function (userInfo) {
-        if (userInfo) {
-          self.userInfo = userInfo
-        }
+        // if (userInfo) {
+        //   self.userInfo = userInfo
+        // }
         self.normalTitle = '标题已被修改'
 
         self.setTimeoutTitle = '标题三秒后会被修改'
