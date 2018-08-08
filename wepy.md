@@ -1,3 +1,5 @@
+[官方文档](https://tencent.github.io/wepy/document.html)
+
 ## wepy初始化安装
 
 ### 安装更新
