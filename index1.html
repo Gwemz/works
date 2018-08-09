@@ -203,14 +203,16 @@
             }
         },
         created: function () {
-            // axios.get('http://wallpaper.apc.360.cn/index.php', {
-            axios.get('http://wallpaper.apc.360.cn/index.php?c=WallPaperAndroid&a=getAppsByCategory&cid=9&start=0&count=99', {
+            axios.get('http://wallpaper.apc.360.cn/index.php', {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
                 params: {
-                    // c: 'WallPaperAndroid',
-                    // a: 'getAppsByCategory',
-                    // cid: 9,
-                    // start: 0,
-                    // count: 99
+                    c: 'WallPaperAndroid',
+                    a: 'getAppsByCategory',
+                    cid: 9,
+                    start: 0,
+                    count: 99
                 }
             }).then(function (res) {
                 console.log(res);
