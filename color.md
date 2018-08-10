@@ -804,3 +804,16 @@ input输入框呼起数字键盘，添加属性 `type = "tel"`解决
 ## 语录
 
 你存心做一个与世无争的老实人吧，人家就利用你欺侮你。你稍有才德品貌，人家就嫉妒你排挤你。 你大度退让，人家就侵犯你损害你。你要不与人争，就得与世无求，同时还要维持实力准备斗争。你要和别人和平共处，就先得和他们周旋，还得准备随时吃亏——杨绛
+
+## 修改github仓库上的项目语言
+
+在根目录下创建 `.gitattributes`文件
+
+文件中添加内容：
+
+```
+*.css linguist-language=JavaScript
+*.less linguist-language=JavaScript
+*.js linguist-language=JavaScript
+*.html linguist-language=JavaScript
+```
