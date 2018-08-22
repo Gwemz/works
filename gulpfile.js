@@ -20,4 +20,4 @@ gulp.task('watch',function(){
 });
 
 // 默认任务
-gulp.task('default',['webserver','watch']);
+gulp.task('default',['webserver','watch']); 
