@@ -827,3 +827,8 @@ input输入框呼起数字键盘，添加属性 `type = "tel"`解决
 ## 快速构建一个页面
 
 markdown语法快速编辑一篇文档，发布到github或者gitee上，通过域名来访问,比如https://xxx.github.io/仓库名/color or https://xxx.gitee.io/仓库名/color github或者gitee会帮你处理好markdown的样式
+
+## 关于SEO
+一年前写了一篇文章，“IntelliJ IDEA中自动压缩js,css文件”，在百度统计中发现，这篇文章隔几天就会被打开一次，然后自己用google试了试，发现同类型的搜索，这篇文章居然排第一，很震惊...
+
+so，原创很重要，不要写一些千篇一律的东西，有自己的思想，有自己的内容也挺好的...
