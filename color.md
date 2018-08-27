@@ -832,3 +832,95 @@ markdown语法快速编辑一篇文档，发布到github或者gitee上，通过�
 一年前写了一篇文章，“IntelliJ IDEA中自动压缩js,css文件”，在百度统计中发现，这篇文章隔几天就会被打开一次，然后自己用google试了试，发现同类型的搜索，这篇文章居然排第一，很震惊...
 
 so，原创很重要，不要写一些千篇一律的东西，有自己的思想，有自己的内容也挺好的...
+
+## 小程序实现字母导航功能
+
+wxml:
+
+scroll-into-view 滚动到页面中对应ID的位置
+```
+<scroll-view style="height:{{windowHeight}};" scroll-into-view="{{alpha}}">
+    <view class="item" wx:for="{{keymap}}" id="{{item}}">
+
+    </view>
+</scroll-view>
+
+//字母表位置(catchtouchstart, catchtouchmove, catchtouchend 分别为滑动事件开始、移动和结束)
+<view data-id="selector" catchtouchstart="handlerAlphaTap" catchtouchmove="handlerMove" catchtouchend="handlerEnd" class="alphanet-selector">
+    <view data-ap="{{item}}" wx:for="{{keymap}}" wx:key="unique" class="selector-one" wx:for-item="item">
+        {{item}}
+    </view>
+</view>
+```
+
+JS：
+
+```
+//滑动开始
+handlerAlphaTap(e) {
+    let { ap } = e.target.dataset;
+    this.setData({
+        alpha: ap,
+        touchStatus: true
+    });
+},
+
+//滑动过程
+handlerMove(e) {
+    if(this.data.touchStatus){
+        if(this.timer){
+            clearTimeout(this.timer)
+        }
+        this.timer = setTimeout(() => {
+            let { keymap } = this.data;
+            let moveY = e.touches[0].clientY;
+            let rY = moveY - this.offsetTop;
+            if (rY >= 0) {
+                let index = Math.floor((rY - this.apHeight) / this.apHeight);
+                if (0 <= index && index < keymap.length) {
+                    let nonwAp = keymap[index]; 
+                    wx.showToast({
+                        title:''+ nonwAp +'',
+                        icon:'none',
+                        duration: 500
+                    })
+                    nonwAp && this.setData({ alpha: nonwAp });
+                }
+            }
+        },16)
+    }
+},
+
+//滑动结束
+handlerEnd() {
+    this.setData({
+        touchStatus: false
+    })
+}
+```
+
+## 小程序自定义多选功能
+
+js:
+```
+moreSelect(){
+    let resultmap = this.data.resultmap;
+    //为数组添加自定义属性
+    for(let i in resultmap){
+        resultmap[i]['select'] = false;
+    }
+    this.setData({
+        resultmap: resultmap
+    })
+},
+
+selectItem(e){
+    let id = e.target.id;
+    this.data.resultmap[id].select = !this.data.resultmap[id].select;
+    this.setData({
+        resultmap: this.data.resultmap
+    })
+}
+```
+
+## 小程序列表查看更多功能(同上)

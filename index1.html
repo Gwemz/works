@@ -55,6 +55,18 @@
         user-select: none;
         padding-top: 100px;
     }
+    .rotate{
+        width:200px;
+        height:200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 100px;
+        margin-left:100px;
+    }
+    .rotate.active{
+        transform: rotate(180deg);
+    }
 </style>
 
 <body>
@@ -73,6 +85,10 @@
                 </li>
             </ol>
         </div>
+
+        <div class="rotate" :class="rotate?'active':''" @click="rotateClick">Rotate</div>
+
+
     </div>
 </body>
 <!-- <script src="./js/jquery.min.js"></script> -->
@@ -194,12 +210,16 @@
         data: {
             list: data,
             // showcontent: false,
-            brands: ['奥迪', '大众', '雷克萨斯', '阿尔法-罗密欧', '阿斯顿马丁', '乔治·巴顿', '宝马', '奔驰', '丰田']
+            brands: ['奥迪', '大众', '雷克萨斯', '阿尔法-罗密欧', '阿斯顿马丁', '乔治·巴顿', '宝马', '奔驰', '丰田'],
+            rotate: false
         },
         methods: {
             handleClick: function (e) {
                 console.log(e.target);
                 // this.showcontent = !this.showcontent;
+            },
+            rotateClick: function(){
+                this.rotate = !this.rotate
             }
         },
         created: function () {
