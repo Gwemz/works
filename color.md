@@ -956,3 +956,9 @@ selectItem(e){
 ## 关于闭包 
 
 骑自行车在红绿灯前停下，听到两个人在谈论闭包，用闭包思想解决问题，吓得回去赶快看了一眼闭包原理...
+
+## 如何成为 Node.js 全栈工程师? 
+
+[外部链接](https://nodelover.me)
+
+[github链接](https://github.com/MiYogurt/nodelover-maps)
