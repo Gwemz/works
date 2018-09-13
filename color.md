@@ -962,3 +962,9 @@ selectItem(e){
 [外部链接](https://nodelover.me)
 
 [github链接](https://github.com/MiYogurt/nodelover-maps)
+
+## 唐家三少
+
+代表作品：斗罗大陆、绝世唐门、神印王座、为了你我愿意热爱整个世界
+
+[about link](http://ireadweek.com/index.php/Index/bookList.html?keyword=%E5%94%90%E5%AE%B6%E4%B8%89%E5%B0%91)
