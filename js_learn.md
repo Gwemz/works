@@ -132,3 +132,104 @@ $("#item").focus(function(){
     document.activeElement.blur();
 })
 ```
+
+## 如何在JavaScript中更好的使用数组
+
+#### 使用 Array.includes 替代 Array.indexOf
+
+array.includes返回布尔值 true 和 false
+
+```
+'use strict';
+const characters = [
+  'ironman',
+  'black_widow',
+  'hulk',
+  'captain_america',
+  'hulk',
+  'thor',
+];
+console.log(characters.indexOf('hulk'));
+// 2
+console.log(characters.indexOf('batman'));
+// -1
+console.log(characters.includes('hulk'));
+// true
+console.log(characters.includes('batman'));
+// false
+```
+
+#### 使用 Array.find 替代 Array.filter
+
+array.filter会遍历整个数组，将符合条件的筛选出来。array.find只要找到其中一项，便会停止，在某一些业务需求中，性能会更好一些。
+
+```
+'use strict';
+const characters = [
+  { id: 1, name: 'ironman' },
+  { id: 2, name: 'black_widow' },
+  { id: 3, name: 'captain_america' },
+  { id: 4, name: 'captain_america' },
+];
+function getCharacter(name) {
+  return character => character.name === name;
+}
+console.log(characters.filter(getCharacter('captain_america')));
+// [
+//   { id: 3, name: 'captain_america' },
+//   { id: 4, name: 'captain_america' },
+// ]
+console.log(characters.find(getCharacter('captain_america')));
+// { id: 3, name: 'captain_america' }
+
+```
+
+## 使用 Array.some 替代 Array.find
+
+Array.some返回所需要的布尔值
+
+```
+'use strict';
+const characters = [
+  { id: 1, name: 'ironman', env: 'marvel' },
+  { id: 2, name: 'black_widow', env: 'marvel' },
+  { id: 3, name: 'wonder_woman', env: 'dc_comics' },
+];
+function hasCharacterFrom(env) {
+  return character => character.env === env;
+}
+console.log(characters.find(hasCharacterFrom('marvel')));
+// { id: 1, name: 'ironman', env: 'marvel' }
+console.log(characters.some(hasCharacterFrom('marvel')));
+// true
+```
+
+## 使用 Array.reduce 替代 Array.filter 与 Array.map 的组合
+
+```
+'use strict';
+const characters = [
+  { name: 'ironman', env: 'marvel' },
+  { name: 'black_widow', env: 'marvel' },
+  { name: 'wonder_woman', env: 'dc_comics' },
+];
+console.log(
+  characters    .filter(character => character.env === 'marvel')
+    .map(character => Object.assign({}, character, { alsoSeenIn: ['Avengers'] }))
+);
+// [
+//   { name: 'ironman', env: 'marvel', alsoSeenIn: ['Avengers'] },
+//   { name: 'black_widow', env: 'marvel', alsoSeenIn: ['Avengers'] }
+// ]
+console.log(
+  characters    .reduce((acc, character) => {
+      return character.env === 'marvel'
+        ? acc.concat(Object.assign({}, character, { alsoSeenIn: ['Avengers'] }))
+        : acc;
+    }, [])
+)
+// [
+//   { name: 'ironman', env: 'marvel', alsoSeenIn: ['Avengers'] },
+//   { name: 'black_widow', env: 'marvel', alsoSeenIn: ['Avengers'] }
+// ]
+```
