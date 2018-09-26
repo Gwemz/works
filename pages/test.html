@@ -14,82 +14,27 @@
      -->
 </head>
 <style>
-    body {
-        height: 100rem;
-    }
-
-    .bottom {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        height: 3rem;
-        background: rgba(0, 0, 0, .8);
-        font-size: 1.1rem;
-        color: #ffffff;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .bottom>div {
-        width: 33.33%;
-        height: 75%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-right: 1px solid #ffffff;
-    }
-
-    .bottom>div:last-of-type {
-        border-right: 0;
-    }
-
-    .FSearch {
-        width: 100% !important;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .SBox {
-        width: 75%;
-        height: 100%;
-    }
-
-    #searchUser {
-        height: 100%;
-    }
+.one,.two{
+    display: none;
+}
 </style>
-
 <body>
-    <div class="container">
-
-    </div>
-    <div class="bottom">
-        <div>买车</div>
-        <div>批发</div>
-        <div class="search">搜索</div>
-    </div>
+    <div class="one">微信号一</div>
+    <div class="two">微信号二</div>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script>
     $(function () {
-        $('.search').click(function () {
-            $('.bottom').children().remove();
-            $('<div class="FSearch" style="bottom: 0rem;"><div class="SBox"><input class="searchipt" id="searchUser" type="text" placeholder="请输入手机号或姓名搜索"></div><div class="ancelS">取消</div></div>').appendTo('.bottom');
-        })
-        $('.ancelS').click(function () {
-            $('.bottom').children().remove();
-            $('<div>买车</div><div>批发</div><div class="search">搜索</div>').appendTo('.bottom');
-        })
-
-        var array = ["http://img1.pailixiang.com/album/blkm/a78739456/15…EDz9&Signature=%2FHnigordMkb%2BL9BoDt87Z3x0WKU%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…MMZ6EDz9&Signature=9WgrDOHLoKHOCMqGqX6FLrPk0k8%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=sY5wvvB2pdpyyCtlNubE%2Fif3Ra0%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=WCbTWdGuvkU1%2B3ivcDLmGsnW5Dw%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…MMZ6EDz9&Signature=Ham5Vy2bMcqx6YcMwAb6cIoeE1w%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=Pab%2BrnmGl6DEGGyaEh1RD0wYwcw%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=QuRNfXyJli%2F8u73O9NiMq6z13E8%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=IDBvLao1zUd49z%2F0eQRUamECfvE%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…MMZ6EDz9&Signature=lABYDxpduEDZJEw1T21i9OfDEm4%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=TXPT9sbzM8LEy%2BkIYwB5ujS9UPg%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…MMZ6EDz9&Signature=PGmmLRWZpMo1fitRSnlEkkF4fnA%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…EDz9&Signature=%2F3KH3C%2BIj9xLpyHuqEDmd39bHQQ%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…MMZ6EDz9&Signature=888jgEHopzP8rYnQWlINEmgwf1A%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…EDz9&Signature=DL10Dyz1qi%2FfSMoScbP3%2BfxfgNw%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…MMZ6EDz9&Signature=ENmE7Njq8YrGnRAdWTBWic22u3I%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…MMZ6EDz9&Signature=p7G3W87sbxjbbTH8gv2jLQi1Uik%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=oh3y3CX4%2FqIB6mQsVd81fOFNc5c%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=ps3ai5RJNZd2eeE0jie8uGvVu%2BI%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…EDz9&Signature=2rT37b7q8%2Bc1l7bSrou50yJf%2F6Q%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…EDz9&Signature=AAefWpoDOx%2FdLVYcYx%2BzfXD0qs8%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…EDz9&Signature=%2F7wQpXh%2Fo7kmApO5xnuU4mamRf0%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…EDz9&Signature=3ZAta0IFlI2%2Fn%2FhbaU3i3wtslDE%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=oTNvW3%2Fj7AOYdiQbxRwRGAn7I4k%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…Z6EDz9&Signature=9USwqIt7WxaxxRAGioQ55o%2BacJA%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…MMZ6EDz9&Signature=TXo9aWtJmj7xuxNoL6dK5jOmVJs%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…MMZ6EDz9&Signature=RcZG0p2TO0PPTQH34JcD7ZVle5w%3D", "http://img1.pailixiang.com/album/blkm/a78739456/15…ignature=TWY1E%2BaoX%2F%2F%2BEFrIT43mltIjP%2Fg%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=%2Be4jHHRaCzXoJo8I2PPPH1hkJtk%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=dktdU2jj7NzdT%2F8E5j8CXdIK0Pg%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…EDz9&Signature=37xC%2FLJAecQwmEe6HJxmdqd3%2BmE%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…EDz9&Signature=Z9ZR3pdqPmC8%2BRRwWfu7L%2FvCCF8%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…MMZ6EDz9&Signature=VLxRNyeg1CijDNad39tawpKsdzw%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…MMZ6EDz9&Signature=PhhpeQvcgl7wcYWCHLyyNtq0ldQ%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=l%2B8z8Po0tqmenb9k98HvRVHvbvY%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…MMZ6EDz9&Signature=NzLlnyOj61pLk4bUyF9z0H9hW2k%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=5DAW2m9wUmZT%2BHAW7EU0lPPxgpE%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…MMZ6EDz9&Signature=C8GjMoq60vU6cITldcfVWW7CGbM%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=zo8FUQSebytmCaVTRRU8MoSvg%2Fs%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=D0NXZUdzQzkFJ29sRLtdBTsv%2FnM%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…MMZ6EDz9&Signature=NKCQx6MyMsKrRBwNulQHxF7JDTA%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=xniceTvmm%2BPf8SxP2eRFaYgdVCw%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…z9&Signature=tAk5phOc%2F13w8PjR%2BGGxvR5V%2FYA%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…MMZ6EDz9&Signature=Wmcrn0XW2E4hxiEWK8we8YSYD7o%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…MMZ6EDz9&Signature=GXT4235xwE5WtCvTcp0NWpumjVQ%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…Z6EDz9&Signature=Im7f8Fk%2BRkHMO7FX7MY9xDMcVCo%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…&Signature=%2FlFjX%2B8yuWpzpdkLvMn5LP%2B6H%2BI%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…MMZ6EDz9&Signature=3v99LkxsQJciJfh4SBLS1Vj4PII%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…MMZ6EDz9&Signature=bNsEtpg56wbGoM8FUmimjXPowU0%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…EDz9&Signature=XxMAeo7m76%2Bb0cuVsAJ5%2B7t3Od0%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…EDz9&Signature=n%2BhTSIiX1JQZ8qtcDeamG%2BjlEgw%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…Z6EDz9&Signature=hAbpeCSWxN72W%2FxzlzsEhNDsZyw%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…Z6EDz9&Signature=dvvfXYBtDN5%2BcIbre2j7rj6YFi8%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…MMZ6EDz9&Signature=ep7i0HWygp8wLyrtCzPKvBA9v9s%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…MMZ6EDz9&Signature=ltrhhQVaIh5kGbHLjYzcWIigf0s%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…MMZ6EDz9&Signature=iM1nHThrcVwO3FpuLfQ0g48QIAc%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=C7Ffuua3D7Xz3PxAyW7%2BWPzl9vc%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…MMZ6EDz9&Signature=YOrt0rMx4nvzspWS3JF1bIxvegc%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…EDz9&Signature=Rdrs1gLVY79CIg%2BvnEe%2Bxiw0cUU%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…EDz9&Signature=%2FKAUVqw9PeuPGEp%2FElOCUL6lb0s%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=CfcYfVWqje3XhtUzjGUQ3m%2ByNRo%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=EhMeIdAtdbfpv%2FQz1UuOavZDFVg%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…MMZ6EDz9&Signature=KJ3ldn7nNxyHPT7HhQYXyKVioZI%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…EDz9&Signature=Corq7b5PYMep9c%2BBA%2BamqCWjrcs%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…EDz9&Signature=CQmn%2BpFB%2BliSItyHgvmhXFul910%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…z9&Signature=p%2F%2BjV8j6cD9DxIW%2BjdrK0kTMgH8%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…Z6EDz9&Signature=gfNRkz538EdebgR5a%2BeguVLjgY8%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…EDz9&Signature=FD5MNADHSRKHkhr%2Fw%2BBpjZE67yY%3D", "http://img1.pailixiang.com/album/blkm/a78739456/14…MMZ6EDz9&Signature=ta74gqK7SgtsSdr1oJ2omr6XXdA%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…Z6EDz9&Signature=QdqwhrvCwFVsdFMYw3y%2BNNNEHYI%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…MMZ6EDz9&Signature=6yAARAJM9WWhiHmTQK1Xo9JDEaA%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…MMZ6EDz9&Signature=vIFA1jBMCfVzMj0j8GPBNZxbLJE%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…Z6EDz9&Signature=uPhjCLgWNl89AbPUyUl%2BdbMvaDY%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…Z6EDz9&Signature=M4dOow0hjHgiY%2FttbRHcWhOJdzE%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…Z6EDz9&Signature=nNckXHhTHIcAOl02X8N5%2BKAEXew%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…MMZ6EDz9&Signature=gbzEdq3dVVy1QmknEzqs1wDiHeQ%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…Z6EDz9&Signature=puSTZOPGIE1zFL9lw8nfYAN%2BB3c%3D", "http://img1.pailixiang.com/album/blkm/a78739456/13…EDz9&Signature=JVCAKzz3kRULi1tF%2BzqQF54d%2FOc%3D", "http://img1.pailixiang.com/album/blkm/a78739456/12…z9&Signature=YK5cvT1D4%2BtJrZFLRD%2Fc%2FvODqW8%3D", "http://img1.pailixiang.com/album/blkm/a78739456/12…MMZ6EDz9&Signature=FzAxjnsiUMU5LPvZoHH0wBerSSM%3D"];
-        var box = '';
-        array.forEach(function(i,v){
-            box += '<img class="car-img" src="'+ i +'">'
-        })
-        $('.container').html(box);
-        // $('<img class="car-img" src="">').appendTo('.container');
+        if(localStorage.state){
+            localStorage.state = localStorage.state == 1?2:1
+        }else{
+            localStorage.state = 1;
+        }
+        if(localStorage.state == 1){
+            $('.one').show()
+        }else{
+            $('.two').show()
+        }
     })
 </script>
 
