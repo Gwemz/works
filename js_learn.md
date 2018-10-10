@@ -76,8 +76,8 @@ function a(){
     n++;
     console.log(n);
   }
-  inc(); 
-  inc(); 
+  inc();
+  inc();
 }
 a(); //控制台输出1，再输出2
 ```
