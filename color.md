@@ -1019,3 +1019,44 @@ XX需求完成，完成剩余内容开发，本周项目测试上线。
 2018.10.5
 
 搞了很长时间没获取到想要数据，满满的挫败感，看来还需要再好好提升一波~~~
+
+2018.10.16  俩喜欢的明星结婚了，又一次把微博服务器搞奔溃了，--号称可以同时支持8位明星并发出轨的微博，结果扛不住两位明星结婚。。。
+
+看到几段程序员骚气的代码，赞一个
+
+if(meetMe || !meetMe){      //你见，或者不见
+    await there({
+        me: {               //我就在那里
+            sad: null,      //不喜，不悲
+            happy: null
+        }
+    })
+}
+
+if(missMe || !missMe){      //你念，或者不念
+    await there({
+        feeling: {          //情就在那里
+            left: 0,        //不来  不去
+            right: 0
+        }
+    })
+}
+
+if(loveMe || !loveMe){      //你爱，或者不爱
+    await there({           //爱就在那里
+        love: Infinity      //不增 不减
+    })
+}
+
+if(withMe || !withMe){      //你跟，或者不跟
+    const tomorrow = {      //我的手就在你手里
+        we: myHands && yourHands
+    }
+    Object.freeze(tomorrow) //不舍 不齐
+}
+
+if(!myArms.has(you)){       //来我的怀里
+    yourHeart.push(me)      //或者让我进你的心里
+}
+
+`这个世界总是笑我们穿格子衬衫，即将秃了的秀发，又说我们钱多话少死的早，但是别人不知我的浪漫我的才华只对你一个人！！！`
