@@ -1067,3 +1067,14 @@ if(!myArms.has(you)){       //来我的怀里
 ## 2018.10.22项目初始
 
 node.js+koa2+babel+parcel+antDesign+puppeter  构建网站
+
+nvm node版本管理工具
+
+https://node.green/
+
+https://www.promisejs.org/
+
+async：异步
+
+await：等待
+
