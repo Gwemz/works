@@ -1068,13 +1068,46 @@ if(!myArms.has(you)){       //来我的怀里
 
 node.js+koa2+babel+parcel+antDesign+puppeter  构建网站
 
+#### 安装最新的Node版本
+
 nvm node版本管理工具
 
 https://node.green/
 
+#### 使用Promise(callback 到Promise再到Promisify)
+
+cb-promise.js
+
 https://www.promisejs.org/
+
+#### 使用Babel编译ES7 Async Function
+
+promise-async.js
 
 async：异步
 
 await：等待
 
+#### 生成器函数 Generator Function
+
+interator.js
+
+#### co库执行Promise和Generator Function
+
+co.js
+
+https://gitee.com/wolf18387/koa2-examples
+
+https://github.com/tj/co
+
+cnpm install co --save  (co.js 同步的方式执行异步的代码)
+
+yield：产出
+
+#### 箭头函数Arrow Function
+
+arrow.js
+
+#### 异步函数Async Function 统一世界
+
+async.js
