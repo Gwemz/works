@@ -1111,3 +1111,8 @@ arrow.js
 #### 异步函数Async Function 统一世界
 
 async.js
+
+#### 借助 Babel 编译 import 与 export
+
+安装： cnpm install babel-cli babel-preset-env --save
+
