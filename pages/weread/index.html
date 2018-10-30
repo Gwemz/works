@@ -7,7 +7,7 @@
     <meta content="读书时长可兑换书币，免费阅读正版书籍和原创小说、收听有声小说和大咖讲书，同时还提供独特的公众号文章阅读体验。微信读书，不止读书。" name="description">
     <meta content="微信读书,微信阅读,微信,小说,阅读,免费小说,weread,原创,正版,书城,追书,网络小说,有声小说,听书,讲书,电子书,漫画,晋江,qq,book" name="keywords">
     <title>微信读书 让阅读不再孤独</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.3/fullpage.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/fullPage.js/3.0.3/fullpage.min.css">
 </head>
 <!-- 
     author：winter
@@ -16,24 +16,57 @@
     思路：网站访问默认页面  www.xx.com (展示型页面) 该页面有进入blog入口按钮
     www.blog.xx.com     展示博客内容(blog内容)
 -->
+<style>
+    .section{
+        text-align: center;
+        color: #ffffff;
+        font-size: 100px;
+    }
+</style>
 <body>
     <div id="fullpage">
-        <div class="section">Some section</div>
-        <div class="section">Some section</div>
-        <div class="section">Some section</div>
-        <div class="section">Some section</div>
+        <div class="section">section1</div>
+        <div class="section">section2</div>
+        <div class="section">section3</div>
+        <div class="section">section4</div>
     </div>
     <!-- <script type="text/javascript" src="../../js/jquery.min.js"></script> -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.3/fullpage.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/fullPage.js/3.0.3/fullpage.min.js"></script>
     <script>
-        new fullpage('#fullpage', {
-            //options here
-            autoScrolling:true,
-            scrollHorizontally: true
-        });
+        // new fullpage('#fullpage', {
+        //     //options here
+        //     autoScrolling:true,
+        //     scrollHorizontally: true
+        // });
 
-        //methods
-        fullpage_api.setAllowScrolling(false);
+        // //methods
+        // fullpage_api.setAllowScrolling(false);
+
+        new fullpage('#fullpage', {
+            licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+            // sectionsColor: ['yellow', 'orange', '#C0C0C0', '#ADD8E6'],
+            sectionsColor: ['#ff7875', '#ffd666', '#95de64', '#ffd8bf'],
+            memu:'#menu',
+            lockAnchors: false,
+	        anchors:['1', '2','3','4'],
+            navigation: true,
+            navigationPosition: 'right',
+            navigationTooltips: ['第一页','第二页','第三页','第四页'],
+            showActiveTooltip: true,
+            slidesNavigation: true,
+            slidesNavPosition: 'bottom',
+
+            // 滚动
+            css3: true,
+            scrollingSpeed: 700,
+            autoScrolling: true,
+            fitToSection: true,
+            fitToSectionDelay: 1000,
+            scrollBar:false,
+            easingcss3: 'linear',
+            loopTop: true,
+            loopBottom: true
+        });
     </script>
 </body>
 </html>
