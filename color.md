@@ -1116,3 +1116,10 @@ async.js
 
 安装： cnpm install babel-cli babel-preset-env --save
 
+index.js/ex.js/.babelrc
+
+配置.babelrc，package.json文件
+
+npm run dev
+
+安装 nodemon
