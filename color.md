@@ -1123,3 +1123,19 @@ index.js/ex.js/.babelrc
 npm run dev
 
 安装 nodemon
+
+#### 生产环境使用Babel支持ES6-7
+
+编译 "build": "rimraf dist && babel src -s -D -d dist --presets env",
+
+rimraf dist：删除之前编译好的文件
+
+cnpm install rimraf --save
+
+npm run build 
+
+支持es7 babel插件  babel-plugin-transform-runtime babel-runtime
+
+npm run build 
+
+运行生产环境：npm run production
