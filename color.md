@@ -1139,3 +1139,9 @@ npm run build
 npm run build 
 
 运行生产环境：npm run production
+
+#### koa核心对象
+
+安装koa2  cnpm install koa --save
+
+node server/index.js
