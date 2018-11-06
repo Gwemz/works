@@ -21,19 +21,46 @@
     .section{
         text-align: center;
         color: #ffffff;
-        font-size: 100px;
+        font-size: 16px;
     }
-    .section1{
-        background: url('http://img.hb.aicdn.com/564b3beef125c5485794fcbdcdb60ed772c691fc26810-K0WFrG_fw658') center center no-repeat;
+
+    .section p{
+        width: 80%;
+        margin:0 auto;
+        line-height: 35px;
+        text-align: justify;
+        text-justify: inter-ideograph;
+    }
+    .section1,.section2,.section3,.section4{
+        background: url('./imgs/bg01.jpg') center center no-repeat;
         background-size: cover;
+    }
+
+    .section2{
+        /* background-image: url('http://img.hb.aicdn.com/655cea7d3e30f99faf8ea6ea63356e8f836792e521464-R8pLZQ_fw658'); */
+        background-image: url('./imgs/bg05.jpg');
+    }
+
+    .section3{
+        background-image: url('./imgs/bg03.jpg');
+    }
+
+    .section4{
+        background-image: url('./imgs/bg04.jpg');
     }
 </style>
 <body>
     <div id="fullpage">
-        <div class="section section1">section1</div>
-        <div class="section">section2</div>
-        <div class="section">section3</div>
-        <div class="section">section4</div>
+        <div class="section section1">
+            <p>千年琵笆，万年筝，一把二胡拉一生，唢呐一响全剧终，初闻不识唢呐音，再听已是棺中人。黄泉路上人消沉，望乡台上忆前尘。孟婆一汤忘今生，奈何桥上渡残魂，来生再做华夏人。</p>
+        </div>
+        <div class="section section2">
+            <p>
+                我们是微茫的存在，折射出心里每一丝憧憬和每一缕不甘、城市、流光溢彩、夜航、航班
+            </p>
+        </div>
+        <div class="section section3">section3</div>
+        <div class="section section4">section4</div>
     </div>
     <!-- <script type="text/javascript" src="../../js/jquery.min.js"></script> -->
     <script type="text/javascript" src="https://cdn.bootcss.com/fullPage.js/3.0.3/fullpage.min.js"></script>
@@ -56,14 +83,14 @@
 	        anchors:['1', '2','3','4'],
             navigation: true,
             navigationPosition: 'right',
-            navigationTooltips: ['第一页','第二页','第三页','第四页'],
+            navigationTooltips: ['page1','page2','page3','page4'],
             showActiveTooltip: true,
             slidesNavigation: true,
             slidesNavPosition: 'bottom',
 
             // 滚动
             css3: true,
-            scrollingSpeed: 700,
+            scrollingSpeed: 500,
             autoScrolling: true,
             fitToSection: true,
             fitToSectionDelay: 1000,
