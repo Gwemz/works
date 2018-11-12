@@ -29,6 +29,8 @@ bug提交以及回复
 
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
 
+安装和使用MongoDB：https://segmentfault.com/a/1190000012088118
+
 #### node.js教程
 
 https://yunnysunny.gitbooks.io/nodebook
