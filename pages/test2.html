@@ -38,10 +38,35 @@
     -webkit-box-orient: vertical;
     box-sizing: border-box;
 }
+.box{
+    width: 300px;
+    height: 300px;
+    background: orange;
+    display: none;
+}
+.box2{
+    background: green;
+    margin-top: 20px;
+}
 </style>
 <body>
     <!-- <div class="container"><div class="box"></div></div> -->
 
     <p class="title">[苏州市]2015年8月 长城 风骏  6 2.4L 手动四驱精英型[苏州市]2015年8月 长城 风骏  6 2.4L 手动四驱精英型[苏州市]2015年8月 长城 风骏  6 2.4L 手动四驱精英型[苏州市]2015年8月 长城 风骏  6 2.4L 手动四驱精英型[苏州市]2015年8月 长城 风骏  6 2.4L 手动四驱精英型[苏州市]2015年8月 长城 风骏  6 2.4L 手动四驱精英型[苏州市]2015年8月 长城 风骏  6 2.4L 手动四驱精英型[苏州市]2015年8月 长城 风骏  6 2.4L 手动四驱精英型</p>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <button class="btn">点击事件</button>
 </body>
+<script src="../js/jquery.min.js"></script>
+<script>
+$(function(){
+    $('.btn').click(function(){
+        $('.box1').fadeIn('slow',function(){
+            $('.box2').fadeIn('slow',function(){
+                console.log('回调结束');
+            })
+        })
+    })
+})
+</script>
 </html>
