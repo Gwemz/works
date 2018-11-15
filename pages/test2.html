@@ -67,6 +67,19 @@ $(function(){
             })
         })
     })
+
+    $.ajax({
+        url:'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule',
+        dataType: 'jsonp',
+        data:{i: '你好吗？',from: 'zh-CHS',to: 'de',smartresult: 'dict',client: 'fanyideskweb',salt: '1542241729549',sign: '6c2bbc481216172a675eb80d23a367ce',doctype: 'json',version: 2.1,keyfrom: 'fanyi.web',action: 'lan-select',typoResult: false},
+        success:function(data){
+            console.log(data);
+        }
+    })
+
+    // $.getJSON('http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule',{i: '你好吗？',from: 'zh-CHS',to: 'de',smartresult: 'dict',client: 'fanyideskweb',salt: '1542241729549',sign: '6c2bbc481216172a675eb80d23a367ce',doctype: 'json',version: 2.1,keyfrom: 'fanyi.web',action: 'lan-select',typoResult: false},function(res){
+    //     console.log(res);
+    // })
 })
 </script>
 </html>

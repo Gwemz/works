@@ -1145,3 +1145,15 @@ npm run build
 安装koa2  cnpm install koa --save
 
 node server/index.js
+
+
+## 微信支付回调地址多参数请求（只带回来一个参数）
+
+授权接口：https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=redirect_uri&response_type=code&scope==&state=#wechat_redirect
+
+多参数url例：url?openID=123&code=456&time=2222-22-22
+
+例如以上url进行网页授权，授权后地址会变成url?openID=123，因为在授权接口地址中url中的“&”参数会变成整个接口地址的参数
+
+解决方案：最简单的解决方案就是使用转义，把“&”变成“%26”即可
+
