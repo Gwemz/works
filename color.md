@@ -1061,8 +1061,21 @@ if(!myArms.has(you)){       //来我的怀里
 
 `这个世界总是笑我们穿格子衬衫，即将秃了的秀发，又说我们钱多话少死的早，但是别人不知我的浪漫我的才华只对你一个人！！！`
 
-## 域名注册、解析、实名认证
+## 网站构建流程
 
+* 域名注册、解析、实名认证
+
+* 网站备案(网站备案审核)
+
+* 域名ssl证书生成(支持https访问)
+
+生成ssl证书参考链接:
+### wampserver配置ssl：
+https://www.gworg.com/ssl/424.html
+https://blog.wanghaida.com/2017/05/26/8/
+### 跳转https： 
+https://blog.csdn.net/p312011150/article/details/81977282
+https://www.gworg.com/ssl/130.html
 
 ## 2018.10.22项目初始
 
@@ -1150,3 +1163,13 @@ node server/index.js
 #### web服务类Application
 
 koa入口文件  Application.js
+## 微信支付回调地址多参数请求（只带回来一个参数）
+
+授权接口：https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=redirect_uri&response_type=code&scope==&state=#wechat_redirect
+
+多参数url例：url?openID=123&code=456&time=2222-22-22
+
+例如以上url进行网页授权，授权后地址会变成url?openID=123，因为在授权接口地址中url中的“&”参数会变成整个接口地址的参数
+
+解决方案：最简单的解决方案就是使用转义，把“&”变成“%26”即可
+
