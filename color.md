@@ -1189,3 +1189,9 @@ if (strDate >= 0 && strDate <= 9) {
 }
 var currentdate = year + seperator1 + month + seperator1 + strDate;
 console.log(currentdate);
+
+## 实用工具
+
+nicetool： 在线工具大全
+
+石墨文档： 在线文档编辑
