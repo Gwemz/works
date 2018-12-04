@@ -9,6 +9,7 @@
 <style type="text/css">
     *{padding: 0;margin: 0;}
     ul,li{list-style: none;}
+    .top-content{width:100%;height: 1000px;}
     .wrap{width: 100%;height: 50px;position: fixed;top: 0;left: 0;background: #FCCD09;font-size:14px;}
     .wrap li{float: left;}
     .wrap a{color: #fff;line-height: 50px;margin: 0 30px;float: left;transition: .2s;padding: 0 5px;font-size:14px;}
@@ -16,6 +17,9 @@
     .full{width: 100%;height: 1100px;line-height:500px;margin-top: 50px;color: #fff;text-align: center;font-size: 100px}
 </style>
 <body>
+    <div class="top-content">
+
+    </div>
     <ul class="wrap">
         <li class=""><a href="#a" class="xuan">A</a></li>
 
@@ -38,14 +42,20 @@
         var fullb = $("#b").offset().top;
         var fullc = $("#c").offset().top;
         var fulld = $("#d").offset().top;
+        console.log(fulla,fullb,fullc,fulld);
         var index;
         function scr(index){
             $(".wrap li a").removeClass("xuan").eq(index).addClass("xuan")
         }
         $(window).scroll(function(){
-            var scrTop = $(window).scrollTop()+fulla+1;
-            console.log(scrTop);
+            console.log($(window).scrollTop());
+            // var scrTop = $(window).scrollTop()+fulla+1;
+            var scrTop = $(window).scrollTop()+51;
+            // console.log(scrTop);
             scrTop > fulla && scrTop < fullb ? scr(0):(scrTop > fullb && scrTop < fullc ? scr(1):scrTop > fullc && scrTop < fulld?scr(2):scr(3));
+            if(scrTop < fulla){
+                scr(0)
+            }
             // 下面是上面的意思
             // if(scrTop > fulla && scrTop < fullb){
             // 	scr(0)
