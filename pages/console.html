@@ -18,9 +18,14 @@ button{
     color: #ffffff;
     cursor: pointer;
 }
+*{
+    margin:0;
+    padding:0;
+}
 </style>
 <body>
-    <button class="btn">点击生成pdf</button>
+    <!-- <button class="btn">点击生成pdf</button> -->
+    <canvas id="mainView" width="1920" height="1000"  style="position:absolute;"></canvas>
 </body>
 <!-- <script src="https://cdn.bootcss.com/console.js/0.0.2/console.min.js"></script> -->
 <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
