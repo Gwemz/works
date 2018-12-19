@@ -24,11 +24,14 @@
 
 #### koa2使用cookie
 
-#### koa2实现session
+#### koa2实现session（需要链接mysql，案例暂无法实现）
 
-####
-####
-####
+#### koa2加载模板引擎
+
+#### ejs模板引擎(https://github.com/mde/ejs) (https://ejs.co/)
+
+#### busboy模块
+
 ####
 ####
 ####
