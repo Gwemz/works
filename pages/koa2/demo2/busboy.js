@@ -1,36 +1,45 @@
-const inspect = require('util').inspect
+const Koa = require('koa')
 const path = require('path')
-const fs = require('fs')
-const Busboy = require('busboy')
+const app = new Koa()
+// const bodyParser = require('koa-bodyparser')
 
-const busboy = new Busboy({headers: req.headers})
+const { uploadFile } = require('./util/upload')
 
-busboy.on('file',function(fieldname,file,filename,encoding,mimetype){
-    console.log(`File [${fieldname}] : filename: ${filename}`);
+// app.use(bodyParser())
 
-    // 文件保存到特定路径
-    file.pipe(fs.createWriteStream('./upload'))
+app.use( async ( ctx ) => {
 
-    // 开始解析文件流
-    file.on('data',function(data){
-        console.log(`File [${fieldname}] got ${data.length} bytes`);
+  if ( ctx.url === '/' && ctx.method === 'GET' ) {
+    // 当GET请求时候返回表单页面
+    let html = `
+      <h1>upload file</h1>
+      <form method="POST" action="/upload.json" enctype="multipart/form-data">
+        <p>file upload</p>
+        <span>picName:</span><input name="picName" type="text" /><br/>
+        <input name="file" type="file" /><br/><br/>
+        <button type="submit">submit</button>
+      </form>
+    `
+    ctx.body = html
+
+  } else if ( ctx.url === '/upload.json' && ctx.method === 'POST' ) {
+    // 上传文件请求处理
+    let result = { success: false }
+    let serverFilePath = path.join( __dirname, 'upload-files' )
+
+    // 上传文件事件
+    result = await uploadFile( ctx, {
+      fileType: 'album', // common or album
+      path: serverFilePath
     })
 
-    // 解析文件结束
-    file.on('end',function(data){
-        console.log(`File [${fieldname}] Finished`);
-    })
+    ctx.body = result
+  } else {
+    // 其他请求显示404
+    ctx.body = '<h1>404！！！ o(╯□╰)o</h1>'
+  }
 })
 
-// 监听请求中的字段
-busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
-    console.log(`Field [${fieldname}]: value: ${inspect(val)}`)
+app.listen(3000, () => {
+  console.log('[demo] upload-simple is starting at port 3000')
 })
-
-// 监听结束事件
-busboy.on('finish', function() {
-    console.log('Done parsing form!')
-    res.writeHead(303, { Connection: 'close', Location: '/' })
-    res.end()
-})
-req.pipe(busboy)
