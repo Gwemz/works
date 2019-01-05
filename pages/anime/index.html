@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>anime</title>
+</head>
+<style>
+*{font-family: Arial, Helvetica, sans-serif;}
+body{padding-top:200px;overflow-x: hidden;}
+.box{width:50px;height: 50px;background: brown;}
+#JSobjectProp pre,#currTime pre{font-size: 40px;color:brown;text-align: center;}
+#svgAttributes,#domAttributes{display: flex;justify-content: center;margin-top:50px;}
+#duration,#duration2{text-align:center;font-size: 30px;color: brown;}
+</style>
+<body>
+    <div class="box">
+
+    </div>
+    
+    <div id="JSobjectProp">
+        <pre>{"prop1":10,"prop2":"20%"}</pre>
+    </div>
+
+    <div id="currTime">
+        <pre></pre>
+    </div>
+
+    <div id="domAttributes"> <input class="text-output" value="17"> </div>
+
+    <div id="svgAttributes">
+        <svg width="128" height="128" viewBox="0 0 128 128">
+            <polygon points="64 69.67317402400485 8.574 99.93037910889456 62.49094061581546 67.05898165133941 64 3.930379108894552 65.50905938418454 67.05898165133941 119.426 99.93037910889456 " fill="brown"></polygon>
+        </svg> 
+    </div>
+
+    <!-- <div id="specificPropertyParameters">
+        <div class="square el">everyone has his life!</div>
+    </div> -->
+
+    <div id="duration">
+            <div class="square el">everyone has his life!</div>
+          </div>
+    <div id="duration2">
+            <div class="square el">我们是微茫的存在，折射出心里每一丝憧憬和每一缕不甘、城市、流光溢彩、夜航、航班</div>
+          </div>
+
+    <div id="lineDrawing"> <svg viewBox="0 0 280 100">
+            <g fill="none" fill-rule="evenodd" stroke="brown" stroke-width="1" class="lines">
+              <path d="M58 80V50.12C57.7 41.6 51.14 35 43 35a15 15 0 0 0 0 30h7.5v15H43a30 30 0 1 1 0-60c16.42 0 29.5 13.23 30 29.89V80H58z" stroke-dasharray="316.85528564453125" style="stroke-dashoffset: 311.087px;"></path>
+              <path d="M73 80V20H58v60h15z" stroke-dasharray="150" style="stroke-dashoffset: 150px;"></path>
+              <path d="M58 80V49.77C58.5 33.23 71.58 20 88 20a30 30 0 0 1 30 30v30h-15V50a15 15 0 0 0-15-15c-8.14 0-14.7 6.6-15 15.12V80H58zm75 0V20h-15v60h15z" stroke-dasharray="441.1739501953125" style="stroke-dashoffset: 441.174px;"></path>
+              <path d="M118 80V49.77C118.5 33.23 131.58 20 148 20a30 30 0 0 1 30 30v30h-15V50a15 15 0 0 0-15-15c-8.14 0-14.7 6.6-15 15.12V80h-15zm-7.5-60a7.5 7.5 0 1 1-7.48 8v-1c.25-3.9 3.5-7 7.48-7z" stroke-dasharray="338.3053894042969" style="stroke-dashoffset: 338.305px;"></path>
+              <path d="M133 65a15 15 0 0 1-15-15v-7.5h-15V50a30 30 0 0 0 30 30V65zm30 15V49.77C163.5 33.23 176.58 20 193 20a30 30 0 0 1 30 30v30h-15V50a15 15 0 0 0-15-15c-8.14 0-14.7 6.6-15 15.12V80h-15z" stroke-dasharray="406.8699035644531" style="stroke-dashoffset: 406.87px;"></path>
+              <path d="M238 65a15 15 0 0 1 0-30c8.1 0 14.63 6.53 15 15h-15v15h30V49.89C267.5 33.23 254.42 20 238 20a30 30 0 0 0 0 60V65z" stroke-dasharray="301.8561706542969" style="stroke-dashoffset: 301.856px;"></path>
+              <path d="M260.48 65a7.5 7.5 0 1 1-7.48 8v-1c.26-3.9 3.5-7 7.48-7z" stroke-dasharray="47.128875732421875" style="stroke-dashoffset: 47.1289px;"></path>
+            </g>
+        </svg> 
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script>
+    // anime({
+    // targets: '.box',
+    // translateX: [
+    //     { value: 100, duration: 1200 },
+    //     { value: 0, duration: 800 }
+    // ],
+    // rotate: '1turn',
+    // backgroundColor: '#FFF',
+    // duration: 2000,
+    // loop: true
+    // });
+    // anime({
+    //     targets: '.box',
+    //     translateX: 250, // Animate all divs translateX property to 250px
+    //     scale: 2, // Animate all divs scale to 2
+    //     rotate: '1turn' // Animate all divs rotation to 1 turn
+    // });
+    var date = new Date();//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    var Y = date.getFullYear();
+    var M = (date.getMonth() + 1);
+    var D = date.getDate();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    console.log(Y,M,D);
+    var timeObj = {
+        Y: Y,
+        M: M,
+        D: D,
+        h: h,
+        m: m,
+        s: s
+    }
+    var setTime = {
+        Y: '2000',
+        M: '0',
+        D: '0'
+    }
+    // console.log(Y+M+D);
+    var JSobjectProp = anime({
+        targets: setTime,
+        Y: timeObj.Y,
+        M: timeObj.M,
+        D: timeObj.D,
+        easing: 'linear',
+        round: 1,
+        update: function() {
+            var el = document.querySelector('#currTime pre');
+            el.innerHTML = '你好，陌生人，今天是：'+ setTime.Y +'年'+ setTime.M +'月'+ setTime.D +'日'
+            // el.innerHTML = JSON.stringify(myObject);
+        }
+    });
+
+
+
+    var myObject = {
+        prop1: 0,
+        prop2: '0%'
+    }
+    var JSobjectProp = anime({
+        targets: myObject,
+        prop1: 35268,
+        prop2: '100%',
+        easing: 'linear',
+        round: 1,
+        update: function() {
+            var el = document.querySelector('#JSobjectProp pre');
+            el.innerHTML = '累计访问人数'+ myObject.prop1 +''
+            // el.innerHTML = JSON.stringify(myObject);
+        }
+    });
+
+    var domAttributes = anime({
+        targets: '#domAttributes input',
+        value: 1000,
+        round: 1,
+        easing: 'easeInOutExpo'
+    });
+
+
+    var svgAttributes = anime({
+        targets: '#svgAttributes polygon',
+        points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96',
+        easing: 'easeInOutExpo'
+    });
+
+    var specificPropertyParameters = anime({
+    targets: '#specificPropertyParameters .el',
+    translateX: {
+        value: 250,
+        duration: 800
+    },
+    rotate: {
+        value: 360,
+        duration: 1800,
+        easing: 'easeInOutSine'
+    },
+    scale: {
+        value: 2,
+        duration: 1600,
+        delay: 800,
+        easing: 'easeInOutQuart'
+    },
+    delay: 250 // All properties except 'scale' inherit 250ms delay
+    });
+
+
+    // var lineDrawing = anime({
+    //     targets: '#lineDrawing .lines path',
+    //     strokeDashoffset: [anime.setDashoffset, 0],
+    //     easing: 'easeInOutSine',
+    //     duration: 1500,
+    //     delay: function(el, i) { return i * 250 },
+    //     direction: 'alternate',
+    //     loop: true
+    // });
+
+
+    var duration = anime({
+        targets: '#duration .el',
+        translateX: 250,
+        duration: 3000
+    });
+
+    var duration = anime({
+        targets: '#duration2 .el',
+        translateY: 250,
+        duration: 3000
+    });
+</script>
+</html>
