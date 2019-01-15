@@ -1260,7 +1260,15 @@ https://pages-themes.github.io/cayman/
 
 intersting! 有趣的过程，选择权其实一直在我们手中~ 
 
-## let、var、const异同
+## let、var、const异同（参考地址：http://caibaojian.com/es6/let.html）
+
+长久以来，一直在使用变量声明，但是var、let、const到底用谁？却没有明确过。现归纳如下：var为es5中声明变量的方法，但其存在变量可能被其余地方替换的问题，因此es6推出了let和const; let 声明的变量只在所在的代码块内有效，const也是如此;但const只声明常量，且声明的值不能被改变。
+
+> var 旧有声明方式
+
+> let 只在所在代码块内有效
+
+> const 只声明常量，且值不能被改变
 
 ### var
 
@@ -1332,4 +1340,3 @@ let age = 25;
 const message = "Goodbye!";
 const age = 30;
 ```
-
