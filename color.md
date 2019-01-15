@@ -1259,3 +1259,77 @@ https://pages-themes.github.io/cayman/
 而在我这微小的人生经验中，越发感到，大多数事只要投入足够多的时间，发生的概率还是很大的。只是取决于你想吃的是“营养液”，还是每日三餐这样一口一口的吃完；没明白？事物是公平的，要想短期内达到效果，必然是每天都投入大量时间，这样会牺牲很多日常生活，不过是见效最快的方式。而想一步步达到目标，必然是每天投入一点，每天投入一点，这样日积月累，你也总能实现目标，只是时间上比前者多~
 
 intersting! 有趣的过程，选择权其实一直在我们手中~ 
+
+## let、var、const异同
+
+### var
+
+全局变量
+
+### let
+
+* 声明的变量只在let命令所在的代码块内有效
+```
+{
+    let a = 10;
+    var b = 1;
+}
+console.log(a);
+console.log(b);
+```
+
+* for循环的计数器，很适合用let命令
+```
+for (let i = 0; i < 10; i++) {}
+
+console.log(i);
+//ReferenceError: i is not defined
+```
+
+* 不存在变量提升(变量一定要在声明后使用，否则报错)
+
+```
+console.log(foo); // 输出undefined
+console.log(bar); // 报错ReferenceError
+
+var foo = 2;
+let bar = 2;
+```
+
+* 暂时性死区(只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。)
+
+```
+var tmp = 123;
+
+if (true) {
+  tmp = 'abc'; // ReferenceError
+  let tmp;
+}
+```
+
+### const
+
+* const 声明一个只读的常量。一旦声明，常量的值就不能改变
+
+* const 声明的变量不得改变值，这意味着，const一旦声明变量，就必须立即初始化，不能留到以后赋值。（只声明不赋值就会报错）
+
+* const 的作用域与let相同：只在声明所在的块级作用域内有效
+
+```
+if(true){
+    const winter = 'a strong man!';
+    console.log(winter);
+}
+console.log(winter);
+```
+* const声明的常量，也与let一样不可重复声明
+
+```
+var message = "Hello!";
+let age = 25;
+
+// 以下两行都会报错
+const message = "Goodbye!";
+const age = 30;
+```
+
