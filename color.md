@@ -1340,3 +1340,8 @@ let age = 25;
 const message = "Goodbye!";
 const age = 30;
 ```
+
+2019.1.26
+
+小程序图片生成流程： canvas画布 - 绘制页面所需内容 - 保存canvas部分保存为图片
+
