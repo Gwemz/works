@@ -5,6 +5,7 @@
     "gulp-webserver": "^0.9.1"
   },
   "dependencies": {
-    "better-scroll": "^1.10.3"
+    "better-scroll": "^1.10.3",
+    "vconsole": "^3.3.0"
   }
 }
