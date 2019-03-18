@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bulma.min.css">
+    <title>jquery-form-js</title>
+</head>
+<body>
+    <div class="container">
+        <h3>jquery-form-js(不刷新页面实现form表单提交)</h3>  
+        <h4>其实看到这个需求真是很... vue框架构建的项目,不用ajax提交,选择form表单,还要不刷新页面。。。 这样的项目居然还是前后端分离。吐槽下，但是功能还是要实现，这就是程序员</h4> 
+        <div style="height:300px;background:red;"></div>
+        <form name="upload_share_form" id="form1" action="" method="post" enctype="multipart/form-data"> 
+            <input type="file" name="file" / class="input" id="upload_file_input"> 
+            <input type="submit" class="input" value="Submit"/>
+        </form>
+        <p id="ajax_upload_message"></p>
+    </div>
+</body>
+<!--insert jquery.form.js-->
+<script src="../js/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.js"></script>
+<script type="text/javascript">
+    /*
+    * clicking the submit button triggers ajaxSubmit  once the input'value changed
+    */
+    $(document).ready(function () {
+        $("#upload_file_input").bind('change', function () {
+            $("#form1").submit(function () {
+                $(this).ajaxSubmit({
+                    success: function () {
+                        $("#ajax_upload_message").html("the image has been uploaded ").show();
+                    },
+                    //the address of uploading images
+                    url: "http://localhost:8080/",
+                    data: $('#upload_share_form').formSerialize(),
+                    type: 'POST',
+                    dataType: 'json',
+                    beforeSubmit: function () {
+                        $('#ajax_upload_message').html('uploading ,please wait ...');
+                    },
+                    error:function(){
+                         $('#ajax_upload_message').html('sorry,failed');
+                    }
+                });
+                return false;
+            });
+        });
+    });
+</script>
+</html>

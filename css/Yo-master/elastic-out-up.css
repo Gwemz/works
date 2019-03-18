@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/**
+ * Yo框架动画解决方案
+ * Yo内置了超过60种动画形态，不同的动画可以任意组合
+ */
+.ani {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.ani.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+/**
+ * @module elastic
+ * @description 定义弹性向上移出动画
+ * @method elastic-out-up
+ */
+@-webkit-keyframes elastic-out-up {
+  20% {
+    -webkit-transform: translate3d(0, -10px, 0); }
+  40%,
+	45% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 20px, 0); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0); } }
+@keyframes elastic-out-up {
+  20% {
+    transform: translate3d(0, -10px, 0); }
+  40%,
+	45% {
+    opacity: 1;
+    transform: translate3d(0, 20px, 0); }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0); } }
+.ani.elastic-out-up {
+  -webkit-animation-name: elastic-out-up;
+  animation-name: elastic-out-up; }
+
+/*# sourceMappingURL=elastic-out-up.css.map */

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>Echarts实例</title>
+</head>
+<style>
+    body {
+        font-size: 20px;
+    }
+
+    #main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+</style>
+
+<body>
+    <div id="main"></div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/echarts/echarts.min.js"></script>
+<script>
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var data = {
+        "name": "XXX公司部门",
+        "children": [
+            {
+                "name": "客服部",
+                "children": [
+                    {
+                        "name": "阳光家族",
+                        "children": [
+                            { "name": "XXXX", "value": 1983 },
+                            { "name": "XXXX", "value": 2047 },
+                            { "name": "XXXX", "value": 1375 },
+                            { "name": "XXXX", "value": 8746 },
+                            { "name": "XXXX", "value": 1983 },
+                            { "name": "XXXX", "value": 2047 },
+                            { "name": "XXXX", "value": 1375 },
+                            { "name": "XXXX", "value": 8746 },
+                            { "name": "XXXX", "value": 8746 },
+                            { "name": "XXXX", "value": 8746 }
+                        ]
+                    },
+                    {
+                        "name": "星梦队",
+                        "children": [
+                            { "name": "XXXX", "value": 1983 },
+                            { "name": "XXXX", "value": 2047 },
+                            { "name": "XXXX", "value": 1375 },
+                            { "name": "XXXX", "value": 8746 },
+                            { "name": "XXXX", "value": 1983 }
+                        ]
+                    },
+                    {
+                        "name": "一个队",
+                        "children": [
+                            { "name": "XXXX", "value": 1983 },
+                            { "name": "XXXX", "value": 2047 },
+                            { "name": "XXXX", "value": 1375 },
+                            { "name": "XXXX", "value": 8746 },
+                            { "name": "XXXX", "value": 1983 },
+                            { "name": "XXXX", "value": 2047 },
+                            { "name": "XXXX", "value": 1375 },
+                            { "name": "XXXX", "value": 8746 }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "技术部",
+                "children": [
+                    {
+                        "name": "卓越队",
+                        "children": [
+                            { "name": "XXX", "value": 721 },
+                            { "name": "XXX", "value": 4294 },
+                            { "name": "XXX", "value": 9800 },
+                            { "name": "XXX", "value": 1314 },
+                            { "name": "XXX", "value": 2220 },
+                            { "name": "XXX", "value": 2220 },
+                            { "name": "XXX", "value": 2220 },
+                            { "name": "XXX", "value": 2220 },
+                            { "name": "XXX", "value": 2220 }
+                        ]
+                    },
+                    {
+                        "name": "破晓部落",
+                        "children": [
+                            { "name": "XXX", "value": 721 },
+                            { "name": "XXX", "value": 4294 },
+                            { "name": "XXX", "value": 9800 },
+                            { "name": "XXX", "value": 1314 },
+                            { "name": "XXX", "value": 2220 },
+                            { "name": "XXX", "value": 2220 }
+                        ]
+                    },
+                    {
+                        "name": "彩虹部落",
+                        "children": [
+                            { "name": "XXX", "value": 721 },
+                            { "name": "XXX", "value": 4294 },
+                            { "name": "XXX", "value": 9800 },
+                            { "name": "XXX", "value": 1314 },
+                            { "name": "XXX", "value": 2220 },
+                            { "name": "XXX", "value": 2220 }
+                        ]
+                    },
+                    {
+                        "name": "勇拓队",
+                        "children": [
+                            { "name": "XXX", "value": 721 },
+                            { "name": "XXX", "value": 4294 },
+                            { "name": "XXX", "value": 9800 },
+                            { "name": "XXX", "value": 1314 },
+                            { "name": "XXX", "value": 2220 }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "运营部",
+                "children": [
+                    {
+                        "name": "智立方",
+                        "children": [
+                            { "name": "XXXX", "value": 1983 },
+                            { "name": "XXXX", "value": 2047 },
+                            { "name": "XXXX", "value": 1375 },
+                            { "name": "XXXX", "value": 8746 },
+                            { "name": "XXXX", "value": 1983 },
+                            { "name": "XXXX", "value": 2047 },
+                            { "name": "XXXX", "value": 1375 },
+                            { "name": "XXXX", "value": 8746 }
+                        ]
+                    },
+                    {
+                        "name": "谁与争锋",
+                        "children": [
+                            { "name": "XXXX", "value": 1983 },
+                            { "name": "XXXX", "value": 2047 },
+                            { "name": "XXXX", "value": 1375 },
+                            { "name": "XXXX", "value": 8746 },
+                            { "name": "XXXX", "value": 8746 }
+                        ]
+                    },
+                    {
+                        "name": "向上队",
+                        "children": [
+                            { "name": "XXXX", "value": 1983 },
+                            { "name": "XXXX", "value": 2047 },
+                            { "name": "XXXX", "value": 1375 },
+                            { "name": "XXXX", "value": 8746 }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+
+    echarts.util.each(data.children, function (datum, index) {
+        index % 2 === 0 && (datum.collapsed = true);
+    });
+
+    myChart.setOption(option = {
+        tooltip: {
+            trigger: 'item',
+            triggerOn: 'mousemove'
+        },
+        series: [
+            {
+                type: 'tree',
+
+                data: [data],
+
+                left: '2%',
+                right: '2%',
+                top: '8%',
+                bottom: '20%',
+
+                symbol: 'emptyCircle',
+
+                orient: 'vertical',
+
+                expandAndCollapse: true,
+
+                label: {
+                    normal: {
+                        position: 'top',
+                        rotate: -90,
+                        verticalAlign: 'middle',
+                        align: 'right',
+                        fontSize: 9
+                    }
+                },
+
+                leaves: {
+                    label: {
+                        normal: {
+                            position: 'bottom',
+                            rotate: -90,
+                            verticalAlign: 'middle',
+                            align: 'left'
+                        }
+                    }
+                },
+
+                animationDurationUpdate: 750
+            }
+        ]
+    });
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+    
+</script>
+
+</html>

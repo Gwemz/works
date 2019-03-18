@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link datareacthelmet="true"
+          rel="shortcut icon"
+          type="image/png"
+          href="../imgs/favicon.ico">
+    <title>Title</title>
+</head>
+<style>
+    .container{
+        width:1200px;
+        margin:50px auto;
+        overflow:hidden;
+    }
+    .container p{
+        text-align:center;
+        font-size:22px;
+        font-weight:bold;
+    }
+    #qrcodeTable table{
+        margin:auto;
+    }
+    #qrcodeCanvas{
+        display:flex;
+    }
+    #qrcodeCanvas canvas{
+        float:left;
+        margin:0 auto;
+    }
+</style>
+<body>
+    <div class="container">
+        <p>table渲染</p>
+        <div id="qrcodeTable"></div>
+        <p>canvas渲染</p>
+        <div id="qrcodeCanvas"></div>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/md5/md5.js"></script>
+<script src="../js/jquery.qrcode.min.js"></script>
+<script>
+//    var code = Math.random();
+    var date = new Date();
+    var token = md5(''+ date +'');
+    $('#qrcodeTable').qrcode({
+        render	: "table",
+        text	: "http://gwem.tk/works?r="+ token +""
+    });
+    $('#qrcodeCanvas').qrcode({
+        text	: "http://gwem.tk/works?r="+ token +""
+    });
+
+</script>
+</html>

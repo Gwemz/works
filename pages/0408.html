@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <link rel="stylesheet" href="../css/csshake/csshake.css">
+    <title>csshake</title>
+</head>
+<!-- 
+    github: https://github.com/elrumordelaluz/csshake
+    static.js: https://github.com/mrdoob/stats.js
+ -->
+<style>
+    * {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        overflow: hidden;
+    }
+
+    .container {
+        width: 1200px;
+        height: auto;
+        margin: 20px auto 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .container .box {
+        width: 100px;
+        height: 100px;
+        background: #ffd200;
+        flex-wrap: nowrap;
+        font-size: 16px;
+        line-height: 100px;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    ul>li {
+        float: left;
+    }
+
+    .showBox {
+        position: fixed;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.8);
+        height: 100%;
+        top: 0;
+        width: 100%;
+    }
+
+    .vhide {
+        visibility: hidden;
+    }
+
+    .close {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        cursor: pointer;
+        background: #666;
+        z-index: 3;
+    }
+
+    .imgwrap {
+        width: 500%;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        overflow-x: auto;
+    }
+
+    .imgBox {
+        /* width: 100vw; */
+        width: 100%;
+        float: left;
+        position: relative;
+        height: 100%;
+    }
+
+    .scaleBox {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .imgBox img {
+        position: absolute;
+        max-width: 100%;
+        max-height: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        z-index: 3;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="box shake">shake</div>
+        <div class="box shake shake-hard">shake-hard</div>
+        <div class="box shake shake-slow shake-constant">shake-slow</div>
+        <div class="box shake shake-little">shake-little</div>
+        <div class="box shake shake-horizontal">shake-horizontal</div>
+        <div class="box shake shake-vertical">shake-vertical</div>
+        <div class="box shake shake-rotate">shake-rotate</div>
+        <div class="box shake shake-opacity">shake-opacity</div>
+        <div class="box shake shake-crazy">shake-crazy</div>
+    </div>
+    <div class="section section0 ">
+        <ul></ul>
+    </div>
+    <div class="showBox vhide" id="imgModel">
+        <i class="close"></i>
+        <div class="imgwrap">
+            <div class="imgBox">
+                <div class="scaleBox">
+                    <img src="" class="showImg" />
+                </div>
+            </div>
+            <div class="imgBox">
+                <div class="scaleBox">
+                    <img src="" class="showImg" />
+                </div>
+                <div class="ball-pulse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="imgBox">
+                <div class="scaleBox">
+                    <img src="" class="showImg" />
+                </div>
+            </div>
+        </div>
+
+        <div class="bot_box">
+            <p>上传者：
+                <span id="upName">未知</span>
+            </p>
+            <a href="/summit2017/mycarbarn.htm?name=15616201415" class="friend notDel">ta的车库</a>
+            <span class="friend del hide">删除</span>
+            <a href="http://m.hx2car.com/wap/fenghuicheliang.htm" class="friend right">以车会友</a>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        var currPage0 = currPage1 = currPage2 = currPage3 = currPage4 = 1;
+        var mark0 = mark1 = mark2 = mark3 = mark4 = 1;
+
+        //初始加载第一页
+        getdataNew(currPage4);
+        // var fns = [getdataNew, getdata0, getdata1, getdata2, getdata3];
+        //获取数据
+        function getdataNew(num) {
+            if (mark4 == 0) {
+                return false;
+            }
+            mark4 = 0;
+            $.ajax({
+                // type: "GET",
+                url: "http://m.2schome.net/summit2017/selectedphotos.json",
+                dataType: "jsonp",  
+                //精彩瞬间
+                data: {
+                    currPage: num
+                },
+                async: true,
+                success: function (data) {
+                    $(".tabList").eq(0).addClass("select");
+                    $(".tabList").eq(5).addClass("select");
+                    var str = '';
+                    if (!name) {
+                        name = num;
+                    }
+                    var length = data.photos.length;
+                    for (var i = 0; i < length; i++) {
+                        var value = data.photos[i].photo_url.replace(".jpg", "") + "_small_200_150.jpg";
+                        str += '<li id="' + data.photos[i].id + '" ';
+                        str += 'data-name="华夏二手车网"';
+                        str += '><img data-original="http://img.hx2cars.com/upload/' + value + '"  src = "' + lazyimg + '"/></li>';
+                    }
+                    $(".section0 ul").append(str);
+                    if (length >= 300) {
+                        currPage4++;
+                        mark4 = 1;
+                    } else {
+                        mark4 = 0;
+                        //没有数据了
+                    }
+                    lazy();
+                    changeImg($(".section0 li").eq(0));
+                }
+
+            });
+        }
+        var imgdata = [];
+        $(".section").delegate("li", "click", function () {
+            //	$(".section li").click(function() {
+            showImg = $(this);
+            var id = showImg.attr("id");
+            // addClick(id)
+            changeImg(showImg);
+            $("#imgModel").removeClass("vhide");
+        })
+
+        //找下一张图片
+        function findnextLi($li) {
+            if ($li.next().length == 0) {
+                return false;
+            } else if ($li.next("li").length == 0) {
+                return findnextLi($li.next());
+            } else {
+                return $li.next();
+            }
+        }
+
+        function addClick(id) {
+            console.log(id)
+        }
+
+        function findprevLi($li) {
+            if ($li.prev().length == 0) {
+                return false;
+            } else if ($li.prev("li").length == 0) {
+                return findprevLi($li.prev());
+            } else {
+                return $li.prev();
+            }
+        }
+
+        //展示大图左右查看
+        var kx = $(".imgBox").eq(1).offset().left;
+        //初始偏移量
+        function showNum(num) {
+            $(".imgwrap").css("-webkit-transform", "translateX(" + (-kx * num) + "px)")
+        }
+        showNum(1);
+
+        //展示滑动的３张图片
+        function changeImg($li) {
+            var imgs = [];
+            isfirst = 0;
+            islast = 0;
+
+            var phone = $li.attr("data-phone");
+            var name = $li.attr("data-name");
+            if (name) {
+                if (phone) {
+                    $(".bot_box a").attr("href", "/summit2017/mycarbarn.htm?name=" + phone);
+                } else {
+                    $(".bot_box a").attr("href", "/wap/fenghuicheliang.htm");
+                }
+                $("#upName").text(name);
+            } else {
+                $("#upName").text(phone);
+                $(".bot_box a").attr("href", "/wap/fenghuicheliang.htm");
+            }
+
+            if ($li.parents(".section").hasClass("section4")) {
+                $(".notDel").addClass("hide");
+                $(".del").removeClass("hide").attr("data-id", $li.attr("id"));
+                //展示删除按钮
+                $(".bot_box p").addClass("hide");
+            } else {
+                $(".notDel").removeClass("hide");
+                $(".del").addClass("hide");
+                $(".bot_box p").removeClass("hide");
+                //展示上传者
+            }
+
+            if (findprevLi($li)) {
+                imgs.push(findprevLi($li).find("img").attr("data-original").replace("_small_200_150", ""));
+            } else {
+                //			点击的是第一张图
+                isfirst = 1;
+            }
+            imgs.push($li.find("img").attr("data-original").replace("_small_200_150", ""));
+            if (findnextLi($li)) {
+                //如果图片未展示，则展示
+                if (!findnextLi($li).hasClass("alreadyload")) {
+                    findnextLi($li).find("img").attr("src", findnextLi($li).find("img").attr("data-original")).addClass("alreadyload");
+                }
+                imgs.push(findnextLi($li).find("img").attr("data-original").replace("_small_200_150", ""));
+            } else {
+                //点击的是最后一张图
+                var index = $(".tabList.select").index() % 5;
+                var num = index - 1;
+                if (num < 0)
+                    num = 4;
+                fns[index](eval("currPage" + num));
+                islast = 1;
+
+            }
+
+            $(".imgBox").removeClass("vhide")
+            $(".imgBox").each(function (i, n) {
+                if (imgs[i] == undefined) {
+                    $(n).addClass("vhide");
+                    return;
+                }
+
+                if (imgdata.indexOf(imgs[i]) >= 0) {
+                    $(n).find(".showImg").attr("src", imgs[i]);
+                } else {
+                    var img = new Image();
+                    img.src = imgs[i];
+                    $(n).addClass("loding").find(".showImg").attr("src", '');
+                    img.onload = function () {
+                        imgdata.push(img.src);
+                        $(n).removeClass("loding").find(".showImg").attr("src", img.src);
+                    }
+                }
+
+            })
+            if (isfirst) {
+                showNum(0);
+            } else {
+                showNum(1);
+            }
+        }
+
+
+        $(".imgwrap").on({
+            "touchmove": function (e) {
+                e.preventDefault();
+                dx = e.originalEvent.changedTouches[0].clientX - cx;
+                dy = e.originalEvent.changedTouches[0].clientY - cy;
+                var wrap = $(".imgwrap")[0];
+                if ($(wrap).find(".bigImg").length == 1) {
+                    wrap = $(wrap).find(".bigImg")[0];
+                    //双击放大
+                    var wt = wrap.style['-webkit-transform']
+                        , wts = wt.replace("translate(", "").replace("px)", "").replace("px", "");
+                    var x = dx + (Number(wts.split(",")[0]) || 0);
+                    var y = dy + (Number(wts.split(",")[1]) || 0);
+                    $(wrap).css({
+                        "-webkit-transform": "translate(" + x + "px," + y + "px)"
+                    });
+                } else {
+                    var wt = wrap.style['-webkit-transform']
+                        , wts = wt.replace("translateX(", "").replace("px)", "");
+                    var x = dx + Number(wts);
+                    $(wrap).css("-webkit-transform", "translateX(" + x + "px)");
+                }
+
+                cx = e.originalEvent.changedTouches[0].clientX;
+                cy = e.originalEvent.changedTouches[0].clientY;
+            },
+            "touchstart": function (e) {
+                x1 = cx = e.originalEvent.changedTouches[0].clientX;
+                y1 = cy = e.originalEvent.changedTouches[0].clientY;
+                //			$(".gradual").removeClass("gradual")
+            },
+            "touchend": function (e) {
+                var x2 = e.originalEvent.changedTouches[0].clientX;
+                var dx = x2 - x1;
+                var width = $(document).width();
+                var index = 0;
+
+                //如果是大图展示期间则不换图
+                if ($(".bigImg").length > 0) {
+                    var wt = $(".bigImg")[0].style['-webkit-transform']
+                        , wts = wt.replace("translate(", "").replace("px)", "").replace("px", "");
+                    if (Math.abs(wts.split(",")[0]) > width / 2) {
+                        $(".bigImg").css("-webkit-transform", "translate(0,0)").removeClass("bigImg");
+                        $(".gradual").removeClass("gradual");
+                    } else {
+                        if (new Date().getTime() - touchtime < 500) {
+                            var $this = $('.gradual');
+                            $this.toggleClass("gradual");
+                            $this.parent().toggleClass("bigImg");
+                        } else {
+                            touchtime = new Date().getTime();
+                        }
+                        return false;
+                    }
+                }
+
+                if (dx > width / 10) {
+                    //前一张
+                    index = 1;
+                } else if (dx < (-width / 10)) {
+                    index = -1
+                } else {
+                    index = 0;
+                }
+
+                //到底了
+                $(".imgwrap").addClass("move");
+                if (!findnextLi(showImg) && index == -1) {
+                    $(".imgwrap").css({
+                        "-webkit-transform": "translateX(" + (-kx) + "px)"
+                    })
+                    setTimeout(function () {
+                        $(".imgwrap").removeClass("move");
+                        changeImg(showImg);
+                    }, 300);
+                    return false;
+                }
+                if (index == 1) {
+                    if (findprevLi(showImg)) {
+                        showImg = findprevLi(showImg);
+                        var id = showImg.attr("id");
+                        addClick(id)
+                    }
+                } else if (index == -1) {
+                    if (findnextLi(showImg)) {
+                        showImg = findnextLi(showImg);
+                        var id = showImg.attr("id");
+                        addClick(id)
+                    }
+                }
+
+                if (isfirst && index != 1) {
+                    index++;
+                }
+
+                $(".imgwrap").css({
+                    "-webkit-transform": "translateX(" + (kx * index - kx) + "px)"
+                });
+                setTimeout(function () {
+                    $(".imgwrap").removeClass("move");
+                    changeImg(showImg);
+                }, 300)
+
+            }
+        })
+    })
+</script>
+
+</html>

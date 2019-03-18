@@ -1,0 +1,414 @@
+<!--
+//  
+//                                  _oo8oo_
+//                                 o8888888o
+//                                 88" . "88
+//                                 (| -_- |)
+//                                 0\  =  /0
+//                               ___/'==='\___
+//                             .' \\|     |// '.
+//                            / \\|||  :  |||// \
+//                           / _||||| -:- |||||_ \
+//                          |   | \\\  -  /// |   |
+//                          | \_|  ''\---/''  |_/ |
+//                          \  .-\__  '-'  __/-.  /
+//                        ___'. .'  /--.--\  '. .'___
+//                     ."" '<  '.___\_<|>_/___.'  >' "".
+//                    | | :  `- \`.:`\ _ /`:.`/ -`  : | |
+//                    \  \ `-.   \_ __\ /__ _/   .-` /  /
+//                =====`-.____`.___ \_____/ ___.`____.-`=====
+//                                  `=---=`
+//  
+//  
+// 
+//                          佛祖保佑         永无bug
+//       
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="winter - 日常项目汇总">
+    <meta name="description" content="Winter programs - let us do something">
+    <title>Winter programs</title>
+    <link rel="stylesheet" href="/style.min.d6305865.4890c859.css">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="/favicon.10bd8885.bf47bb28.ico">
+<script src="/style.min.d6305865.be62fafe.js"></script><script src="/style.min.d6305865.4890c859.js"></script></head>
+<!-- 
+    onselectstart="return false"   取消浏览器拖动的蓝色选择区
+ -->
+<style>/* 禁止复制文本 */
+
+    body {
+        -moz-user-select: none;
+        /*火狐*/
+        -webkit-user-select: none;
+        /*webkit浏览器*/
+        -ms-user-select: none;
+        /*IE10*/
+        -khtml-user-select: none;
+        /*早期浏览器*/
+        user-select: none;
+    }</style>
+
+<body>
+    <!--背景音乐-->
+    <!--<audio src="http://dl.stream.qqmusic.qq.com/C400004HwcUS4QLPuY.m4a?vkey=DE94F0DD4CF4705D987354085B1505B1B5475CF7FCAD2E62476CFEE670FF13299ED1E6CC9225E185B51B2556282C92F1A04D488B4AE59F44&guid=6525565592&uin=1955743279&fromtag=66"
+       autoplay="autoplay"></audio>-->
+
+    <!-- <div id="content">
+        <div class="wrap shadow">
+            <ol id="ol" class="list">
+                <li>
+
+                </li>
+            </ol>
+        </div>
+    </div> -->
+    <div id="particles-js">
+        <div class="wrap shadow">
+            <ol id="ol" class="list">
+                <li>
+
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- <div id="content">
+        <div class="wrap shadow">
+            <ol id="ol" class="list">
+                <li>
+    
+                </li>
+            </ol>
+        </div>
+    </div> -->
+</body>
+<script src="/jquery.min.e6203972.8b874e18.js"></script>
+<!-- <script src="./pages/particles.js/particles.min.js"></script> -->
+<script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+<script src="/console.style.5118d2be.77657a94.js"></script>
+<script src="/app.21b5ae02.5ab41a2e.js"></script>
+<script>$(function () {
+  //原生
+  var str = '',
+      data = [[{
+    title: '第一章 表单常用代码'
+  }, {
+    url: 'pages/0101.html',
+    title: '去除字符串左右的空格'
+  }, {
+    url: 'pages/0102.html',
+    title: '验证用户是否输入'
+  }, {
+    url: 'pages/0103.html',
+    title: '禁止用户输入'
+  }, {
+    url: 'pages/0104.html',
+    title: '关闭用户中文输入法'
+  }, {
+    url: 'pages/0105.html',
+    title: '禁止用户复制和粘贴'
+  }, {
+    url: 'pages/0106.html',
+    title: '限制只能输入数字'
+  }, {
+    url: 'pages/0107.html',
+    title: '限制字符串长度'
+  }, {
+    url: 'pages/0108.html',
+    title: '拖拽进度条'
+  }, {
+    url: 'pages/0109.html',
+    title: '通过cookie实现网页背景切换'
+  }, {
+    url: 'pages/0110.html',
+    title: '全国城市三级联动'
+  }, {
+    url: 'pages/0111.html',
+    title: 'Angular数据渲染'
+  }, {
+    url: 'pages/0112.html',
+    title: 'JS生成图片验证码'
+  }], [{
+    title: '第二章 JS效果相关代码'
+  }, {
+    url: 'pages/0201.html',
+    title: '楼层跳转效果'
+  }, {
+    url: 'pages/0202.html',
+    title: '按需加载图片'
+  }, {
+    url: 'pages/0203.html',
+    title: '全选、反选、全不选效果'
+  }, {
+    url: 'pages/0204.html',
+    title: '图片懒加载'
+  }, {
+    url: 'pages/0205.html',
+    title: '照片查看器'
+  }, {
+    url: 'pages/0206.html',
+    title: '图片轮播'
+  }, {
+    url: 'pages/0207.html',
+    title: '图片上传'
+  }, {
+    url: 'pages/0208.html',
+    title: '分页功能实现'
+  }, {
+    url: 'pages/0209.html',
+    title: '调用手机摄像头和相册'
+  }, {
+    url: 'pages/0210.html',
+    title: '下拉刷新、上拉加载'
+  }, {
+    url: 'pages/0211.html',
+    title: 'H5照片查看'
+  }, {
+    url: 'pages/0212.html',
+    title: 'better-scroll'
+  }], [{
+    title: '第三章 js相关插件'
+  }, {
+    url: 'pages/0301.html',
+    title: 'PhotoSwipe 相册控件'
+  }, {
+    url: 'pages/0302.html',
+    title: 'fullpage-网易邮箱6.0'
+  }, {
+    url: 'pages/0303.html',
+    title: 'fullpage-iPhone 5C'
+  }, {
+    url: 'pages/0304.html',
+    title: 'three.js-3D图形绘制'
+  }, {
+    url: 'pages/0305.html',
+    title: 'Video.js-视频播放器'
+  }, {
+    url: 'pages/0306.html',
+    title: 'sweetalert2-Alert弹框'
+  }, {
+    url: 'pages/0307.html',
+    title: 'Chart.js'
+  }, {
+    url: 'pages/0308.html',
+    title: 'dragsort拖拽排序'
+  }, {
+    url: 'pages/0309.html',
+    title: 'jquery-qrcode图片二维码'
+  }, {
+    url: 'pages/0310.html',
+    title: 'JS进行MD5加密'
+  }, {
+    url: 'pages/0311.html',
+    title: '复制内容到剪切板'
+  }, {
+    url: 'pages/0312.html',
+    title: 'jquery.form.js'
+  }, {
+    url: 'pages/0313.html',
+    title: 'echarts4.0.js'
+  }, {
+    url: 'pages/0314.html',
+    title: 'alloy_touch.js'
+  }, {
+    url: 'pages/0315.html',
+    title: '百度MVVM框架San'
+  }, {
+    url: 'pages/0316.html',
+    title: 'flowplayer'
+  }, {
+    url: 'pages/0317.html',
+    title: 'ffmpeg'
+  }, {
+    url: 'pages/particles.js/demo',
+    title: 'particles.js'
+  }], [{
+    title: '第四章 CSS3效果层'
+  }, {
+    url: 'pages/0404.html',
+    title: 'css3弹出层'
+  }, {
+    url: 'pages/0405.html',
+    title: 'Yo-master相关动画'
+  }, {
+    url: 'pages/0406.html',
+    title: 'CSS使用Tips'
+  }, {
+    url: 'pages/0407.html',
+    title: 'CSS3加载动画'
+  }, {
+    url: 'pages/0408.html',
+    title: 'csshake'
+  }, {
+    url: 'pages/0409.html',
+    title: 'color颜色选择'
+  }, {
+    url: 'pages/0410.html',
+    title: 'flex布局'
+  }, {
+    url: 'pages/0411.html',
+    title: 'About svg'
+  }, {
+    url: 'pages/Cayman',
+    title: 'Cayman theme'
+  }, {
+    url: 'pages/0412.html',
+    title: 'animate.css'
+  }, {
+    url: 'pages/0413.html',
+    title: '鼠标悬停效果'
+  }, {
+    url: 'pages/anime/eva.html',
+    title: 'icon-font'
+  }], [{
+    title: '第五章 移动端效果'
+  }, {
+    url: 'pages/0501.html',
+    title: 'LCalendar移动端日期时间选择控件'
+  }, {
+    url: 'http://gwem.tk/douban-vue/',
+    title: 'vue-豆瓣电影'
+  }], [{
+    title: '第六章 时间日期效果'
+  }, {
+    url: 'pages/0601.html',
+    title: '学习资源整理(By phodal Huang)'
+  }, {
+    url: 'pages/0602.html',
+    title: 'IntelliJ-IDEA'
+  }, {
+    url: 'pages/0603.html',
+    title: 'Github接口分析'
+  }], [{
+    title: '第七章 其它练习'
+  }, {
+    url: 'pages/0701.html',
+    title: '刷新当前页面'
+  }, {
+    url: 'pages/0702.html',
+    title: '百度地图引用'
+  }, {
+    url: 'pages/0703.html',
+    title: '高德地图引用'
+  }, {
+    url: 'pages/0704.html',
+    title: '腾讯地图引用'
+  }, {
+    url: 'pages/0705.html',
+    title: '扫码登录'
+  }, {
+    url: 'pages/0706.html',
+    title: 'table布局'
+  }, {
+    url: 'pages/0707.html',
+    title: 'flex布局'
+  }, {
+    url: 'pages/0708.html',
+    title: 'canvas'
+  }, {
+    url: 'pages/0709.html',
+    title: '字体图标'
+  }, {
+    url: 'pages/0710.html',
+    title: 'emoji'
+  }, {
+    url: 'pages/0711.html',
+    title: 'WebSocket'
+  }, {
+    url: 'pages/0712.html',
+    title: 'china_city'
+  }, {
+    url: 'pages/0713.html',
+    title: 'wechat'
+  }, {
+    url: 'pages/test.html',
+    title: 'test'
+  }]];
+
+  for (var i = 0; i < data.length; i++) {
+    var item = data[i];
+    var sub = ''; // console.table(data[i]);
+    // console.log(data[i]);
+
+    for (var j = 0; j < item.length; j++) {
+      if (j == 0) {
+        sub += '<li data-track="title点击"><h1><a href="javascript:;" title="' + item[j].title + '">' + item[j].title + '</a></h1><dl class="sub-dl">'; // console.log('## ' + item[j].title + '');
+      } else {
+        sub += '<dd><a href="' + item[j].url + '" target="_blank" title="' + item[j].title + '">' + item[j].title + '</a></dd>'; // console.log('#### [' + item[j].title + '](http://gwem.tk/works/' + item[j].url + ')');
+      }
+
+      if (j == item.length - 1) {
+        sub += '</dl></li>';
+      }
+    }
+
+    str += sub;
+  }
+
+  var ol = document.getElementById('ol');
+  ol.innerHTML = str;
+  var h1 = document.getElementsByTagName('li');
+  var dl = document.getElementsByTagName('dl');
+  var sub = 1;
+  /*for (var i = 0; i < h1.length; i++) {
+      h1[i].index = i;
+      h1[i].onclick = function () {
+          sub++;
+          for (var j = 0; j < h1.length; j++) {
+              dl[j].style.display = 'none';
+          }
+          if (sub % 2 == 0) {
+              dl[this.index].style.display = 'block';
+          } else {
+              dl[this.index].style.display = 'none';
+          }
+      }
+  }*/
+
+  /* 解决低版本IE不支持user-select问题 */
+
+  document.body.onselectstart = document.body.ondrag = function () {
+    return false;
+  }; // jquery
+
+
+  $('.wrap li').on('click', 'h1', function () {
+    var hg = $(this).next().children().height();
+    var num = $(this).next().children().length;
+    $(this).next().toggleClass('active'); // if ($(this).next().hasClass('active')) {
+    //     $(this).siblings('.active').animate({ height: '' + hg * num + 'px' }, 500);
+    // } else {
+    //     $(this).next().animate({ height: 0 }, 500);
+    // }
+  });
+
+  var _hmt = _hmt || [];
+
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?7117e1fef39f18ac2431859dffdda945";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })(); //添加事件统计
+
+
+  $("[data-track]").on("click", function () {
+    var label = $(this).data("track");
+    window._hmt && window._hmt.push(['_trackEvent', label, 'click', '体验包']);
+  }); // This is a test program by Visual Studio Code! 
+  // 百度统计点击次数累加
+  // console.log("%c%c个人项目积累%c欢迎浏览", "line-height:28px;", "line-height:28px;padding:4px;background:purple;color:#FADFA3;font-size:14px;", "padding:4px;background:red;color:#000;line-height:28px;font-size:14px;");
+  // console.log("%c%c个人博客地址%chttp://gwem.tk/works", "line-height:28px;", "line-height:28px;padding:4px;background:#222;color:#FADFA3;font-size:14px;", "padding:6px 6px 6px 2px;background:#FADFA3;color:#0093fff;line-height:28px;font-size:12px;");
+  // console.log("%c%c就知道阻挡不住你观看源码的冲动！", "line-height:50px;", "line-height:28px;padding:4px 0px;color:#fff;font-size:30px;background-image:-webkit-gradient(linear,left top,right top,color-stop(0,#ff22ff),color-stop(1,#5500ff));color:transparent;-webkit-background-clip:text;");
+  // console.log(`%cThis is a work program by winter  -- 被遗忘的青春!`, `background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY2Y2NjYyIvPjxzdG9wIG9mZnNldD0iMjAlIiBzdG9wLWNvbG9yPSIjMzM5OTk5Ii8+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNjY2NjOTkiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzk5Y2NmZiIvPjxzdG9wIG9mZnNldD0iODAlIiBzdG9wLWNvbG9yPSIjY2NjY2ZmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmY5OWNjIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');background-size: 100%;background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #66cccc), color-stop(20%, #339999), color-stop(40%, #cccc99), color-stop(60%, #99ccff), color-stop(80%, #ccccff), color-stop(100%, #ff99cc));background-image: -moz-linear-gradient(left, #66cccc 0%, #339999 20%, #cccc99 40%, #99ccff 60%, #ccccff 80%, #ff99cc 100%);background-image: -webkit-linear-gradient(left, #66cccc 0%, #339999 20%, #cccc99 40%, #99ccff 60%, #ccccff 80%, #ff99cc 100%);background-image: linear-gradient(to right, #66cccc 0%, #339999 20%, #cccc99 40%, #99ccff 60%, #ccccff 80%, #ff99cc 100%);padding:20px 40px;color:#fff;font-size:12px;`)
+  // window.console && console.log && console.log("\n"+"   _    _  _                _____                         \n  \/_\\  | || |  ___   _   _ \/__   \\  ___   __ _  _ __ ___  \n \/\/_\\\\ | || | \/ _ \\ | | | |  \/ \/\\\/ \/ _ \\ \/ _` || '_ ` _ \\ \n\/  _  \\| || || (_) || |_| | \/ \/   |  __\/| (_| || | | | | |\n\\_\/ \\_\/|_||_| \\___\/  \\__, | \\\/     \\___| \\__,_||_| |_| |_|\n                     |___\/\n\n");
+
+  var css = 'font-size:80px;color:#fff;text-shadow:0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);';
+  console.style('<css="' + css + '">daily works!</css>');
+});</script>
+<!-- About test github提交代码不显示自己的提交记录 账号或邮箱和github记录不一致 -->
+<!-- About links:https://segmentfault.com/q/1010000002899695 -->
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>通过cookie实现网页背景切换</title>
+</head>
+<style type="text/css">
+    body,p,ul{margin:0;padding:0;}
+    ul{float:right;height:40px;margin-top:20px;margin-right:20px;}
+    ul li{list-style-type:none;float:left;width:20px;height:20px;margin-left:10px;cursor:pointer;}
+    .skin{height:40px;position:fixed;background:#fff;border-bottom:solid 1px #cccc;top:0;left:0;width:100%;}
+    .red{background:#F06;}/*红色*/
+    .black{background:#000;}/*黑色*/
+    .blue{background:#09F;}/*蓝色*/
+    .green{background:#093;}/*绿色*/
+</style>
+<!--本次cookie设定时长为30秒-->
+<body>
+<div class="skin">
+    <ul class="skin_list">
+        <li style="width:100px;text-align:right;">更换背景：</li>
+        <li class="red"></li>
+        <li class="black"></li>
+        <li class="blue"></li>
+        <li class="green"></li>
+    </ul>
+</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script>
+    //为了安全 google chrome 等浏览器是禁止本地文件写Cookie的即file:///F:/Lord%20community/lrtk/Untitled-2.html这样的以file开头的是不能写本地文件的
+    var cookieClass = $.cookie('class');//读取需要缓存的对象。
+    $("body").attr("class",cookieClass);//
+    $(".skin_list li").each(function(){
+        $(this).click(function(){
+            var className=$(this).attr("class");//保存当前选择的类名
+            $("body").attr("class",className);//把选中的类名给body
+            // 设置cookie时长
+            var cookietime = new Date();
+            cookietime.setTime(cookietime.getTime() + (30 * 1000));//coockie保存30秒
+            $.cookie("class", ""+className+"",{expires:cookietime});
+        })
+    });
+
+   /*A B测试思路  第一次进入页面时，A B两个版本随机取一个，并将其通过cookie记录下来，下一次进入页面时通过判断cookie的属性值来决定切换A版本还是B版本，项目中cookie设定时长为3天*/
+   /*
+   * 代码实现：
+   * if($.cookie('class')){
+   *
+   * }else{
+   *    if(Math.random()<0.5){
+   *        $.cookie('class','A');
+   *    }else{
+   *        $.cookie('class','B');
+   *    }
+   * }
+   *
+   * if($.cookie('class') == 'A'){
+   *    展示A版本信息
+   * }else{
+   *    展示B版本信息
+   * }
+   * */
+   var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7117e1fef39f18ac2431859dffdda945";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</html>

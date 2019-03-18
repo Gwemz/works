@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/**
+ * Yo框架动画解决方案
+ * Yo内置了超过60种动画形态，不同的动画可以任意组合
+ */
+.ani {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.ani.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+/**
+ * @module other
+ * @description 定义橡皮圈挤压回弹动画
+ * @method extrusion
+ */
+@-webkit-keyframes extrusion {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1); }
+  30% {
+    -webkit-transform: scale3d(0.65, 1.35, 1); }
+  40% {
+    -webkit-transform: scale3d(1.35, 0.65, 1); }
+  50% {
+    -webkit-transform: scale3d(0.85, 1.15, 1); }
+  65% {
+    -webkit-transform: scale3d(1.05, 0.95, 1); }
+  75% {
+    -webkit-transform: scale3d(0.95, 1.05, 1); }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1); } }
+@keyframes extrusion {
+  0% {
+    transform: scale3d(1, 1, 1); }
+  30% {
+    transform: scale3d(0.65, 1.35, 1); }
+  40% {
+    transform: scale3d(1.35, 0.65, 1); }
+  50% {
+    transform: scale3d(0.85, 1.15, 1); }
+  65% {
+    transform: scale3d(1.05, 0.95, 1); }
+  75% {
+    transform: scale3d(0.95, 1.05, 1); }
+  100% {
+    transform: scale3d(1, 1, 1); } }
+.ani.extrusion {
+  -webkit-animation-name: extrusion;
+  animation-name: extrusion; }
+
+/*# sourceMappingURL=extrusion.css.map */

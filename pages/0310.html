@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MD5加密</title>
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <link rel="stylesheet"
+          href="../css/bulma.min.css">
+</head>
+<style>
+    .container{
+        margin-top:50px;
+    }
+    .columns{
+        margin-top:50px;
+    }
+</style>
+<!--github地址链接:https://github.com/blueimp/JavaScript-MD5-->
+<body>
+    <div class="container">
+        <div class="field">
+            <label class="label">MD5加密</label>
+            <textarea class="textarea is-danger" placeholder="请输入！！！"></textarea>
+            <div class="container">
+                <div class="notification">
+                    加密内容
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <a class="button is-info">
+                        点击加密
+                    </a>
+                </div>
+                <div class="column">
+                    <a class="button is-success">
+                        点击重置
+                    </a>
+                </div>
+                <div class="column">
+                    <!--<a class="button is-info">
+                        Button
+                    </a>-->
+                </div>
+                <div class="column">
+                    <!--<a class="button is-success">
+                        Button
+                    </a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/md5/md5.js"></script>
+<script>
+    // 点击加密
+    $('.button.is-info').on('click',function () {
+        var val = $('.textarea.is-danger').val();
+        $('.notification').text(''+ md5(val) +'');
+    })
+    // 点击重置
+    $('.button.is-success').on('click',function () {
+        $('.textarea.is-danger').val('');
+        $('.notification').text('加密内容');
+    })
+</script>
+</html>
