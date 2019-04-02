@@ -1,0 +1,335 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font: 14px/1.5 PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,STHeitiSC-Light,simsun,\\5B8B\4F53,WenQuanYi Zen Hei,WenQuanYi Micro Hei,sans-serif;
+}
+
+@keyframes breath {
+  0% {
+    transform: scale(0.8);
+    opacity: .8;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: .8;
+  }
+}
+
+@keyframes breathBtn {
+  0% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 90%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+
+.header-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/screen-bg_f2a2a44.jpg);
+  background-size: cover;
+}
+
+.header-section .video {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  object-fit: fill;
+}
+
+.header-section .header-text {
+  width: 730px;
+  height: 209px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -84.5px 0 0 -365px;
+  -webkit-transition: margin .5s linear;
+  -moz-transition: margin .5s linear;
+  -o-transition: margin .5s linear;
+  transition: margin .5s linear;
+}
+
+.header-section .header-text img {
+  border: 0;
+  max-width: 100%;
+}
+
+.header-section .header-logo .left-logo {
+  display: inline-block;
+  height: 84px;
+  width: 41.5px;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/banner-logo-left_25c1e24.png) 0 0 no-repeat transparent;
+  background-size: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -211.6px 0 0 -54px;
+  z-index: 11;
+  -webkit-transition: top .85s ease-out;
+  -moz-transition: top .85s ease-out;
+  -o-transition: top .85s ease-out;
+  transition: top .85s ease-out;
+}
+
+.header-section .header-logo .right-logo {
+  display: inline-block;
+  height: 84px;
+  width: 65.5px;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/banner-logo-right_cc5431a.png) 0 0 no-repeat transparent;
+  background-size: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -210px 0 0 -9.5px;
+  z-index: 11;
+  -webkit-transition: top .8s .05s linear;
+  -moz-transition: top .8s .05s linear;
+  -o-transition: top .8s .05s linear;
+  transition: top .8s .05s linear;
+}
+
+.header-section .decoration {
+  width: 111px;
+  height: 56px;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/screen-decoration_60a6f86.png) 0 0 transparent;
+  position: absolute;
+  left: 50px;
+  bottom: 40px;
+}
+
+.header-section .header-arrow {
+  width: 33px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -22.5px;
+  cursor: pointer;
+}
+
+.header-section .header-arrow .arrow {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/banner-arrow_f16d243.png) -6px -2px no-repeat transparent;
+  -webkit-animation: breath 2s infinite;
+  -moz-animation: breath 2s infinite;
+  -o-animation: breath 2s infinite;
+  animation: breath 2s infinite;
+}
+
+.header-section .header-arrow .dot {
+  display: inline-block;
+  width: 33px;
+  height: 100px;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/banner-arrow_f16d243.png) -6px -49px no-repeat transparent;
+}
+
+.main-section {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.main-section .intro .brand {
+  margin: 20px 0 60px;
+  height: 150px;
+  position: relative;
+}
+
+.main-section .intro .brand .logo-text {
+  display: inline-block;
+  height: 36px;
+  width: 109px;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/logo-text_36c8771.png) 0 0 no-repeat transparent;
+  background-size: 100%;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  margin: 0 0 0 -54.5px;
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+  -moz-transform: translateY(50px);
+  -o-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+}
+
+.main-section .intro .brand .logo-text.an-end {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.main-section .intro .desc {
+  width: 810px;
+  margin: 50px auto;
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 2em;
+  color: #000;
+  text-align: center;
+}
+
+.main-section .intro .button {
+  display: inline-block;
+  width: 191px;
+  height: 56px;
+  left: 50%;
+  margin: 0 0 90px -95px;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 56px;
+  color: #000;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/btn-border_b5f700c.png) 0 0 no-repeat transparent;
+  background-position: center;
+  background-size: 100%;
+  -webkit-animation: breathBtn 2s ease infinite;
+  -moz-animation: breathBtn 2s ease infinite;
+  -o-animation: breathBtn 2s ease infinite;
+  animation: breathBtn 2s ease infinite;
+}
+
+.main-section .case {
+  width: 1600px;
+  height: 618px;
+  margin: 0 auto 120px;
+  font-size: 0;
+}
+
+.main-section .case .main-window.window-tech {
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/tech-big_f5adad9.png) 0 0 no-repeat transparent;
+}
+
+.main-section .case .thumbnail {
+  vertical-align: top;
+  width: 446px;
+  height: 618px;
+  display: inline-block;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/portal/images/home/thumbnail-bg_fbb2eb7.jpg) 0 0 no-repeat #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper {
+  max-width: 1200px;
+  min-width: 920px;
+  margin: 0 auto;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+a {
+  outline: 0;
+  color: #555;
+  text-decoration: none;
+}
+
+.header {
+  width: 100%;
+  padding-top: 34px;
+}
+
+.header.tiny {
+  height: 46px;
+  position: fixed;
+  z-index: 19;
+  top: -9px;
+}
+
+.header.colorful {
+  box-shadow: 0 8px 27px 0 rgba(41, 41, 41, 0.07);
+  background-color: #fff;
+}
+
+.header.colorful .wrapper .logo {
+  margin-top: -4px;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/common/widget/header/images/logo_colorful_eb908dd.png) no-repeat top left;
+}
+
+.header.colorful .wrapper .header__nav .nav-item a {
+  color: #000;
+  opacity: .5;
+}
+
+.header.colorful .wrapper .header__nav .nav-item a.active, .header.colorful .wrapper .header__nav .nav-item a:hover {
+  color: #000;
+  opacity: 1;
+}
+
+.header .wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 920px;
+  margin: 0 auto;
+}
+
+.header .wrapper::after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.header .wrapper .logo {
+  width: 162px;
+  height: 37px;
+  margin-left: 50px;
+  background: url(http://jrstatic.baidu.com/static/duxiaoman/common/widget/header/images/logo_7ee7172.png) no-repeat top left;
+  display: inline-block;
+  float: left;
+  text-indent: -999px;
+  background-size: 162px 37px;
+}
+
+.header .wrapper .header__nav {
+  float: right;
+  margin-right: 50px;
+}
+
+.header .wrapper .header__nav .nav-item {
+  position: relative;
+  float: left;
+  font-weight: 400;
+}
+
+.header .wrapper .header__nav .nav-item a.active, .header .wrapper .header__nav .nav-item a:hover {
+  color: #fff;
+}
+
+.header .wrapper .header__nav .nav-item > a {
+  margin-left: 56px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="./imgs/favicon.ico">
+    <title>Yo-master相关动画</title>
+    <link rel="stylesheet" href="../css/0405.css">
+</head>
+<body>
+<div class="animate">
+    <div class="container">
+
+    </div>
+</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function(){
+        var str='@import "Yo-master/elastic-in";@import "Yo-master/fade-in";@import "Yo-master/fade-in-up";@import "Yo-master/fade-in-right";@import "Yo-master/fade-in-down";@import "Yo-master/fade-in-left";@import "Yo-master/fade-out";@import "Yo-master/fade-out-up";@import "Yo-master/fade-out-right";@import "Yo-master/fade-out-down";@import "Yo-master/fade-out-left";@import "Yo-master/elastic-x";@import "Yo-master/elastic-y";@import "Yo-master/elastic-in";@import "Yo-master/elastic-in-up";@import "Yo-master/elastic-in-right";@import "Yo-master/elastic-in-down";@import "Yo-master/elastic-in-left";@import "Yo-master/elastic-out";@import "Yo-master/elastic-out-up";@import "Yo-master/elastic-out-right";@import "Yo-master/elastic-out-down";@import "Yo-master/elastic-out-left";@import "Yo-master/flip";@import "Yo-master/flip-in-x";@import "Yo-master/flip-in-y";@import "Yo-master/flip-out-x";@import "Yo-master/flip-out-y";@import "Yo-master/roll-in-right";@import "Yo-master/roll-in-left";@import "Yo-master/roll-out-right";@import "Yo-master/roll-out-left";@import "Yo-master/speed-in-right";@import "Yo-master/speed-in-left";@import "Yo-master/speed-out-right";@import "Yo-master/speed-out-left";@import "Yo-master/rotate";@import "Yo-master/rotate-in";@import "Yo-master/rotate-in-up-right";@import "Yo-master/rotate-in-up-left";@import "Yo-master/rotate-in-down-right";@import "Yo-master/rotate-in-down-left";@import "Yo-master/rotate-out";@import "Yo-master/rotate-out-up-right";@import "Yo-master/rotate-out-up-left";@import "Yo-master/rotate-out-down-right";@import "Yo-master/rotate-out-down-left";@import "Yo-master/zoom-in";@import "Yo-master/zoom-in-up";@import "Yo-master/zoom-in-right";@import "Yo-master/zoom-in-down";@import "Yo-master/zoom-in-left";@import "Yo-master/zoom-out";@import "Yo-master/zoom-out-up";@import "Yo-master/zoom-out-right";@import "Yo-master/zoom-out-down";@import "Yo-master/zoom-out-left";@import "Yo-master/flash";@import "Yo-master/shake";@import "Yo-master/pulse";@import "Yo-master/extrusion";@import "Yo-master/stretch";@import "Yo-master/swing";@import "Yo-master/sling";@import "Yo-master/wobble";@import "Yo-master/hinge"';
+        var str2=str.split(";");
+
+        console.log(str2);
+        var str3=[];
+        for(var i=0;i<str2.length;i++){
+            str3.push(str2[i].slice(19,-1));
+        }
+        console.log(str3);
+        for(var j=0;j<str3.length;j++){
+            // $('<div>').addClass('one ani infinite '+str3[j]).appendTo('.container');
+            $('<div>').addClass('one').appendTo('.container').text(str3[j]);
+        }
+        $('.one').each(function(i,v){
+            $(v).on('click',function(){
+                // $(v).addClass('ani infinite '+str3[i]);
+                $(v).toggleClass('ani '+str3[i]);
+            })
+        })
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?7117e1fef39f18ac2431859dffdda945";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+    })
+</script>
+</html>

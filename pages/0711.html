@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <link href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.css" rel="stylesheet">
+    <title>WebSocket</title>
+    <style>
+        body{
+            padding-bottom:100px;
+        }
+        * {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-container {
+            width: 100%;
+            background: rgba(0, 0, 0, .8);
+            color: #ffffff;
+        }
+
+        ul {
+            width: 100%;
+        }
+
+        ul>li {
+            width: 100%;
+            list-style: none;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul>li span {
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 150px;
+            height: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="swiper-container swiper-container-horizontal" id="swiper-container1" style="height:300px;">
+            <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1600px, 0px, 0px);">
+                <div class="swiper-slide blue-slide" style="width: 800px;">
+                    slider1</div>
+                <div class="swiper-slide red-slide swiper-slide-prev" style="width: 800px;">
+                    slider2</div>
+                <div class="swiper-slide orange-slide swiper-slide-active" style="width: 800px;">
+                    slider3</div>
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+
+        <ul>
+            <li>这是内容区域
+                <span class="add">增加</span>
+            </li>
+            <li>这是内容区域
+                <span class="delete">删除</span>
+            </li>
+            <li>这是内容区域
+                <span class="delete">删除</span>
+            </li>
+        </ul>
+        <button class="btn">点击提交</button>
+        <!-- <audio controls>
+            <source src="horse.ogg" type="audio/ogg">
+            <source src="horse.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+        </audio> -->
+        <video class="video" controls="controls"  style="height: 634px;" poster="https://www.duxiaoman.com/static/duxiaoman/portal/images/home/screen-bg_cc52b7f.jpg">
+            <source src="https://www.duxiaoman.com/static/duxiaoman/portal/images/home/video_1232351.mp4" type="video/mp4" width="100%">
+        </video>
+    </div>
+
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.js"></script>
+
+<script>
+    $(function () {
+        var num = 1;
+        var mySwiper = new Swiper('.swiper-container', {
+            on: {
+                slideChangeTransitionEnd: function () {
+                    // console.log(this.activeIndex);
+                    aa()
+                    console.log(num);
+                    // console.log('---------');
+                    // console.log(num);
+                    // aa(num);
+                    // console.log(num);
+                    // alert(this.activeIndex);//切换结束时，告诉我现在是第几个slide
+                },
+            },
+        })
+        function aa() {
+            num = num + 1;
+            console.log('aa函数正在执行！');
+            // console.log(num);
+            // num++;
+        }
+        // 点击增加
+        var ul = $(ul);
+        $('.add').click(function () {
+            $('<li>这是内容区域<span class="delete">删除</span></li>').appendTo('ul');
+        })
+        // 点击提交
+        $('.btn').on('click', function () {
+
+        })
+
+
+        // var ws = new WebSocket("wss://echo.websocket.org");
+        // // var ws = new WebSocket("ws://hx2car.com/mobile/filteData.json");
+        // ws.onopen = function (evt) {
+        //     console.log("Connection open ...");
+        //     ws.send("Hello WebSockets!");
+        // };
+
+        // ws.onmessage = function (evt) {
+        //     console.log("Received Message: " + evt.data);
+        //     ws.close();
+        // };
+
+        // ws.onclose = function (evt) {
+        //     console.log("Connection closed.");
+        // };
+    })
+</script>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-webserver": "^0.9.1"
+  },
+  "dependencies": {
+    "better-scroll": "^1.10.3",
+    "parcel-bundler": "^1.12.2",
+    "vconsole": "^3.3.0"
+  }
+}

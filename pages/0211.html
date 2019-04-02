@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>H5照片查看器</title>
+    <link href="../css/swiper.min.css" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-text-size-adjust: none;
+    }
+
+    html,
+    body,
+    div,
+    span,
+    object,
+    button,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    a,
+    code,
+    em,
+    img,
+    q,
+    small,
+    strong,
+    dd,
+    dl,
+    dt,
+    li,
+    ol,
+    ul,
+    fieldset,
+    form,
+    label,
+    table,
+    tbody,
+    tr,
+    th,
+    td,
+    input {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    html {
+        background: #f9f9f9;
+        font-family: 'STHeiti', 'Microsoft YaHei', 'Helvetica', 'Arial', sans-serif;
+        -webkit-text-size-adjust: none;
+        word-break: break-word;
+        font-size: 2vw;
+    }
+
+    h1 {
+        color: #ffffff;
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+        line-height: 5rem;
+        font-size: 2rem;
+    }
+
+    #myPic {
+        width: 100%;
+        height: 19.33rem;
+        overflow: hidden;
+    }
+
+    .swiper-container {}
+
+    .swiper-container .swiper-slide,
+    .swiper-container .swiper-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #ffffff;
+    }
+</style>
+
+<body>
+    <div id="myPic">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://gpic.qpic.cn/gbar_pic/lDVAjxOVicMnyU4OWLShicffM3TvZYFia4ywL0B5oC3BLPDCoIkgdkJLA/0" alt="loading">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://gpic.qpic.cn/gbar_pic/lDVAjxOVicMnyU4OWLShicffM3TvZYFia4ywL0B5oC3BLPDCoIkgdkJLA/0" alt="loading">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://gpic.qpic.cn/gbar_pic/lDVAjxOVicMnyU4OWLShicffM3TvZYFia4ywL0B5oC3BLPDCoIkgdkJLA/0" alt="loading">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://gpic.qpic.cn/gbar_pic/lDVAjxOVicMnyU4OWLShicffM3TvZYFia4ywL0B5oC3BLPDCoIkgdkJLA/0" alt="loading">
+                </div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <!-- underscore/pinchzoom/mobBigPic -->
+    <script src="../js/h5_photo/underscore.js"></script>
+    <script src="../js/h5_photo/pinchzoom.js"></script>
+    <script src="../js/h5_photo/mobBigPic.js"></script>
+    <script src="../js/h5_photo/index.js"></script>
+</body>
+
+</html>

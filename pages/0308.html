@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link datareacthelmet="true"
+          rel="shortcut icon"
+          type="image/png"
+          href="../imgs/favicon.ico">
+    <title>dragsort拖拽排序</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.dragsort-0.5.2.min.js"></script>
+</head>
+<style>
+    body { font-family:Arial; font-size:12pt; padding:20px; width:820px; margin:20px auto; border:solid 1px #23d160; }
+    h1 { font-size:16pt;}
+    h2 { font-size:13pt;}
+    h1,h2{ color:#23d160;}
+    ul { margin:0px; padding:0px; margin-left:20px; }
+    #list1, #list2 { width:350px; list-style-type:none; margin:0px; }
+    #list1 li, #list2 li { float:left; padding:5px; width:100px; height:100px; }
+    #list1 div, #list2 div { width:90px; height:50px; border:solid 1px #ffffff; background-color:#ff3860; text-align:center; padding-top:40px; color:#ffffff;}
+    #list2 { float:right; }
+    .placeHolder div { background-color:white !important; border:dashed 1px gray !important; }
+</style>
+<body>
+<h1>示例</h1>
+     <h2>可以在两个分组直接进行拖拽</h2>
+    <script>
+        $("ul:first").dragsort();
+    </script>
+     <ul id="list2" class="draglist"  data-groupid="gid-2">
+         <li data-id="10" data-groupid="gid-2"><div>10</div></li>
+         <li data-id="11" data-groupid="gid-2"><div>11</div></li>
+         <li data-id="12" data-groupid="gid-2"><div>12</div></li>
+         <li data-id="13" data-groupid="gid-2"><div>13</div></li>
+         <li data-id="14" data-groupid="gid-2"><div>14</div></li>
+         <li data-id="15" data-groupid="gid-2"><div>15</div></li>
+         <li data-id="16" data-groupid="gid-2"><div>16</div></li>
+         <li data-id="17" data-groupid="gid-2"><div>17</div></li>
+         <li data-id="18" data-groupid="gid-2"><div>18</div></li>
+     </ul>
+     <input name="sortorder" id ="gid-2" type="hidden" value="10,11,12,13,14,15,16,17,18" />
+
+     <ul id="list1" class="draglist" data-groupid="gid-1">
+         <li data-id="1" data-groupid="gid-1"><div>1</div></li>
+         <li data-id="2" data-groupid="gid-1"><div>2</div></li>
+         <li data-id="3" data-groupid="gid-1"><div>3</div></li>
+         <li data-id="4" data-groupid="gid-1"><div>4</div></li>
+         <li data-id="5" data-groupid="gid-1"><div>5</div></li>
+         <li data-id="6" data-groupid="gid-1"><div>6</div></li>
+         <li data-id="7" data-groupid="gid-1"><div>7</div></li>
+         <li data-id="8" data-groupid="gid-1"><div>8</div></li>
+         <li data-id="9" data-groupid="gid-1"><div>9</div></li>
+     </ul>
+     <input name="sortorder" id ="gid-1" type="hidden" value="1,2,3,4,5,6,7,8,9"/>
+     <div style="clear:both;"></div>
+</body>
+<script>
+$(function () {
+    $(".draglist").dragsort({
+        dragSelector: "li",
+        dragBetween: true,
+        dragEnd: saveOrder, //拖拽完成后回调函数
+        placeHolderTemplate: "<li class='placeHolder'><div></div></li>" //拖动是阴影
+    });
+    function saveOrder() {
+        var $this = $(this);
+        var data = $this.parent().children().map(function() {
+            return $this.attr("data-id");
+        }).get();
+
+        var currentid = $this.attr("data-id"); //组件id
+        var oldgroupid = $this.attr("data-groupid"); //所属组id
+        var groupid = $this.parent().attr("data-groupid"); //目标组id
+
+        //跨组移动、移除旧组信息
+        if (oldgroupid != groupid) {
+            var oldgroup = $("#" + oldgroupid);
+            var groupval = oldgroup.val().replace(currentid, "");
+            oldgroup.val(groupval);
+        }
+
+        $("#" + groupid).val(data.join(",")); //添加所属组记录
+        $this.attr("data-groupid", groupid); //改变所属组id
+    };
+
+    /**
+     * 保存位置
+     */
+    function savePosition() {
+        var inputs = $("input[name='sortorder']");
+        var arr = new Array();
+        //构造数据
+        inputs.each(function() {
+            var $this = $(this);
+            arr.push($this.attr("id") + "-" + $this.val());
+            });
+
+        $.ajax({
+            url: "${ctx}/test/position.json",
+            type: "POST",
+            data: { "tiles": arr },
+            dataType: "json",
+            success: function(data) {
+            if (data.flag)
+                alert("保存成功");
+            else
+                alert("保存失败");
+            }
+        });
+    }
+})
+</script>
+</html>

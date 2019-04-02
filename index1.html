@@ -1,0 +1,246 @@
+<!--
+//  
+//                                  _oo8oo_
+//                                 o8888888o
+//                                 88" . "88
+//                                 (| -_- |)
+//                                 0\  =  /0
+//                               ___/'==='\___
+//                             .' \\|     |// '.
+//                            / \\|||  :  |||// \
+//                           / _||||| -:- |||||_ \
+//                          |   | \\\  -  /// |   |
+//                          | \_|  ''\---/''  |_/ |
+//                          \  .-\__  '-'  __/-.  /
+//                        ___'. .'  /--.--\  '. .'___
+//                     ."" '<  '.___\_<|>_/___.'  >' "".
+//                    | | :  `- \`.:`\ _ /`:.`/ -`  : | |
+//                    \  \ `-.   \_ __\ /__ _/   .-` /  /
+//                =====`-.____`.___ \_____/ ___.`____.-`=====
+//                                  `=---=`
+//  
+//  
+// 
+//                          佛祖保佑         永无bug
+//       
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=keywords content="winter - 日常项目汇总">
+    <meta name=description content="Winter programs - let us do something">
+    <title>Winter programs</title>
+    <link rel="stylesheet" href="css/style.min.css">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="./imgs/favicon.ico">
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+</head>
+<!-- 
+    onselectstart="return false"   取消浏览器拖动的蓝色选择区
+ -->
+<style>
+    /* 禁止复制文本 */
+
+    body {
+        -moz-user-select: none;
+        /*火狐*/
+        -webkit-user-select: none;
+        /*webkit浏览器*/
+        -ms-user-select: none;
+        /*IE10*/
+        -khtml-user-select: none;
+        /*早期浏览器*/
+        user-select: none;
+        padding-top: 100px;
+    }
+    .rotate{
+        width:200px;
+        height:200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 100px;
+        margin-left:100px;
+    }
+    .rotate.active{
+        transform: rotate(180deg);
+    }
+</style>
+
+<body>
+    <div id="root">
+        <div class="wrap shadow">
+            <ol id="ol" class="list">
+                <li :track="item.title" v-for="(item,index) of data" :key="index">
+                    <h1 @click="handleClick" :number="index" ref="dataNum">
+                        <a href="javascript:;" :title="item.title">{{item.title}}</a>
+                    </h1>
+                    <dl class="sub-dl" :class="item.show?'active':''">
+                        <dd v-for="(content,index) of item.content" :key="index">
+                            <a :href="content.url">{{content.title}}</a>
+                        </dd>
+                    </dl>
+                </li>
+            </ol>
+        </div>
+
+        <div class="rotate" :class="rotate?'active':''" @click="rotateClick">Rotate</div>
+
+
+    </div>
+</body>
+<!-- <script src="./js/jquery.min.js"></script> -->
+<script>
+    var data = [
+        {
+            title: '第一章 表单常用代码',
+            content: [
+                { url: 'pages/0101.html', title: '去除字符串左右的空格' },
+                { url: 'pages/0102.html', title: '验证用户是否输入' },
+                { url: 'pages/0103.html', title: '禁止用户输入' },
+                { url: 'pages/0104.html', title: '关闭用户中文输入法' },
+                { url: 'pages/0105.html', title: '禁止用户复制和粘贴' },
+                { url: 'pages/0106.html', title: '限制只能输入数字' },
+                { url: 'pages/0107.html', title: '限制字符串长度' },
+                { url: 'pages/0108.html', title: '拖拽进度条' },
+                { url: 'pages/0109.html', title: '通过cookie实现网页背景切换' },
+                { url: 'pages/0110.html', title: '全国城市三级联动' },
+                { url: 'pages/0111.html', title: 'Angular数据渲染' },
+                { url: 'pages/0112.html', title: 'JS生成图片验证码' }
+            ],
+            show: false
+        },
+        {
+            title: '第二章 JS效果相关代码',
+            content: [
+                { url: 'pages/0201.html', title: '楼层跳转效果' },
+                { url: 'pages/0202.html', title: '按需加载图片' },
+                { url: 'pages/0203.html', title: '全选、反选、全不选效果' },
+                { url: 'pages/0204.html', title: '图片懒加载' },
+                { url: 'pages/0205.html', title: '照片查看器' },
+                { url: 'pages/0206.html', title: '图片轮播' },
+                { url: 'pages/0207.html', title: '图片上传' },
+                { url: 'pages/0208.html', title: '分页功能实现' },
+                { url: 'pages/0209.html', title: '调用手机摄像头和相册' },
+                { url: 'pages/0210.html', title: '下拉刷新、上拉加载' },
+                { url: 'pages/0211.html', title: 'H5照片查看' },
+                { url: 'pages/0212.html', title: 'better-scroll' }
+            ],
+            show: false
+        },
+        {
+            title: '第三章 js相关插件',
+            content: [
+                { url: 'pages/0301.html', title: 'PhotoSwipe 相册控件' },
+                { url: 'pages/0302.html', title: 'fullpage-网易邮箱6.0' },
+                { url: 'pages/0303.html', title: 'fullpage-iPhone 5C' },
+                { url: 'pages/0304.html', title: 'three.js-3D图形绘制' },
+                { url: 'pages/0305.html', title: 'Video.js-视频播放器' },
+                { url: 'pages/0306.html', title: 'sweetalert2-Alert弹框' },
+                { url: 'pages/0307.html', title: 'Chart.js' },
+                { url: 'pages/0308.html', title: 'dragsort拖拽排序' },
+                { url: 'pages/0309.html', title: 'jquery-qrcode图片二维码' },
+                { url: 'pages/0310.html', title: 'JS进行MD5加密' },
+                { url: 'pages/0311.html', title: '复制内容到剪切板' },
+                { url: 'pages/0312.html', title: 'jquery.form.js' },
+                { url: 'pages/0313.html', title: 'echarts4.0.js' },
+                { url: 'pages/0314.html', title: 'alloy_touch.js' },
+                { url: 'pages/0315.html', title: '百度MVVM框架San' },
+                { url: 'pages/0316.html', title: 'flowplayer' },
+                { url: 'pages/0317.html', title: 'ffmpeg' }
+            ],
+            show: false
+        },
+        {
+            title: '第四章 CSS3效果层',
+            content: [
+                { url: 'pages/0404.html', title: 'css3弹出层' },
+                { url: 'pages/0405.html', title: 'Yo-master相关动画' },
+                { url: 'pages/0406.html', title: 'CSS使用Tips' },
+                { url: 'pages/0407.html', title: 'CSS3加载动画' },
+                { url: 'pages/0408.html', title: 'csshake' },
+                { url: 'pages/0409.html', title: 'color颜色选择' },
+                { url: 'pages/0410.html', title: 'flex布局' },
+                { url: 'pages/0411.html', title: 'About svg' },
+                { url: 'pages/Cayman', title: 'Cayman theme' }
+            ],
+            show: false
+        },
+        {
+            title: '第五章 移动端效果',
+            content: [
+                { url: 'pages/0501.html', title: 'LCalendar移动端日期时间选择控件' },
+                { url: 'http://gwem.tk/douban-vue/', title: 'vue-豆瓣电影' }
+            ],
+            show: false
+        },
+        {
+            title: '第六章 时间日期效果',
+            content: [
+                { url: 'pages/0601.html', title: '学习资源整理(By phodal Huang)' },
+                { url: 'pages/0602.html', title: 'IntelliJ-IDEA' },
+                { url: 'pages/0603.html', title: 'Github接口分析' }
+            ],
+            show: false
+        },
+        {
+            title: '第七章 其它练习',
+            content: [
+                { url: 'pages/0701.html', title: '刷新当前页面' },
+                { url: 'pages/0702.html', title: '百度地图引用' },
+                { url: 'pages/0703.html', title: '高德地图引用' },
+                { url: 'pages/0704.html', title: '腾讯地图引用' },
+                { url: 'pages/0705.html', title: '扫码登录' },
+                { url: 'pages/0706.html', title: 'table布局' },
+                { url: 'pages/0707.html', title: 'flex布局' },
+                { url: 'pages/0708.html', title: 'canvas' },
+                { url: 'pages/0709.html', title: '字体图标' },
+                { url: 'pages/0710.html', title: 'emoji' },
+                { url: 'pages/0711.html', title: 'WebSocket' },
+                { url: 'pages/0712.html', title: 'china_city' }
+            ],
+            show: false
+        }
+    ];
+    var vm = new Vue({
+        el: '#root',
+        props: ['content'],
+        data: {
+            list: data,
+            // showcontent: false,
+            brands: ['奥迪', '大众', '雷克萨斯', '阿尔法-罗密欧', '阿斯顿马丁', '乔治·巴顿', '宝马', '奔驰', '丰田'],
+            rotate: false
+        },
+        methods: {
+            handleClick: function (e) {
+                console.log(e.target);
+                // this.showcontent = !this.showcontent;
+            },
+            rotateClick: function(){
+                this.rotate = !this.rotate
+            }
+        },
+        created: function () {
+            axios.get('http://wallpaper.apc.360.cn/index.php', {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                params: {
+                    c: 'WallPaperAndroid',
+                    a: 'getAppsByCategory',
+                    cid: 9,
+                    start: 0,
+                    count: 99
+                }
+            }).then(function (res) {
+                console.log(res);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "imagemin": "^6.0.0",
+    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-pngquant": "^6.0.0",
+    "imagemin-webp": "^4.1.0"
+  }
+}

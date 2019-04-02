@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/**
+ * Yo框架动画解决方案
+ * Yo内置了超过60种动画形态，不同的动画可以任意组合
+ */
+.ani {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.ani.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+/**
+ * @module rotate
+ * @description 定义旋转从左向上退出动画
+ * @method rotate-out-up-left
+ */
+@-webkit-keyframes rotate-out-up-left {
+  0% {
+    -webkit-transform-origin: left bottom;
+    opacity: 1; }
+  100% {
+    -webkit-transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, -90deg);
+    opacity: 0; } }
+@keyframes rotate-out-up-left {
+  0% {
+    transform-origin: left bottom;
+    opacity: 1; }
+  100% {
+    transform-origin: left bottom;
+    transform: rotate3d(0, 0, 1, -90deg);
+    opacity: 0; } }
+.ani.rotate-out-up-left {
+  -webkit-animation-name: rotate-out-up-left;
+  animation-name: rotate-out-up-left; }
+
+/*# sourceMappingURL=rotate-out-up-left.css.map */

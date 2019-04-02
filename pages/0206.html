@@ -1,0 +1,514 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF8">
+    <title>轮播图效果展示</title>
+    <link datareacthelmet="true"
+          rel="shortcut icon"
+          type="image/png"
+          href="../imgs/favicon.ico">
+</head>
+<style>
+    /**{ margin:0; padding:0;}
+    body{font:12px/1.125 Arial,Helvetica,sansserif;background:#fff;}
+    table{bordercollapse:collapse;borderspacing:0;}
+    li{liststyle:none;}
+    fieldset,img{border:0;}
+    article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+    q:before,q:after{content:'';}
+    a:focus,input,textarea{outlinestyle:none;}
+    input[type="text"],input[type="password"],textarea{outlinestyle:none;webkitappearance:none;}
+    textarea{resize:none}
+    address,caption,cite,code,dfn,em,i,th,var{fontstyle:normal;fontweight:normal;}
+    legend{color:#000;}
+    abbr,acronym{border:0;fontvariant:normal;}
+    a{color:#0a8cd2;textdecoration:none;}
+    a:hover{textdecoration:underline;}
+    .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+    .clearfix{display:inline-block;}
+    .clearfix{display:block;}
+    .clear{clear:both;height:0;font:0/0 Arial;visibility:hidden;}
+    .none{display:none}
+    !* main *!
+    .mod{ width:883px;margin: 30px auto; position:relative;}
+    .modrelease{paddingbottom:5px}
+    !*.modrelease .muislider .controlleft,.modrelease .muislider .controlright{top:74px}*!
+    .modrelease .muislider .controlleft em,.modrelease .muislider .controlright em{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);opacity:0.3}
+    .modrelease .release{margintop:10px}
+    .modrelease .release ul{paddingtop:10px}
+    .modrelease .muislidercontroller{display:inline;float:right;margintop:4px}
+    .modrelease .muisliderscrollwrap{paddingright:10px;marginright:10px;position:relative;overflow:hidden;zoom:1;width:100%}
+    .modrelease .muisliderscrollcontainer{position:relative;width:5000px;left: 0;}
+    .modrelease ul{display:inline;float:left;height:184px;width:900px;overflow:hidden}
+    .modrelease li{display:inline;float:left;marginright:20px;paddingbottom:10px;width:130px}
+    .modrelease li .pic{position:relative;marginbottom:5px;*zoom:1}
+    .modrelease li img{display:block;width:130px;height:130px;webkitboxshadow:0 1px 3px rgba(0,0,0,0.2);mozboxshadow:0 1px 3px rgba(0,0,0,0.2);boxshadow:0 1px 3px rgba(0,0,0,0.2)}
+    .modrelease li .artist a{color:#999999}
+    .modrelease li .artist a:visited{color:#999999}
+    .modrelease li .artist a:focus{color:#999999}
+    .modrelease li .artist a:hover{color:#999999}
+    .modrelease li .artist a:active{color:#999999}
+    .modrelease li .music{fontsize:14px}
+    .modrelease li .play{position:absolute;right:5px;bottom:5px}
+    .muislider .controlleft,.muislider .controlright{position:absolute;zindex:1;top:50%;margintop:70px;width:30px;height:100px;cursor:pointer}
+    .muislider .controlleft i,.muislider .controlright i{position:absolute;zindex:2;top:50%;left:50%;margin:10px 0 0 6px;width:13px;height:21px;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60);opacity:0.6;background:url("../imgs/jE3izRb2.png") norepeat}
+    .muislider .controlleft em,.muislider .controlright em{webkitborderradius:5px;mozborderradius:5px;msborderradius:5px;oborderradius:5px;borderradius:5px;position:absolute;width:100%;height:100px;top:0;left:0;background:black;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);opacity:0.3}
+    .muislider .controlleft:hover i,.muislider .controlright:hover i{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);opacity:1}
+    .muislider .controlleft{left:15px}
+    .muislider .controlright{right:15px}
+    .muislider .controlright i{background:url("../imgs/Jqm9O4XG.png") norepeat}
+
+    .muislidercontroller{overflow:hidden;*zoom:1}
+    .muislidercontroller:after{content:"";display:table;clear:both}
+    .muislidercontroller .sliderpage{position:relative;display:inline;float:left;lineheight:6px;*zoom:1}
+    .muislidercontroller .sliderpage:after{content:"";display:table;clear:both}
+    .muislidercontroller .sliderpageinner{display:inline;float:left;position:relative;overflow:hidden}
+    .muislidercontroller .sliderpageinner .bg{webkitborderradius:4px;mozborderradius:4px;msborderradius:4px;oborderradius:4px;borderradius:4px;position:absolute;zindex:1;left:0;top:0;width:100%;height:16px;background:#333333;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);opacity:0.5}
+    .muislidercontroller a{display:inline;float:left}
+    .muislidercontroller .page{position:relative;zindex:2;padding:5px 3px}
+    .muislidercontroller .page i{webkittransition:width 0.5s easeout;moztransition:width 0.5s easeout;otransition:width 0.5s easeout;transition:width 0.5s easeout;display:inline;float:left;width:6px;height:6px;margin:0 auto;overflow:hidden;webkitborderradius:5px;mozborderradius:5px;msborderradius:5px;oborderradius:5px;borderradius:5px;background:#cccccc}
+    .muislidercontroller .page.on i{width:15px;background:#327ccb}
+    .muislidercontroller .sliderright{left:100%}
+    .muislidercontroller .sliderright .sliderpageinner{right:100%}
+    .muislidercontroller .slidercenter{left:50%}
+    .muislidercontroller .slidercenter .sliderpageinner{right:50%}
+    .muislidercontroller .sliderleft{left:0}
+    .muislidercontroller .sliderleft .sliderpageinner{right:0}*/
+
+    * {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 1200px;
+        margin: 45px auto 0;
+        height: 150px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container > div {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background: rgba(0, 0, 0, .4) url("../imgs/jE3izRb2.png") center center no-repeat;
+        background-size: 10px;
+        top: 50px;
+        transform: scale(0, 0);
+        transition: transform .3s ease;
+        z-index: 100;
+        cursor:pointer;
+    }
+
+    .container > div.left {
+        left: 5px;
+    }
+
+    .container > div.right {
+        right: 5px;
+        background: rgba(0, 0, 0, .4) url("../imgs/Jqm9O4XG.png") center center no-repeat;
+        background-size: 10px;
+    }
+
+    .container:hover > div {
+        transform: scale(1, 1);
+    }
+
+    ul {
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+    }
+
+    ul > li {
+        width: 200px;
+        height: 150px;
+        float: left;
+        border-right: 1px solid #ffffff;
+        box-sizing: border-box;
+    }
+
+    ul > li:last-of-type {
+        border-right: 0;
+    }
+
+    ul > li img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="left prev"></div>
+    <ul>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300_2.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+        <li>
+            <img src="../imgs/car_400_300.jpg"
+                 alt="">
+        </li>
+    </ul>
+    <div class="right next"></div>
+</div>
+<!--<div monkey="NI_new_album" class="mod modrelease">
+    <div class="hd clearfix">
+        <div class="muislidercontroller">
+            <div class="sliderpage sliderright">
+                <div id="bar" class="sliderpageinner">
+                    <a class="page on" href=""><i> </i> </a>
+                    <a class="page " href=""><i> </i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bd">
+        <div id="box" class="release muislider">
+            <a href="#" id="prev" class="controlleft"><i> </i> <em> </em> </a>
+            <a href="#" id="next" class="controlright"><i> </i> <em> </em> </a>
+            <div class="muisliderscrollwrap">
+                <div id="container" class="muisliderscrollcontainer">
+                    <ul class="clearfix">
+                        <li>
+                            <div class="pic">
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <span class="icon iconcoverspecial icontopright"></span>
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <span class="icon iconcoverspecial icontopright"></span>
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="clearfix">
+                        <li>
+                            <div class="pic">
+                                <a target="_blank" href="#">
+                                    <img alt="images/1.jpg" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <span class="icon iconcoverspecial icontopright"></span>
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <span class="icon iconcoverspecial icontopright"></span>
+                                <a target="_blank" href="#">
+                                    <img alt="" src="../imgs/car_400_300.jpg">
+                                </a>
+                                <span><a class="play iconplaywhite jsplayalbum" href="#"></a></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        /*页面元素获取*/
+        /*var box = $('#box');
+        var bar = $('#bar');
+        var dot = bar.find('a');
+        var prev = $('#prev');
+        var next = $('#next');
+        var container = $('#container');
+        var ul = container.find('ul');
+        console.log(container);
+        container[0].innerHTML += container[0].innerHTML;
+        var li = ul.eq(0).find('li');
+//        var li = ul[0].getElementsByTagName('li');
+        /!*获取盒子宽度*!/
+        var ul_w = ul[0].offsetWidth;
+        var len = li.length * 2;
+        var page = 4;
+        var half = (page/2);
+        var now = 0;
+        var timer = null;*/
+
+        /*// 自动轮播
+        function auto(){
+            next.onclick();
+        }
+        timer = setInterval(auto, 3000);
+
+        // 点击上一页
+        prev.onclick = function(){
+            if(now > 0){
+                now;
+            } else {
+                now = half  1;
+                container.left = (ul_w * half) + 'px';
+            }
+            scroll();
+        }
+        // 点击下一页
+        next.onclick = function(){
+            if(now < page  1){
+                now++;
+            } else {
+                now = half;
+                container.left = (ul_w * (half  1)) + 'px';
+            }
+            scroll();
+        }
+        function scroll(){
+            tab();
+            act(container, 'left', ul_w * now);
+        }
+        // 鼠标移入清除定时器
+        box.onmouseover = function(){
+            clearInterval(timer);
+        }
+        // 鼠标移出开启定时器
+        box.onmouseout = function(){
+            timer = setInterval(auto, 3000);
+        }
+        /!*顶部圆点显示效果*!/
+        function tab(){
+            for(var i = 0; i < 2; i++){
+                dot[i].className = 'page';
+            }
+            dot[now % 2].className = 'page on';
+        }
+        /!*获取对象样式(兼容写法)*!/
+        function css(obj, attr){
+            if(obj.currentStyle){
+                return obj.currentStyle[attr];
+            } else {
+                return getComputedStyle(obj, false)[attr];
+            }
+        }
+        var con1 = document.getElementById('container');
+//        css(con1,width);
+        console.log(con1);
+        function act(obj, attr, target, fn){
+            obj.timer && clearInterval(obj.timer);
+            obj.timer = setInterval(function(){
+                var stop = true;
+                var cur = parseInt(css(obj, attr));
+                var speed = (target  cur) / 8;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(target != cur){
+                    stop = false;
+                    obj.style[attr] = speed + cur + 'px';
+                }
+                if(stop){
+                    clearInterval(obj.timer);
+                    obj.timer = null;
+                    fn && fn();
+                }
+            }, 30);
+        }*/
+
+
+        // 地址栏参数获取
+        /*方法一：*/
+        /*function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        var xx = getUrlParam('loginName');
+        console.log(xx);*/
+        /*方法二：*/
+        /*function GetRequest(strName)
+        {
+            var strHref = window.location.href; //获取Url字串
+            var intPos = strHref.indexOf("?");  // 参数开始位置
+            var strRight = strHref.substr(intPos + 1);
+            var arrTmp = strRight.split("&"); //参数分割符
+            for(var i = 0; i < arrTmp.length; i++)
+            {
+                var arrTemp = arrTmp[i].split("=");
+                if(arrTemp[0].toUpperCase() == strName.toUpperCase()) return arrTemp[1];
+            }
+            return "";
+        }
+        console.log(GetRequest('loginName'));*/
+
+        /*var link = document.createElement('link');
+        link.setAttribute('href','../style.css');*/
+
+        // 自动轮播
+        /*var prev = $('#prev'),
+            next = $('#next');
+        var dis = $('ul.clearfix li')[0].offsetWidth;
+        //点击上一页
+        var now = 0;
+        prev.on('click', function () {
+            now++;
+            $('#container').animate({'left': '' + dis * now + 'px'}, 100)
+        })
+        // 点击下一页
+        next.on('click', function () {
+            now++;
+            $('#container').animate({'left': '' + dis * now + 'px'}, 100)
+        })*/
+        // 变量申明
+        var num = $('.container ul li').length,
+            wd = $('.container ul li')[0].offsetWidth,
+            hg = $('.container ul li')[0].offsetHeight,
+            now = 0,
+            prev = $('.prev'),
+            next = $('.next'),
+            ul = $('.container ul'),
+            nL,
+            half = parseInt(num / 2)
+        ;
+        ul.width('' + wd * num + 'px');
+        //点击上一页
+        prev.on('click', function (e) {
+            now--;
+            if (now < 0) {
+                alert('已到第一页！');
+                now = 0;
+                return;
+            } else {
+                nL = ul[0].offsetLeft;
+                ul.animate({'left': '' + (nL + wd) + 'px'}, 200);
+            }
+        })
+        //点击下一页
+        next.on('click', function (e) {
+            now++;
+            if (now > half + 1) {
+                alert('已到最后一页！');
+                now = 0;
+                ul.animate({'left': '0'}, 300)
+                return;
+            } else {
+                nL = ul[0].offsetLeft;
+                ul.animate({'left': '' + (nL - wd) + 'px'}, 200);
+            }
+        })
+    })
+</script>
+</html>

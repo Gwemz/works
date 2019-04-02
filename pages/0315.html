@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>百度MVVM框架San</title>
+    <script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+</head>
+<!-- 
+    san: https://ecomfe.github.io/san
+    semantic: https://semantic-ui.com
+ -->
+<style>
+    p{
+        text-align: center;
+    }
+</style>
+<body>
+    <script>
+        var MyApp = san.defineComponent({
+            template: '<p>Hello {{name}}!</p>',
+
+            initData: function () {
+                return {
+                    name: 'San'
+                };
+            }
+        });
+        
+        var myApp = new MyApp();
+        myApp.attach(document.body);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta itemprop="name" content="德云社-郭德纲"/>
+    <meta itemprop="image" content="http://ovcf0m6s4.bkt.clouddn.com/IMG_20170902_124433.jpg" />
+    <meta name="description" itemprop="description" content="谦大爷还是那个谦大爷，真性情的汉子！！！" />
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../imgs/favicon.ico">
+    <title>test</title>
+</head>
+<style>
+    html{
+        font-size: 62.5%;
+        overflow-x: hidden;
+    }
+    body{
+        margin:0;
+        padding:0;
+        padding-bottom:12rem;
+        background:#000000;
+    }
+    *{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    .button,button{
+        width:65%;
+        height: 6rem;
+        background: #ff6600;
+        border-radius: 5px;
+        border: 0;
+        font-size: 1.64rem;
+        color: #ffffff;
+        margin:20rem auto 3rem;
+        text-align:center;
+        line-height:6rem;
+    }
+    .collect,.confirm{
+        width:65%;
+        height:6rem;
+        background:#ff6600;
+        border-radius:5px;
+        text-align: center;
+        line-height: 6rem;   
+        margin:0 auto 5rem;
+        font-size:1.8rem;
+        color:#ffffff;
+    }
+    #page{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,.8);
+        z-index:2;
+        -webkit-transition:all linear .2s;
+        -moz-transition:all linear .2s;
+        -ms-transition:all linear .2s;
+        -o-transition:all linear .2s;
+        transition:all linear .2s;
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+    #page.active{
+        transform: translateX(0);
+    }
+    #page button{
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+        margin:auto;
+        background: #22ac38;
+    }
+    #page .back{
+        width: 32px;
+        color: #ffffff;
+        height: 32px;
+        font-size: 20px;
+        line-height: 32px;
+        display: block;
+        margin: 5px 0;
+        padding-left: 10px;
+    }
+    .box{
+        width:600px;
+        height: 0px;
+        background:red;
+        margin:0 auto;
+        transition:height .5s ease;
+        overflow:hidden;
+        text-align:center;
+        line-height:300px;
+    }
+    .box.active{
+        height:300px;
+    }
+    .border{
+        width:500px;
+        height:auto;
+        margin:10px auto 20px;
+        overflow: hidden;
+    }
+    .border > div{
+        float:left;
+    }
+    .border .border-left,.border .border-right{
+        width:200px;
+        height:50px;
+        background:#f3941d;
+        text-align: center;
+        line-height:50px;
+        color:#ffffff;
+    }
+    .border .border-right{
+        background:#f5d7d7;
+        color:#000000;
+    }
+    .border-icon{
+        width:0px;
+        height:0px;
+        border-width:50px 25px 0px 0px;
+        border-style:solid;
+        border-color:#f3941d #f5d7d7 #f3941d #f3941d;
+    }
+    .border1{
+        width:0px;
+        height:0px;
+        border-width:100px 100px 100px 100px;
+        border-style:solid;
+        border-color:#aaa #bbb #ccc #ddd;
+        margin:0 auto 20px;
+    }
+    .content .border3{
+        width:50px;
+        height:100px;
+        margin:0 auto 20px;
+        background:#ac2250;
+        text-align: center;
+        line-height: 100px;
+        position: relative;
+        color:#ffffff;
+    }
+    .small-triangle{
+        position: absolute;
+        width:0;
+        height:0;
+        border-width:15px 10px 0px 0px;
+        border-style: solid;
+        border-top-color: #ffffff;
+        border-right-color: #ac2250;
+        left:-10px;
+    }
+    .big-triangle{
+        width:0;
+        height:0;
+        border-width:15px 25px; 
+        border-style:solid;
+        border-color:#ac2250 #ac2250 #ffffff #ac2250;
+        margin-top:-15px;
+    }
+    .loading{
+        width:240px;
+        height:240px;
+        margin:0 auto;
+    }
+    .messageBox{
+        width:12rem;
+        height:4.5rem;
+        background:rgba(0,0,0,.8);
+        color:#ffffff;
+        border-radius: 5px;
+        line-height: 4.5rem;
+        text-align: center;
+        margin:0 auto;
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        margin:auto;
+        opacity: 0;
+        transition: all .3s;
+    }
+    .messageBox.active{
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    .alertBox{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        margin:auto;
+        transition: all .3s;
+        width:75%;
+        height:15rem;
+        background:#ffffff;
+        border-radius:10px;
+        font-size:1.5rem;
+        opacity:0;
+        transition:all .3s;
+    }
+    .alertBox .content{
+        width:100%;
+        height:10.5rem;
+        text-align: center;
+        line-height:10.5rem;
+    }
+    .alertBox ul.bottom{
+        position:absolute;
+        width:100%;
+        height:4.5rem;
+        bottom:0;
+        border-top:1px solid #cccccc;
+        padding-left:0;
+        margin:0;
+    }
+    .alertBox ul.bottom > li{
+        float:left;
+        width:50%;
+        height:100%;
+        text-align: center;
+        line-height: 4.5rem;
+        box-sizing: border-box;
+    }
+    .alertBox ul.bottom li:first-of-type{
+        border-right:1px solid #cccccc;
+    }
+    .alertBox.active{
+        opacity:1;
+    }
+</style>
+<body>
+    <img src="http://ovcf0m6s4.bkt.clouddn.com/IMG_20170902_124433.jpg" width="0" height="0" />
+    <h2>This is a test title!!!</h2>
+    <div class="button">
+        提交
+    </div>
+    <div class="collect">
+        收藏
+    </div>
+    <div class="confirm">
+        确定
+    </div>
+    <div class="box">
+        I'm Chineses!!!
+    </div>
+    <section id="page">
+        <div class="back"> < </div>
+        <button>刷新页面</button>
+    </section>
+    <textarea cols="20" rows="10" id="biao1">用户定义的代码区域</textarea>
+    <input type="button" onClick="copyUrl2()" value="点击复制代码" />
+
+    <!-- 简单实用属性border -->
+    <div class="border">
+        <div class="border-left">商品介绍</div>
+        <div class="border-icon"></div>
+        <div class="border-right">商品评价</div>
+    </div>
+    <div class="border1">
+
+    </div>
+    <div class="content">
+        <div class="border3">
+            <div class="small-triangle"></div>
+            介绍
+            <div class="big-triangle"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function copyUrl2()
+        {
+            var Url2=document.getElementById("biao1");
+            Url2.select(); // 选择对象
+            document.execCommand("Copy"); // 执行浏览器复制命令
+            alert("已复制好，可贴粘。");
+        }
+    </script>
+    <div class="loading">
+        <svg width="240px" height="240px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default">
+            <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(0 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(30 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.08333333333333333s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(60 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.16666666666666666s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(90 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.25s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(120 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.3333333333333333s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(150 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.4166666666666667s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(180 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(210 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5833333333333334s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(240 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.6666666666666666s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(270 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.75s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(300 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.8333333333333334s" repeatCount="indefinite"></animate>
+            </rect>
+            <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#ff7875" transform="rotate(330 50 50) translate(0 -30)">
+                <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.9166666666666666s" repeatCount="indefinite"></animate>
+            </rect>
+        </svg>
+    </div>
+    <div class="messageBox">
+        收藏成功！
+    </div>
+    <div class="alertBox">
+        <div class="content">
+            确定删除吗？
+        </div>
+        <ul class="bottom">
+            <li>取消</li>
+            <li>确定</li>
+        </ul>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    //阻止背景滑动
+    function docprevent() {
+        $('body').css({
+            'height': $(window).height(),
+            'overflow': 'hidden'
+        });
+        // $(document).off('touchmove').on('touchmove', function (e) {
+        //     e.preventDefault();
+        // });
+    }
+
+    //添加滑动
+    function docrecover() {
+        $('body').css({
+            'height': 'auto',
+            'overflow': 'auto'
+        });
+        // $(document).off('touchmove').on('touchmove', function () {
+        // });
+    }
+
+    $('.button').on('click',function () {
+        $('#page').addClass('active');
+        docprevent()
+    })
+    $('.back').on('click',function(){
+        $('#page').removeClass('active');
+        docrecover()
+    })
+    // 解决微信浏览器不支持window.location.reload()方法
+    $('button').on('click',function () {
+//        window.location.href = location.href;
+//        window.location.reload();
+        reload();
+    })
+
+    // 微信分享测试
+    /* wx.config({
+        debug: false,
+        appId: 'wxfb95e4025a5d4614',
+        timestamp: '1498633007',
+        nonceStr: 'tnZJBsdrUo88MFiB',
+        signature: 'cae67a0a883822e1087cba091321b14b73152210',
+        jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage'
+        ]
+    });
+    wx.ready(function () {
+        var shareData = {
+            title: '德云社-郭德纲',	//	标题
+            desc: '谦大爷还是那个谦大爷，刚烈的汉子！！！',	//	描述
+            link: 'http://gwem.tk/works/pages/0701.html',	//	分享的URL，必须和当前打开的网页的URL是一样的
+            imgUrl: 'http://ovcf0m6s4.bkt.clouddn.com/IMG_20170902_124433.jpg'	//	缩略图地址
+        };
+        wx.onMenuShareAppMessage(shareData);
+        wx.onMenuShareTimeline(shareData);
+    });
+    wx.error(function (res) {
+        //alert(res.errMsg);//错误提示
+    }); */
+
+    /* wx.config({
+        debug: false,
+        appId: "{$signPackage.appId}",
+        timestamp: "{$signPackage.timestamp}",
+        nonceStr: "{$signPackage.nonceStr}",
+        signature: "{$signPackage.signature}",
+        jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ", "chooseImage", "uploadImage"]
+    });
+    wx.ready(function () {
+        var title = $("#wx-share").attr("wx-title") || "";
+        title = title.replace(/\s/, "").replace(" ", "");
+        var descript = $("#wx-share").attr("wx-desc");
+        var shareurl = $("#wx-share").attr("wx-link");
+        var imgurl = $("#wx-share").attr("wx-imgUrl");
+        if (descript == '') {
+            descript = title;
+        }
+        //分享给朋友
+        wx.onMenuShareAppMessage({
+            title: title, //  分享标题
+            desc: descript, //  分享链接
+            link: shareurl, // 分享图标
+            imgUrl: imgurl,
+            type: 'link',
+            dataUrl: '',
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: title, // 分享标题
+            link: shareurl, // 分享链接
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //分享到QQ
+        wx.onMenuShareQQ({
+            title: title, // 分享标题
+            desc: descript, // 分享描述
+            link: shareurl, // 分享链接
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //分享到腾讯微博
+        wx.onMenuShareWeibo({
+            title: title, // 分享标题
+            desc: descript, // 分享描述
+            link: shareurl, // 分享链接
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //分享到QQ空间
+        wx.onMenuShareQZone({
+            title: title, // 分享标题
+            desc: descript, // 分享描述
+            link: shareurl, // 分享链接
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                $(this).minTipsBox({
+                    tipsContent: "分享成功",
+                    tipsTime: 1
+                }); // 用户确认分享后执行的回调函数
+                //window.location.reload(true);
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+    wx.error(function(res) {
+    console.log(res.errMsg);
+    }); */
+    
+    function reload(){
+        window.location.href = location.href+'?time='+((new Date()).getTime());
+    }
+
+    var parse={
+        width:'1200px',
+        margin:'auto',
+        color:'#fff',
+        font_size:'20px',
+        background_color:'rgba(0,0,0,.8)',
+        text_align:'center',
+        line_height:'40px'
+    };
+    console.log(parse);
+    $('h2').css({'width':parse.width,'margin':parse.margin,'color':parse.color,'font-size':parse.font_size,'background-color':parse.background_color,'text-align':parse.text_align});
+
+
+    var person = {
+        name:'winter Guo',
+        sex:'strong man',
+        location:'hangzhou',
+        career:'front-end-developer'
+    };
+    function dream(){
+        future;
+    }
+    person.future=dream;
+    
+    $('h2').on('click',function () {
+        $('.box').toggleClass('active');
+    })
+    
+    $('.collect').on('click',function(){
+        $('.messageBox').toggleClass('active');
+        setTimeout(function(){
+            $('.messageBox').removeClass('active');
+        },1000)
+    })
+
+    // 点击confirm确定
+    $('.confirm').on('click',function(){
+        // var r = confirm("确定删除吗?");
+        // if(r==true){
+        //     window.location.href='https://www.baidu.com';
+        // }else{
+        //     document.write('伟大的科学家霍金于今日去世，享年76岁，一颗巨星陨落了！');
+        // }
+
+        $('.alertBox').addClass('active');
+    })
+
+    // 自定义弹窗确定取消
+    $('.alertBox').on('click','li',function(){
+        var index = $(this).index();
+        console.log(index);
+        // 取消
+        if(index == 0){
+            $('.alertBox').removeClass('active');
+        }
+        // 
+        else if(index == 1){
+            window.location.reload();
+        }
+    })
+
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7117e1fef39f18ac2431859dffdda945";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</html>
